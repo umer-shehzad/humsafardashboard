@@ -20,6 +20,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Badge from '@mui/material/Badge';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import SectionOne from './main/SectionOne';
+import SectionTwo from './main/SectionTwo';
 
 const drawerWidth = 240;
 
@@ -251,10 +253,10 @@ export default function MiniDrawer() {
       {/* main */}
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua.
-        </Typography>
+
+        <SectionOne />
+        <SectionTwo />
+        
       </Box>
     </Box>
   );
