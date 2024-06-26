@@ -3,13 +3,14 @@ import { Grid, Box, Typography } from '@mui/material'
 
 const SectionTwo = () => {
     return (
-        <Grid container mt={2}>
+        <Grid container columnSpacing={1} mt={2}>
+
             <Grid item xs={6}>
                 {/* Title */}
                 <Typography variant='h6' mb={2}>Driver's Info</Typography>
-
+                
                 {/* Content */}
-                <Grid container spacing={3}>
+                <Grid container columnSpacing={3}>
                     <Grid item xs={6}>
                         <Box
                             border={1}
