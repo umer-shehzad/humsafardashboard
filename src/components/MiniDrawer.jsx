@@ -22,6 +22,7 @@ import Badge from '@mui/material/Badge';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import SectionOne from './main/SectionOne';
 import SectionTwo from './main/SectionTwo';
+import SectionThree from './main/SectionThree';
 
 const drawerWidth = 240;
 
@@ -256,7 +257,8 @@ export default function MiniDrawer() {
 
         <SectionOne />
         <SectionTwo />
-        
+        <SectionThree />
+
       </Box>
     </Box>
   );
