@@ -171,7 +171,8 @@ export default function MiniDrawer() {
           {/* Display icons and text on all screen sizes */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <IconButton
-              size="large"
+              size="medium"
+              edge="start"
               aria-label="show 17 new notifications"
               color="inherit"
             >
@@ -180,7 +181,7 @@ export default function MiniDrawer() {
               </Badge>
             </IconButton>
             <IconButton
-              size="large"
+              size="medium"
               edge="end"
               aria-label="account of current user"
               aria-haspopup="true"
@@ -188,7 +189,7 @@ export default function MiniDrawer() {
             >
               <AccountCircle style={{ color: '#454545', width: 30, height: 30 }}/>
             </IconButton>
-            <Typography variant="body1" noWrap component="div" sx={{ marginLeft: 2, marginRight: 5, color: 'black' }}>
+            <Typography variant="h6" noWrap component="div" sx={{ marginLeft: 3, marginRight: 10, color: 'black' }}>
               Admin
             </Typography>
           </Box>

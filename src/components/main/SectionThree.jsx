@@ -23,17 +23,17 @@ const SectionThree = () => {
     return (
         <Box mt={0}>
             {/* Title */}
-            <Typography variant='h6' mb={1}>Recently Active Drivers</Typography>
+            <Typography variant='h6' mb={0}>Recently Active Drivers</Typography>
 
             {/* Table */}
             <TableContainer>
-                <Table sx={{ minWidth: 650, }} aria-label="simple table">
+                <Table sx={{ maxWidth: 950, }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell align='center' sx={{ fontWeight: 'bold', borderBottom: 'none' }}>Sr No.</TableCell>
-                            <TableCell align="center" sx={{ fontWeight: 'bold', borderBottom: 'none' }}>Driver's Name</TableCell>
-                            <TableCell align="center" sx={{ fontWeight: 'bold', borderBottom: 'none' }}>Login Date/Time</TableCell>
-                            <TableCell align="center" sx={{ fontWeight: 'bold', borderBottom: 'none' }}>Last Update Time</TableCell>
+                            <TableCell padding='none' sx={{ fontWeight: 'bold', borderBottom: 'none', }}>Sr No.</TableCell>
+                            <TableCell align="center" sx={{ fontWeight: 'bold', borderBottom: 'none', }}>Driver's Name</TableCell>
+                            <TableCell align="center" sx={{ fontWeight: 'bold', borderBottom: 'none', }}>Login Date/Time</TableCell>
+                            <TableCell align="center" sx={{ fontWeight: 'bold', borderBottom: 'none', }}>Last Update Time</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -41,7 +41,7 @@ const SectionThree = () => {
                             <TableRow
                                 key={row.id}
                             >
-                                <TableCell align='center' sx={{ borderBottom: 'none' }}>{row.id}</TableCell>
+                                <TableCell sx={{ borderBottom: 'none',  paddingLeft: 1 }}>{row.id}</TableCell>
                                 <TableCell align="center" sx={{ borderBottom: 'none' }}>{row.driverName}</TableCell>
                                 <TableCell align="center" sx={{ borderBottom: 'none' }}>{row.loginDateTime}</TableCell>
                                 <TableCell align="center" sx={{ borderBottom: 'none' }}>{row.lastUpdateTime}</TableCell>
