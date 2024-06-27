@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Box } from '@mui/material';
 
-const CustomButton = ({ btnName }) => {
+const CustomButton = ({ btnName, width }) => {
     return (
         <Box textAlign={'center'} mt={3}>
             <Button
@@ -13,7 +13,7 @@ const CustomButton = ({ btnName }) => {
                     color: 'white',
                     borderRadius: '8px',
                     height: '42px',
-                    width: '80%'
+                    width: width || '80%'
                 }}
             >
                 {btnName}
