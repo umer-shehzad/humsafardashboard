@@ -6,6 +6,7 @@ import PersonalInfo from './pages/signup/PersonalInfo';
 import Password from './pages/signup/Password';
 import UploadCnic from './pages/signup/UploadCnic';
 import Login from './pages/login/Login';
+import ForgotPassword from './pages/forgotpassword/ForgotPassword';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/signup/upload-cnic" element={<UploadCnic />} />
           <Route path="/signup/password" element={<Password />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           {/* <Route path="*" element={<div>Page not found</div>} /> */}
         </Routes>
       </Router>

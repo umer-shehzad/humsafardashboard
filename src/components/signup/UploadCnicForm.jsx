@@ -7,9 +7,11 @@ import CloseIcon from '@mui/icons-material/Close';
 import CustomButton from '../common/CustomButton';
 import { colors } from '../../utils/colors';
 import HumsafarLogo from '../common/HumsafarLogo';
+import { useNavigate } from 'react-router-dom';
 
 const UploadCnicForm = () => {
     const [files, setFiles] = useState([]);
+    const navigate = useNavigate();
     const { getRootProps, getInputProps, open } = useDropzone({
         noClick: true,
         noKeyboard: true,
@@ -52,6 +54,11 @@ const UploadCnicForm = () => {
     const formatSize = (size) => {
         return (size / (1024 * 1024)).toFixed(2) + ' MB';
     };
+
+    const handleContinueBtnClick = () => {
+        console.log("Sign Up Upload CNIC Click")
+        navigate('/signup/password')
+    }
 
     return (
         <Box display="flex" flexDirection="column" rowGap={6} mt={files.length > 0 ? 13 : 0}>
@@ -198,7 +205,7 @@ const UploadCnicForm = () => {
 
                     {/* Continue Button */}
                     <Box mb={3} mt={6}>
-                        <CustomButton btnName={'Continue'} width={'95%'} />
+                        <CustomButton btnName={'Continue'} width={'95%'} onClick={handleContinueBtnClick} />
                     </Box>
                 </Box>
             )}

@@ -8,13 +8,20 @@ import HumsafarLogo from '../common/HumsafarLogo';
 import InputField from '../common/InputField';
 
 import { colors } from '../../utils/colors';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
     };
+
+    const handleSignInClick = () => {
+        console.log('SignInCLick');
+        navigate("/forgot-password");
+    }
 
     return (
         <Box display="flex" flexDirection="column" rowGap={3}>
@@ -96,7 +103,7 @@ const LoginForm = () => {
                                 </Box>
 
                                 {/* Remember Me and Forgot Password */}
-                                <Box display="flex" justifyContent="space-between" alignItems="center">
+                                <Box display="flex" justifyContent="space-between" alignItems="center" mt={0.5}>
                                     <Field
                                         name="rememberMe"
                                         as={FormControlLabel}
@@ -126,7 +133,7 @@ const LoginForm = () => {
                                             },
                                         }}
                                     >
-                                        Forgot Password?
+                                        Forgot Password ?
                                     </Button>
                                 </Box>
 
@@ -134,7 +141,7 @@ const LoginForm = () => {
 
                             {/* Sign In Button */}
                             <Box mt={1}>
-                                <CustomButton btnName="Sign In" />
+                                <CustomButton btnName="Sign In" onClick={handleSignInClick} />
                             </Box>
                         </Box>
                     </Form>

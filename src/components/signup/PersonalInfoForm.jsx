@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { Height } from '@mui/icons-material';
 import InputField from '../common/InputField';
 import CustomButton from '../common/CustomButton';
+import { useNavigate } from 'react-router-dom';
 
 // const SignupSchema = Yup.object().shape({
 //     userName: Yup.string()
@@ -23,6 +24,13 @@ import CustomButton from '../common/CustomButton';
 // });
 
 const PersonalInfoForm = () => {
+    const navigate = useNavigate();
+
+    const handleContinueBtnClick = () => {
+        console.log("Sign Up Personal Info Click")
+        navigate('/signup/upload-cnic')
+    }
+    
     return (
         <Box display={'flex'} flexDirection={'column'}>
             {/* Title */}
@@ -75,7 +83,7 @@ const PersonalInfoForm = () => {
                             <InputField labelName="Gender" fieldName="gender"/>
                             <InputField labelName="Age" fieldName="age"/>
 
-                            <CustomButton btnName={'Continue'} mt={3.75}/>
+                            <CustomButton btnName={'Continue'} mt={3.75} onClick={handleContinueBtnClick}/>
                         </Box>
                     </Form>
                 )}

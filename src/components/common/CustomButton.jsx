@@ -3,13 +3,13 @@ import { Button, Box, Typography } from '@mui/material';
 
 import { colors } from '../../utils/colors';
 
-const CustomButton = ({ btnName, width, mt, handleOpen }) => {
+const CustomButton = ({ btnName, width, mt, onClick }) => {
     return (
         <Box textAlign={'center'} mt={mt}>
             <Button
                 type="submit"
                 variant="contained"
-                onClick={handleOpen}
+                onClick={onClick}
                 sx={{
                     textTransform: 'none',
                     backgroundColor: `${colors.btnBgColor}`,

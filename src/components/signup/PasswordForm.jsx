@@ -4,11 +4,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Modal, } from '@mui/material';
 
-import ConfirmationModalContent from './ConfirmationModalContent';
+import ConfirmationModalContent from '../common/ConfirmationModalContent';
 import CustomButton from '../common/CustomButton';
 import HumsafarLogo from '../common/HumsafarLogo';
 
-
+import { colors } from '../../utils/colors';
 
 const PasswordForm = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -131,7 +131,7 @@ const PasswordForm = () => {
                             </Box>
 
                             {/* Continue Button */}
-                            <CustomButton btnName="Continue" mt={4} handleOpen={handleOpen} />
+                            <CustomButton btnName="Continue" mt={4} onClick={handleOpen} />
 
                             {/* Modal */}
                             <Modal
@@ -139,8 +139,20 @@ const PasswordForm = () => {
                                 onClose={handleClose}
                                 aria-labelledby="modal-modal-title"
                                 aria-describedby="modal-modal-description"
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    backdropFilter: 'blur(5px)',
+                                }}
                             >
-                                <ConfirmationModalContent handleClose={handleClose} />
+                                <ConfirmationModalContent
+                                    title={"Account Successfully Created"}
+                                    subTitle={"We will contact you after approval"}
+                                    titleColor={colors.textTertiaryColor}
+                                    subTitleColor={colors.textTertiaryColor}
+                                    handleClose={handleClose}
+                                />
                             </Modal>
                         </Box>
                     </Form>

@@ -2,8 +2,6 @@ import React from 'react';
 import { Box, Typography, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-import { colors } from '../../utils/colors';
-
 const style = {
     position: 'absolute',
     top: '50%',
@@ -23,7 +21,7 @@ const style = {
     justifyContent: 'center',
 };
 
-const ConfirmationModalContent = ({ handleClose }) => {
+const ConfirmationModalContent = ({ handleClose, title, subTitle, titleColor, subTitleColor }) => {
     return (
         <>
             <Box sx={style}>
@@ -61,13 +59,13 @@ const ConfirmationModalContent = ({ handleClose }) => {
 
                         <Box>
                             {/* Title */}
-                            <Typography id="modal-title" fontSize={25} fontWeight={500} sx={{ color: `${colors.textTertiaryColor}`, mt: 2 }}>
-                                Account Successfully Created
+                            <Typography id="modal-title" fontSize={25} fontWeight={500} sx={{ color: `${titleColor}`, mt: 2 }}>
+                                {title}
                             </Typography>
 
                             {/* Sub Title */}
-                            <Typography id="modal-description" fontSize={22} fontWeight={500} sx={{ color: `${colors.textTertiaryColor}`, mt: 0 }}>
-                                We will contact you after approval
+                            <Typography id="modal-description" fontSize={22} fontWeight={500} sx={{ color: `${subTitleColor}`, mt: 0 }}>
+                                {subTitle}
                             </Typography>
                         </Box>
                     </Box>
