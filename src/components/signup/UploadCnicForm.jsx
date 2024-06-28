@@ -6,6 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CloseIcon from '@mui/icons-material/Close';
 import CustomButton from '../common/CustomButton';
 import { colors } from '../../utils/colors';
+import HumsafarLogo from '../common/HumsafarLogo';
 
 const UploadCnicForm = () => {
     const [files, setFiles] = useState([]);
@@ -55,13 +56,7 @@ const UploadCnicForm = () => {
     return (
         <Box display="flex" flexDirection="column" rowGap={6} mt={files.length > 0 ? 13 : 0}>
             {/* Humsafar Logo */}
-            <Box display="flex" alignItems="center" justifyContent="center">
-                <Box
-                    component="img"
-                    alt="Logo"
-                    src="/signup/logo.png"
-                />
-            </Box>
+            <HumsafarLogo />
 
             {/* Upload File */}
             <Box>

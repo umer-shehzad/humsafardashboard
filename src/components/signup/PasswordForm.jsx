@@ -6,6 +6,7 @@ import { Modal, } from '@mui/material';
 
 import ConfirmationModalContent from './ConfirmationModalContent';
 import CustomButton from '../common/CustomButton';
+import HumsafarLogo from '../common/HumsafarLogo';
 
 
 
@@ -26,14 +27,8 @@ const PasswordForm = () => {
 
     return (
         <Box display="flex" flexDirection="column" rowGap={5}>
-            {/* Logo */}
-            <Box display="flex" alignItems="center" justifyContent="center">
-                <Box
-                    component="img"
-                    alt="Logo"
-                    src="/signup/logo.png"
-                />
-            </Box>
+            {/* Humsafar Logo */}
+            <HumsafarLogo />
 
             {/* Form */}
             <Formik
