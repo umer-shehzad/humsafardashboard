@@ -1,19 +1,29 @@
 import React from 'react';
-import { Button, Box } from '@mui/material';
+import { Button, Box, Typography } from '@mui/material';
 
-const CustomButton = ({ btnName, width }) => {
+import { colors } from '../../utils/colors';
+
+const CustomButton = ({ btnName, width, mt, handleOpen }) => {
     return (
-        <Box textAlign={'center'} mt={3}>
+        <Box textAlign={'center'} mt={mt}>
             <Button
                 type="submit"
                 variant="contained"
+                onClick={handleOpen}
                 sx={{
                     textTransform: 'none',
-                    backgroundColor: '#E58600',
-                    color: 'white',
-                    borderRadius: '8px',
+                    backgroundColor: `${colors.btnBgColor}`,
+                    color: `${colors.btnColor}`,
+                    borderRadius: '12px',
                     height: '42px',
-                    width: width || '80%'
+                    width: width || '92%',
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    boxShadow: 'none',
+                    '&:hover': {
+                        backgroundColor: `${colors.btnBgColor}`,
+                        boxShadow: 'none',
+                    }
                 }}
             >
                 {btnName}

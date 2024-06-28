@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box, Typography, IconButton } from '@mui/material';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import CloseIcon from '@mui/icons-material/Close';
+
+import { colors } from '../../utils/colors';
 
 const style = {
     position: 'absolute',
@@ -9,8 +10,8 @@ const style = {
     left: '50%',
     borderRadius: '12px',
     transform: 'translate(-50%, -50%)',
-    width: '45%',
-    height: '50vh',
+    width: '70%',
+    height: '70vh',
     border: 'none',
     bgcolor: 'background.paper',
     boxShadow: 24,
@@ -22,7 +23,7 @@ const style = {
     justifyContent: 'center',
 };
 
-const ConfirmationModalContent = ({handleClose}) => {
+const ConfirmationModalContent = ({ handleClose }) => {
     return (
         <>
             <Box sx={style}>
@@ -38,25 +39,37 @@ const ConfirmationModalContent = ({handleClose}) => {
                     <CloseIcon />
                 </IconButton>
 
-                <Box display={'flex'} columnGap={6}>
+                <Box display={'flex'} width={'90%'} columnGap={8}>
                     {/* Image */}
                     <Box
                         component="img"
-                        sx={{ width: '40%', }}
+                        height={'50vh'}
+                        ml={3}
                         alt="ModalLogo"
-                        pl={3}
                         src="/signup/modal-image.png"
                     />
 
                     {/* Content */}
-                    <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
-                        <CheckCircleOutlineIcon sx={{ fontSize: '4rem', color: 'green' }} />
-                        <Typography id="modal-title" variant="h6" component="h2" sx={{ color: 'green', mt: 2 }}>
-                            Account Successfully Created
-                        </Typography>
-                        <Typography id="modal-description" sx={{ color: 'green', mt: 1 }}>
-                            We will contact you after approval
-                        </Typography>
+                    <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} rowGap={4}>
+                        {/* Circle Check */}
+                        <Box
+                            component="img"
+                            alt="Circle Check"
+                            width={'30%'}
+                            src="/signup/circle-check.svg"
+                        />
+
+                        <Box>
+                            {/* Title */}
+                            <Typography id="modal-title" fontSize={25} fontWeight={500} sx={{ color: `${colors.textTertiaryColor}`, mt: 2 }}>
+                                Account Successfully Created
+                            </Typography>
+
+                            {/* Sub Title */}
+                            <Typography id="modal-description" fontSize={22} fontWeight={500} sx={{ color: `${colors.textTertiaryColor}`, mt: 0 }}>
+                                We will contact you after approval
+                            </Typography>
+                        </Box>
                     </Box>
                 </Box>
             </Box>

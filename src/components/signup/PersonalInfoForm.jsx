@@ -24,26 +24,30 @@ import CustomButton from '../common/CustomButton';
 
 const PersonalInfoForm = () => {
     return (
-        <Box display={'flex'} flexDirection={'column'} columnGap={3}>
+        <Box display={'flex'} flexDirection={'column'}>
             {/* Title */}
-            <Typography variant="h5" fontWeight={600}>
+            <Typography fontSize={28} fontWeight={600}>
                 Sign Up
             </Typography>
 
             {/* sub-title */}
-            <Typography variant="caption" mb={3}>
+            <Typography fontSize={14} fontWeight={400} mb={1.5}>
                 Already have an account?
                 <Button
                     variant="text"
                     sx={{
                         textTransform: 'none',
                         color: 'black',
-                        fontSize: 'caption.fontSize',
+                        fontSize: '14px',
+                        fontWeight: '400',
+                        minWidth: '54px',
+                        padding: 0,
+                        height: '30px',
                         '&:hover': {
                             backgroundColor: 'transparent',
                         }
                     }}>
-                    Sign up
+                    Sign in
                 </Button>
             </Typography>
 
@@ -63,7 +67,7 @@ const PersonalInfoForm = () => {
             >
                 {({ errors, touched }) => (
                     <Form>
-                        <Box display={'flex'} flexDirection={'column'} rowGap={1.25}>
+                        <Box display={'flex'} flexDirection={'column'} rowGap={1.75}>
 
                             <InputField labelName="User Name" fieldName="userName"/>
                             <InputField labelName="Email" fieldName="email"/>
@@ -71,7 +75,7 @@ const PersonalInfoForm = () => {
                             <InputField labelName="Gender" fieldName="gender"/>
                             <InputField labelName="Age" fieldName="age"/>
 
-                            <CustomButton btnName={'Continue'}/>
+                            <CustomButton btnName={'Continue'} mt={3.75}/>
                         </Box>
                     </Form>
                 )}

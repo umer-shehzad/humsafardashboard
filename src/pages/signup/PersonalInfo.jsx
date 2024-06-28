@@ -16,12 +16,8 @@ export default function PersonalInfo() {
     };
 
     return (
-        <Box display={'flex'} alignItems={'center'} justifyContent={'center'} height={'100vh'}>
+        <Box display={'flex'} justifyContent={'center'} my={5} mx={18}>
             <Grid container component="main" columnGap={10}
-                sx={{
-                    height: { lg: '85vh', xs: '100vh' },
-                    width: '85%'
-                }}
             >
                 <CssBaseline />
                 {/* Image */}
@@ -32,7 +28,8 @@ export default function PersonalInfo() {
                 >
                     <Box
                         component="img"
-                        sx={{ width: '65%', height: '65vh', display: { xs: 'none', lg: 'block' } }}
+                        // sx={{ width: '65%', height: '65vh', display: { xs: 'none', lg: 'block' } }}
+                        sx={{ height: '66vh', display: { xs: 'none', lg: 'block' } }}
                         alt="Logo"
                         src="/signup/pic1.png"
                     />

@@ -5,25 +5,27 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CloseIcon from '@mui/icons-material/Close';
 import CustomButton from '../common/CustomButton';
+import { colors } from '../../utils/colors';
 
 const UploadCnicForm = () => {
     const [files, setFiles] = useState([]);
-    const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
+    const { getRootProps, getInputProps, open } = useDropzone({
         noClick: true,
         noKeyboard: true,
+        maxFiles: 2,
         onDrop: (acceptedFiles) => {
             const filesWithProgress = acceptedFiles.map(file => ({
                 file,
                 progress: 0,
                 uploaded: false,
             }));
-            setFiles(prevFiles => [...prevFiles, ...filesWithProgress]);
+            setFiles(prevFiles => [...prevFiles, ...filesWithProgress].slice(0, 2));
         }
     });
 
     useEffect(() => {
         files.forEach((fileObj, index) => {
-            if (!fileObj.uploaded && fileObj.progress === 0) {
+            if (!fileObj.uploaded && fileObj.progress < 100) {
                 const simulateUpload = () => {
                     setFiles(prevFiles => prevFiles.map((f, i) => {
                         if (i === index) {
@@ -51,12 +53,11 @@ const UploadCnicForm = () => {
     };
 
     return (
-        <Box display="flex" flexDirection="column" rowGap={5} mt={ files.length > 0 && 13}>
+        <Box display="flex" flexDirection="column" rowGap={6} mt={files.length > 0 ? 13 : 0}>
             {/* Humsafar Logo */}
             <Box display="flex" alignItems="center" justifyContent="center">
                 <Box
                     component="img"
-                    sx={{ width: '65%' }}
                     alt="Logo"
                     src="/signup/logo.png"
                 />
@@ -66,10 +67,10 @@ const UploadCnicForm = () => {
             <Box>
                 {/* Title */}
                 <Box display={'flex'} columnGap={1} mb={1}>
-                    <Typography fontSize={18}>
+                    <Typography fontSize={18} fontWeight={400}>
                         Upload Your CNIC
                     </Typography>
-                    <Typography fontSize={18} color={'#858585'}>
+                    <Typography fontSize={18} fontWeight={400} color={colors.textSecondaryColor}>
                         (front and back)
                     </Typography>
                 </Box>
@@ -98,11 +99,21 @@ const UploadCnicForm = () => {
                         <Button
                             variant="contained"
                             onClick={open}
+                            disabled={files.length >= 2}
                             sx={{
                                 textTransform: 'none',
-                                backgroundColor: '#E58600',
-                                color: 'white',
+                                fontSize: 18,
+                                fontWeight: 600,
+                                borderRadius: '8px',
+                                backgroundColor: files.length >= 2 ? '#cccccc' : `${colors.btnBgColor}`,
+                                color: `${colors.btnColor}`,
+                                boxShadow: 'none',
                                 width: '42%',
+                                height: '42px',
+                                '&:hover': {
+                                    backgroundColor: files.length >= 2 ? '#cccccc' : `${colors.btnBgColor}`,
+                                    boxShadow: 'none',
+                                }
                             }}
                         >
                             Upload File
@@ -119,7 +130,7 @@ const UploadCnicForm = () => {
                         <Typography fontSize={18} fontWeight={600}>
                             Selected Files
                         </Typography>
-                        <Typography fontSize={18} color={'#858585'}>
+                        <Typography fontSize={18} color={colors.textSecondaryColor}>
                             ({files.length})
                         </Typography>
                     </Box>
@@ -181,7 +192,7 @@ const UploadCnicForm = () => {
                                             <LinearProgress
                                                 variant="determinate"
                                                 value={fileObj.progress}
-                                                sx={{ width: '100%', }}
+                                                sx={{ width: '100%' }}
                                             />
                                         </>
                                     )}

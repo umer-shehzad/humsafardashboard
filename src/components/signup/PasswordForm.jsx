@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Box, Typography, TextField, IconButton, InputAdornment } from '@mui/material';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Modal, } from '@mui/material';
 
+import ConfirmationModalContent from './ConfirmationModalContent';
 import CustomButton from '../common/CustomButton';
 
 
@@ -10,6 +12,9 @@ import CustomButton from '../common/CustomButton';
 const PasswordForm = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
@@ -25,7 +30,6 @@ const PasswordForm = () => {
             <Box display="flex" alignItems="center" justifyContent="center">
                 <Box
                     component="img"
-                    sx={{ width: '65%' }}
                     alt="Logo"
                     src="/signup/logo.png"
                 />
@@ -59,8 +63,8 @@ const PasswordForm = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            height: '42px',
-                                            fontSize: showPassword ? '' : '2rem'
+                                            height: '48px',
+                                            fontSize: showPassword ? '' : '1.75rem'
                                         }
                                     }}
                                     InputProps={{
@@ -99,11 +103,11 @@ const PasswordForm = () => {
                                     type={showConfirmPassword ? 'text' : 'password'}
                                     // error={!!errors['confirmPassword'] && touched['confirmPassword']}
                                     // helperText={<ErrorMessage name="confirmPassword" />}
-                                    sx= {{
+                                    sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            height: '42px',
-                                            fontSize: showConfirmPassword ? '' : '2rem'
+                                            height: '48px',
+                                            fontSize: showConfirmPassword ? '' : '1.75rem'
                                         }
                                     }}
                                     InputProps={{
@@ -132,7 +136,17 @@ const PasswordForm = () => {
                             </Box>
 
                             {/* Continue Button */}
-                            <CustomButton btnName="Continue" />
+                            <CustomButton btnName="Continue" mt={4} handleOpen={handleOpen} />
+
+                            {/* Modal */}
+                            <Modal
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="modal-modal-title"
+                                aria-describedby="modal-modal-description"
+                            >
+                                <ConfirmationModalContent handleClose={handleClose} />
+                            </Modal>
                         </Box>
                     </Form>
                 )}

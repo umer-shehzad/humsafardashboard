@@ -5,7 +5,7 @@ import { Field } from 'formik';
 const InputField = ({ labelName, fieldName }) => {
     return (
         <Box>
-            <Typography variant="body2" mb={0.5}>{labelName}</Typography>
+            <Typography fontSize={14} fontWeight={400} mb={0.5}>{labelName}</Typography>
             <Field
                 name={fieldName}
                 as={TextField}
@@ -16,7 +16,7 @@ const InputField = ({ labelName, fieldName }) => {
                 sx={{
                     '& .MuiOutlinedInput-root': {
                         height: '42px',
-                        borderRadius: '8px'
+                        borderRadius: '12px'
                     }
                 }}
             />
