@@ -5,6 +5,7 @@ import MiniDrawer from './components/MiniDrawer';
 import PersonalInfo from './pages/signup/PersonalInfo';
 import Password from './pages/signup/Password';
 import UploadCnic from './pages/signup/UploadCnic';
+import Login from './pages/login/Login';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <Route path="/signup/personal-info" element={<PersonalInfo />} />
           <Route path="/signup/upload-cnic" element={<UploadCnic />} />
           <Route path="/signup/password" element={<Password />} />
+          <Route path="/login" element={<Login />} />
           {/* <Route path="*" element={<div>Page not found</div>} /> */}
         </Routes>
       </Router>

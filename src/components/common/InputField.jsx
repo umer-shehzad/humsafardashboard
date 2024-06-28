@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Typography, TextField  } from '@mui/material';
 import { Field } from 'formik';
 
-const InputField = ({ labelName, fieldName }) => {
+const InputField = ({ labelName, fieldName, height}) => {
     return (
         <Box>
             <Typography fontSize={14} fontWeight={400} mb={0.5}>{labelName}</Typography>
@@ -15,7 +15,7 @@ const InputField = ({ labelName, fieldName }) => {
                 // helperText={touched.userName && errors.userName}
                 sx={{
                     '& .MuiOutlinedInput-root': {
-                        height: '42px',
+                        height: height || '42px',
                         borderRadius: '12px'
                     }
                 }}
