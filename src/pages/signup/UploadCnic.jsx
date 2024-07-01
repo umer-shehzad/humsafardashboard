@@ -1,11 +1,10 @@
 import React from 'react';
 
-import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 
 import UploadCnicForm from '../../components/signup/UploadCnicForm';
-
 import { colors } from '../../utils/colors';
 
 export default function UploadCnic() {
@@ -19,7 +18,7 @@ export default function UploadCnic() {
             sx={{
                 position: 'relative',
                 background: `linear-gradient(to bottom right, transparent 70%, ${colors.gradientColor})`,
-                overflow: 'hidden',
+                overflow: 'scroll'
             }}
         >
             <Grid container component="main" columnGap={10}

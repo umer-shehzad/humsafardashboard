@@ -1,14 +1,13 @@
 import React from 'react';
+import { Form,Formik } from 'formik';
 
 import { Box, Modal } from '@mui/material';
-import { Formik, Form } from 'formik';
 
+import { colors } from '../../utils/colors';
 import ConfirmationModalContent from '../common/ConfirmationModalContent';
 import CustomButton from '../common/CustomButton';
 import HumsafarLogo from '../common/HumsafarLogo';
 import InputField from '../common/InputField';
-
-import { colors } from '../../utils/colors';
 
 const ForgotPasswordForm = () => {
     const [open, setOpen] = React.useState(false);

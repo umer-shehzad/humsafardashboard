@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Box, Typography, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { Box, IconButton,Typography } from '@mui/material';
 
 const style = {
     position: 'absolute',

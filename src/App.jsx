@@ -1,13 +1,12 @@
 import React from 'react';
-
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import MiniDrawer from './components/MiniDrawer';
-import PersonalInfo from './pages/signup/PersonalInfo';
-import Password from './pages/signup/Password';
-import UploadCnic from './pages/signup/UploadCnic';
-import Login from './pages/login/Login';
 import ForgotPassword from './pages/forgotpassword/ForgotPassword';
+import Login from './pages/login/Login';
+import Password from './pages/signup/Password';
+import PersonalInfo from './pages/signup/PersonalInfo';
+import UploadCnic from './pages/signup/UploadCnic';
 
 function App() {
 

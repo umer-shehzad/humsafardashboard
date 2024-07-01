@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 
 import PersonalInfoForm from '../../components/signup/PersonalInfoForm';

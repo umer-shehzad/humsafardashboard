@@ -1,11 +1,10 @@
 import * as React from 'react';
 
-import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 
 import ForgotPasswordForm from '../../components/forgot-password/ForgotPasswordForm';
-
 import { colors } from '../../utils/colors';
 
 export default function ForgotPassword() {

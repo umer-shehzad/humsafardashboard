@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
+import { ErrorMessage,Field, Form, Formik } from 'formik';
 
-import { Box, Typography, TextField, IconButton, InputAdornment } from '@mui/material';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Box, IconButton, InputAdornment,TextField, Typography } from '@mui/material';
 import { Modal, } from '@mui/material';
 
+import { colors } from '../../utils/colors';
 import ConfirmationModalContent from '../common/ConfirmationModalContent';
 import CustomButton from '../common/CustomButton';
 import HumsafarLogo from '../common/HumsafarLogo';
-
-import { colors } from '../../utils/colors';
 
 const PasswordForm = () => {
     const [showPassword, setShowPassword] = useState(false);
