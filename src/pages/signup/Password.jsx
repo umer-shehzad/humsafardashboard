@@ -6,6 +6,8 @@ import Grid from '@mui/material/Grid';
 
 import PasswordForm from '../../components/signup/PasswordForm';
 
+import { colors } from '../../utils/colors';
+
 export default function Password() {
     const handleSubmit = (event) => {
         // event.preventDefault();
@@ -17,7 +19,17 @@ export default function Password() {
     };
 
     return (
-        <Box display={'flex'} alignItems={'center'} justifyContent={'center'} height={'100vh'}>
+        <Box
+            display={'flex'}
+            alignItems={'center'}
+            justifyContent={'center'}
+            height={'100vh'}
+            sx={{
+				position: 'relative',
+				background: `linear-gradient(to bottom right, transparent 70%, ${colors.gradientColor})`,
+				overflow: 'hidden',
+			}}
+        >
             <Grid container component="main" columnGap={10}
                 sx={{
                     height: { lg: '85vh', xs: '100vh' },

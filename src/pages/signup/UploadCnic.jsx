@@ -6,10 +6,22 @@ import Grid from '@mui/material/Grid';
 
 import UploadCnicForm from '../../components/signup/UploadCnicForm';
 
+import { colors } from '../../utils/colors';
+
 export default function UploadCnic() {
 
     return (
-        <Box display={'flex'} alignItems={'center'} justifyContent={'center'} height={'100vh'}>
+        <Box
+            display={'flex'}
+            alignItems={'center'}
+            justifyContent={'center'}
+            height={'100vh'}
+            sx={{
+                position: 'relative',
+                background: `linear-gradient(to bottom right, transparent 70%, ${colors.gradientColor})`,
+                overflow: 'hidden',
+            }}
+        >
             <Grid container component="main" columnGap={10}
                 sx={{
                     height: { lg: '100vh', xs: '100vh' },
@@ -22,7 +34,7 @@ export default function UploadCnic() {
                     xs={false}
                     lg={6}
                     mt={13}
-                    // my={'auto'}
+                // my={'auto'}
                 >
                     {/* Image */}
                     <Box

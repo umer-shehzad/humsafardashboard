@@ -26,7 +26,7 @@ export default function ForgotPassword() {
 			height={'100vh'}
 			sx={{
 				position: 'relative',
-				background: `linear-gradient(to bottom right, transparent 60%, ${colors.gradientColor})`,
+				background: `linear-gradient(to bottom right, transparent 70%, ${colors.gradientColor})`,
 				overflow: 'hidden',
 			}}
 		>
@@ -48,7 +48,7 @@ export default function ForgotPassword() {
 						height: '80vh',
 					}}
 					alt="Top-left Image"
-					src="/public/forgot/pic2.svg"
+					src="/forgot/pic2.svg"
 				/>
 
 				{/* Image */}

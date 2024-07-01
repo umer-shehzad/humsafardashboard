@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import MiniDrawer from './components/MiniDrawer';
@@ -14,12 +15,21 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/signup/personal-info" element={<PersonalInfo />} />
-          <Route path="/signup/upload-cnic" element={<UploadCnic />} />
-          <Route path="/signup/password" element={<Password />} />
+          {/* Signup - Routes */}
+          <Route path="/signup">
+            <Route path="personal-info" element={<PersonalInfo />} />
+            <Route path="upload-cnic" element={<UploadCnic />} />
+            <Route path="password" element={<Password />} />
+          </Route>
+
+          {/* Login - Route */}
           <Route path="/login" element={<Login />} />
+
+          {/* Forgot - Route */}
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          {/* <Route path="*" element={<div>Page not found</div>} /> */}
+
+          {/* global - Page Not Found - Route */}
+          <Route path="*" element={<div>Page not found</div>} />
         </Routes>
       </Router>
       {/* <MiniDrawer /> */}
