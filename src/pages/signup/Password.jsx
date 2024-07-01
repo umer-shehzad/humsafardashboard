@@ -1,7 +1,9 @@
 import * as React from 'react';
+
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+
 import PasswordForm from '../../components/signup/PasswordForm';
 
 export default function Password() {

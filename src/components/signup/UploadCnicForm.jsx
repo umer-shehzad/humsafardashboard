@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
+
 import { Box, Button, Typography, LinearProgress, IconButton } from '@mui/material';
 import { useDropzone } from 'react-dropzone';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CloseIcon from '@mui/icons-material/Close';
-import CustomButton from '../common/CustomButton';
-import { colors } from '../../utils/colors';
-import HumsafarLogo from '../common/HumsafarLogo';
 import { useNavigate } from 'react-router-dom';
+
+import HumsafarLogo from '../common/HumsafarLogo';
+import CustomButton from '../common/CustomButton';
+
+import { colors } from '../../utils/colors';
 
 const UploadCnicForm = () => {
     const [files, setFiles] = useState([]);

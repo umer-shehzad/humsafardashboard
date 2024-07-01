@@ -5,11 +5,10 @@ import { Formik, Form } from 'formik';
 
 import ConfirmationModalContent from '../common/ConfirmationModalContent';
 import CustomButton from '../common/CustomButton';
-
-import { colors } from '../../utils/colors';
-
 import HumsafarLogo from '../common/HumsafarLogo';
 import InputField from '../common/InputField';
+
+import { colors } from '../../utils/colors';
 
 const ForgotPasswordForm = () => {
     const [open, setOpen] = React.useState(false);
