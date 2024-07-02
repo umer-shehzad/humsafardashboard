@@ -30,7 +30,7 @@ const Search = styled('div')(({ theme }) => ({
   height: '7vh',
   boxShadow: '1px 5px 5px -2px rgba(0,0,0,0.4)',
   [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(4),
+    marginLeft: theme.spacing(30),
     width: '31vw',
   },
   display: 'flex',
@@ -66,15 +66,9 @@ const NavBar = () => {
       <CssBaseline />
 
       {/* App Bar */}
-      <AppBar position="fixed" elevation={0} sx={{ backgroundColor: 'transparent', marginTop: 2 }}>
+      <AppBar position='absolute' elevation={0} sx={{ backgroundColor: 'transparent', marginTop: 2 }}>
         <Toolbar>
-          <Box display={'flex'} width={'100%'} alignItems={'center'} columnGap={5}>
-            <Box
-              component="img"
-              sx={{ height: 40 }}
-              alt="Logo"
-              src="/humsafar-logo.svg"
-            />
+          <Box display={'flex'} width={'100%'} alignItems={'center'}>
             <Search>
               <StyledInputBase
                 placeholder="Search here"

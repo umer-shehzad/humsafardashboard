@@ -69,7 +69,14 @@ const MiniDrawer = () => {
 
       {/* Drawer */}
       <Drawer variant="permanent">
-        <DrawerHeader />
+        {/* <DrawerHeader /> */}
+        <Box
+          component="img"
+          sx={{ height: 40 }}
+          mt={3}
+          alt="Logo"
+          src="/humsafar-logo.svg"
+        />
         <List sx={{ marginTop: 5 }}>
           {MenuData.map((item, index) => (
             <ListItem key={item.itemName} disablePadding sx={{ display: 'block' }}>
@@ -119,7 +126,7 @@ const MiniDrawer = () => {
       </Drawer>
 
       {/* main */}
-      <Box component="main" mt={4} sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" mt={3} sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
 
         <Outlet />
