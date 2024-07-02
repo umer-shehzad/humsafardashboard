@@ -7,6 +7,9 @@ import Login from './pages/login/Login';
 import Password from './pages/signup/Password';
 import PersonalInfo from './pages/signup/PersonalInfo';
 import UploadCnic from './pages/signup/UploadCnic';
+import DashboardPage from './pages/driver/DashboardPage';
+import CarsPage from './pages/driver/CarsPage';
+import DriverMiniDrawer from './components/driver-side/layout/MiniDrawer';
 
 function App() {
 
@@ -26,6 +29,12 @@ function App() {
 
           {/* Forgot - Route */}
           <Route path="/forgot-password" element={<ForgotPassword />} />
+
+          {/* DriverSide - Routes */}
+          <Route path="/driver" element={<DriverMiniDrawer />}>
+            <Route path="dashboard" element={<DashboardPage />} />
+            <Route path="cars" element={<CarsPage />} />
+          </Route>
 
           {/* global - Page Not Found - Route */}
           <Route path="*" element={<div>Page not found</div>} />
