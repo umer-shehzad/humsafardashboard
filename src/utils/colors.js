@@ -7,8 +7,10 @@ export const colors = {
   textFifthColor: '#393939',
   textSixthColor: '#999999',
   textSeventhColor: '#424242',
+  textEightColor: '#3D3C3C',
   gradientColor: "#f5e0c1",
   searchBarColor: '#EAE9E9',
   searchBarIconColor: '#464646',
   graphBoxBgColor: '#F9F9F9',
+  cardBorderColor: '#929292',
 };

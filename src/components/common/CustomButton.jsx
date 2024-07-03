@@ -4,7 +4,7 @@ import { Box, Button, Typography } from '@mui/material';
 
 import { colors } from '../../utils/colors';
 
-const CustomButton = ({ btnName, width, mt, onClick, borderRadius, fontSize }) => {
+const CustomButton = ({ btnName, width, mt, onClick, borderRadius, fontSize, fontWeight }) => {
     return (
         <Box textAlign={'center'} mt={mt}>
             <Button
@@ -19,7 +19,7 @@ const CustomButton = ({ btnName, width, mt, onClick, borderRadius, fontSize }) =
                     height: '42px',
                     width: width || '92%',
                     fontSize: fontSize || '16px',
-                    fontWeight: '600',
+                    fontWeight: fontWeight || '600',
                     boxShadow: 'none',
                     '&:hover': {
                         backgroundColor: `${colors.btnBgColor}`,
