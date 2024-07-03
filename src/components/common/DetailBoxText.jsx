@@ -1,8 +1,9 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
-import { colors } from '../../../../utils/colors'
 
-const TripText = ({ text, value }) => {
+import { colors } from '../../utils/colors'
+
+const DetailBoxText = ({ text, value }) => {
   return (
     <>
       <Box display={'flex'} columnGap={3}>
@@ -13,4 +14,4 @@ const TripText = ({ text, value }) => {
   )
 }
 
-export default TripText
+export default DetailBoxText

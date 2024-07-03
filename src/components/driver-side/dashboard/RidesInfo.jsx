@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
-import TripBox from './common/TripBox'
+
+import DetailBox from '../../common/DetailBox'
 
 import { colors } from '../../../utils/colors'
 
@@ -18,7 +19,9 @@ const RidesInfo = () => {
       </Box>
 
       {/* Two */}
-      <TripBox
+      <DetailBox
+        width={'25%'}
+        height={'20vh'}
         heading={'Last Trip'}
         text1={'Time:'}
         text1Val={'7:00AM - 8:00PM'}
@@ -29,7 +32,9 @@ const RidesInfo = () => {
       />
 
       {/* Three */}
-      <TripBox
+      <DetailBox
+        width={'25%'}
+        height={'20vh'}
         heading={'Next Trip'}
         text1={'Time:'}
         text1Val={'11:00AM - 12:00PM'}
