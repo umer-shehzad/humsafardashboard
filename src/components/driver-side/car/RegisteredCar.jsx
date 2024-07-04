@@ -13,7 +13,7 @@ const RegisteredCar = () => {
       {/* Title */}
       <Box display={'flex'} justifyContent={'space-between'}>
         <Typography variant='h4' fontWeight={600} color={colors.textEightColor}>Registered Vehicles</Typography>
-        <CustomButton btnName={'Add New'} width={'100%'} borderRadius={'6px'} fontWeight={500} />
+        <CustomButton btnName={'Add New'} width={'100%'} borderRadius={'6px'} fontWeight={500} icon={true} />
       </Box>
 
       {/* Car Registered Table */}

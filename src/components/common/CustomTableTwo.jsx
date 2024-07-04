@@ -1,6 +1,5 @@
 import React from 'react';
-import { Box, Typography, IconButton } from '@mui/material';
-import Paper from '@mui/material/Paper';
+import { Box, } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -10,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 import { colors } from '../../utils/colors';
+import CustomIcon from './CustomIcon';
 
 const CustomTableTwo = ({ tableRowData, rows }) => {
   return (
@@ -110,12 +110,14 @@ const CustomTableTwo = ({ tableRowData, rows }) => {
                 </TableCell>
                 <TableCell align="center" sx={{ borderBottom: 'none' }}>
                   <Box display={'flex'} justifyContent={'center'} gap={1}>
-                    <IconButton aria-label="edit" size="small">
-                      <CiEdit color={colors.textFifthColor} />
-                    </IconButton>
-                    <IconButton aria-label="delete" size="small">
-                      <MdDeleteOutline color={colors.textFifthColor} />
-                    </IconButton>
+                    <CustomIcon
+                      iconName={<CiEdit color={'white'} size={'1rem'} />}
+                      color={colors.editIconBgColor}
+                    />
+                    <CustomIcon
+                      iconName={<MdDeleteOutline color={'white'} size={'1rem'} />}
+                      color={colors.deleteIconBgColor}
+                    />
                   </Box>
                 </TableCell>
               </TableRow>

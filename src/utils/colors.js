@@ -13,4 +13,6 @@ export const colors = {
   searchBarIconColor: '#464646',
   graphBoxBgColor: '#F9F9F9',
   cardBorderColor: '#929292',
+  editIconBgColor: '#009688',
+  deleteIconBgColor: '#E5343D',
 };
