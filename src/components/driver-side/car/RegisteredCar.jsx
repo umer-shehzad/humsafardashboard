@@ -13,7 +13,16 @@ const RegisteredCar = () => {
       {/* Title */}
       <Box display={'flex'} justifyContent={'space-between'}>
         <Typography variant='h4' fontWeight={600} color={colors.textEightColor}>Registered Vehicles</Typography>
-        <CustomButton btnName={'Add New'} width={'100%'} borderRadius={'6px'} fontWeight={500} icon={true} />
+        <CustomButton
+          btnName={'Add New'}
+          width={'100%'}
+          gap={'12px'}
+          paddingRight={'24px'}
+          marginRight={'10px'}
+          borderRadius={'6px'}
+          fontWeight={500}
+          icon={true}
+        />
       </Box>
 
       {/* Car Registered Table */}
@@ -23,7 +32,7 @@ const RegisteredCar = () => {
 
       <Box>
         <Typography variant='h4' fontWeight={600} color={colors.btnBgColor} mb={1}>Details</Typography>
-        
+
         {/* Card */}
         <Box display={'flex'} flexDirection={'column'} gap={5}>
           {CarDetailsCardData.map((item, index) => (

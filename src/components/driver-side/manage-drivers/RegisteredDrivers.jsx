@@ -13,7 +13,7 @@ const RegisteredDrivers = () => {
                 <Typography variant='h6' color={colors.textFifthColor}>List of Registered Drivers</Typography>
                 <CustomButton btnName={'Add New'} width={'100%'} borderRadius={'6px'} />
             </Box>
-            <Box mt={3}>
+            <Box mt={2}>
                 <CustomTableTwo tableRowData={TableRowData} rows={Rows} />
             </Box>
         </Box>

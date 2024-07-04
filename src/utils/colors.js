@@ -17,4 +17,5 @@ export const colors = {
   editIconBgColor: '#009688',
   deleteIconBgColor: '#E5343D',
   sideBarBgCOlor: '#343434',
+  todoColor1: '#FDF3B4',
 };
