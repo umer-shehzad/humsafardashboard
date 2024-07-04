@@ -1,24 +1,15 @@
 import * as React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-
-
-
 import Box from '@mui/material/Box';
-
 import MuiDrawer from '@mui/material/Drawer';
-
-
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { styled, useTheme } from '@mui/material/styles';
-
 import useMediaQuery from '@mui/material/useMediaQuery';
-
 import { Outlet } from 'react-router-dom';
 import { colors } from '../../../utils/colors';
-
 import CustomButton from '../../common/CustomButton';
 import { MenuData } from '../../../utils/driverMenuData';
 import NavBar from './NavBar';
@@ -27,11 +18,14 @@ const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
+  backgroundColor: colors.sideBarBgCOlor,
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: 'hidden',
+  paddingRight: 3,
+  boxShadow: '4px 0px 4px 4px rgba(0,0,0,0.12)',
   [theme.breakpoints.down('sm')]: {
     width: `calc(${theme.spacing(7)} + 1px)`,
   },
@@ -42,7 +36,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'flex-end',
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
 
@@ -64,20 +57,29 @@ const MiniDrawer = () => {
 
   return (
     <Box sx={{ display: 'flex' }}>
-
       <NavBar />
-
-      {/* Drawer */}
       <Drawer variant="permanent">
-        {/* <DrawerHeader /> */}
         <Box
-          component="img"
-          sx={{ height: 40 }}
-          mt={3}
-          alt="Logo"
-          src="/humsafar-logo.svg"
-        />
-        <List sx={{ marginTop: 5 }}>
+          sx={{
+            position: 'relative',
+            width: '100%',
+            height: 113,
+            background: `url('/logoBg.svg') no-repeat center center`,
+            backgroundSize: 'cover',
+            display: 'flex',
+            justifyContent: 'center',
+            paddingTop: 3.5,
+          }}
+        >
+          <Box
+            component="img"
+            sx={{ height: 40 }}
+            alt="Logo"
+            src="/humsafar-logo.svg"
+          />
+        </Box>
+
+        <List sx={{ marginTop: 0, paddingTop: 0 }}>
           {MenuData.map((item, index) => (
             <ListItem key={item.itemName} disablePadding sx={{ display: 'block' }}>
               <NavLink
@@ -93,14 +95,14 @@ const MiniDrawer = () => {
                   ...(theme.breakpoints.down('sm') && {
                     justifyContent: 'center',
                   }),
-                  backgroundColor: location.pathname === item.path ? `${colors.textFifthColor}` : 'inherit',
+                  backgroundColor: location.pathname === item.path ? `${colors.primaryColor}` : 'inherit',
                   borderRadius: location.pathname === item.path ? '0 10px 10px 0' : ''
                 }}
               >
                 <ListItemIcon
                   sx={{
                     justifyContent: 'center',
-                    color: location.pathname === item.path ? '#ffffff' : `${colors.textFifthColor}`,
+                    color: location.pathname === item.path ? `${colors.btnBgColor}` : `${colors.primaryColor}`,
                   }}
                 >
                   {item.icon}
@@ -110,7 +112,7 @@ const MiniDrawer = () => {
                   sx={{
                     opacity: 1,
                     display: isSmallScreen ? 'none' : 'block',
-                    color: location.pathname === item.path ? '#ffffff' : `${colors.textFifthColor}`,
+                    color: location.pathname === item.path ? `${colors.btnBgColor}` : `${colors.primaryColor}`,
                   }}
                 />
               </NavLink>
@@ -122,11 +124,8 @@ const MiniDrawer = () => {
           <CustomButton btnName={'Log Out'} width={'70%'} borderRadius={'8px'} />
         </Box>
       </Drawer>
-
-      {/* main */}
       <Box component="main" mt={3} sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-
         <Outlet />
       </Box>
     </Box>

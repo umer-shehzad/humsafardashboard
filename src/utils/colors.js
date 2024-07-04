@@ -1,6 +1,7 @@
 export const colors = {
   btnColor: "white",
   btnBgColor: "#E58600",
+  primaryColor: '#ffffff',
   textSecondaryColor: "#858585",
   textTertiaryColor: "#57A65A",
   textForthColor: "#919191",
@@ -15,4 +16,5 @@ export const colors = {
   cardBorderColor: '#929292',
   editIconBgColor: '#009688',
   deleteIconBgColor: '#E5343D',
+  sideBarBgCOlor: '#343434',
 };
