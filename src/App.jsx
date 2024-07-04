@@ -10,6 +10,7 @@ import UploadCnic from './pages/signup/UploadCnic';
 import DashboardPage from './pages/driver/DashboardPage';
 import CarsPage from './pages/driver/CarsPage';
 import DriverMiniDrawer from './components/driver-side/layout/MiniDrawer';
+import ManageDriverPage from './pages/driver/ManageDriverPage';
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
           <Route path="/driver" element={<DriverMiniDrawer />}>
             <Route path="dashboard" element={<DashboardPage />} />
             <Route path="cars" element={<CarsPage />} />
+            <Route path="manage-drivers" element={<ManageDriverPage />} />
           </Route>
 
           {/* global - Page Not Found - Route */}

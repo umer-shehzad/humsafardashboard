@@ -23,6 +23,8 @@ const CustomTableTwo = ({ tableRowData, rows }) => {
                 align="center"
                 sx={{
                   color: 'white',
+                  paddingBottom: 1,
+                  paddingTop: 1,
                   fontSize: '18px',
                   borderBottom: 'none',
                   borderTopLeftRadius: '6px',
@@ -35,6 +37,8 @@ const CustomTableTwo = ({ tableRowData, rows }) => {
                 align="center"
                 sx={{
                   color: 'white',
+                  paddingBottom: 1,
+                  paddingTop: 1,
                   fontSize: '18px',
                   borderBottom: 'none',
                 }}
@@ -45,6 +49,8 @@ const CustomTableTwo = ({ tableRowData, rows }) => {
                 align="center"
                 sx={{
                   color: 'white',
+                  paddingBottom: 1,
+                  paddingTop: 1,
                   fontSize: '18px',
                   borderBottom: 'none',
                 }}
@@ -55,6 +61,8 @@ const CustomTableTwo = ({ tableRowData, rows }) => {
                 align="center"
                 sx={{
                   color: 'white',
+                  paddingBottom: 1,
+                  paddingTop: 1,
                   fontSize: '18px',
                   borderBottom: 'none',
                 }}
@@ -65,6 +73,8 @@ const CustomTableTwo = ({ tableRowData, rows }) => {
                 align="center"
                 sx={{
                   color: 'white',
+                  paddingBottom: 1,
+                  paddingTop: 1,
                   fontSize: '18px',
                   borderBottom: 'none',
                 }}
@@ -75,6 +85,8 @@ const CustomTableTwo = ({ tableRowData, rows }) => {
                 align="center"
                 sx={{
                   color: 'white',
+                  paddingBottom: 1,
+                  paddingTop: 1,
                   fontSize: '18px',
                   borderBottom: 'none',
                   borderTopRightRadius: '6px',
@@ -93,7 +105,9 @@ const CustomTableTwo = ({ tableRowData, rows }) => {
                 <TableCell align='center' sx={{ borderBottom: 'none' }}>{row.driverName}</TableCell>
                 <TableCell align="center" sx={{ borderBottom: 'none' }}>{row.emailPhone}</TableCell>
                 <TableCell align="center" sx={{ borderBottom: 'none' }}>{row.licenceNo}</TableCell>
-                <TableCell align="center" sx={{ borderBottom: 'none' }}>{row.status}</TableCell>
+                <TableCell align="center" sx={{ borderBottom: 'none', color: row.status === 'Active' ? colors.textTertiaryColor : 'inherit' }}>
+                  {row.status}
+                </TableCell>
                 <TableCell align="center" sx={{ borderBottom: 'none' }}>
                   <Box display={'flex'} justifyContent={'center'} gap={1}>
                     <IconButton aria-label="edit" size="small">

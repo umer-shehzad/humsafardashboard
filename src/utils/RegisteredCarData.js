@@ -26,7 +26,7 @@ export const CarDetailsCardData = [
         text1: 'Registration No.',
         val1: '28838299ee4939',
         text2: 'Assigned Driver',
-        val2: 'Ahamd Ali',
+        val2: 'Ahmad Ali',
       },
       {
         text1: 'Chasis No.',
@@ -55,7 +55,7 @@ export const CarDetailsCardData = [
         text1: 'Registration No.',
         val1: '28838299ee4939',
         text2: 'Assigned Driver',
-        val2: 'Ahamd Ali',
+        val2: 'Ahmad Ali',
       },
       {
         text1: 'Chasis No.',
@@ -84,7 +84,7 @@ export const CarDetailsCardData = [
         text1: 'Registration No.',
         val1: '28838299ee4939',
         text2: 'Assigned Driver',
-        val2: 'Ahamd Ali',
+        val2: 'Ahmad Ali',
       },
       {
         text1: 'Chasis No.',

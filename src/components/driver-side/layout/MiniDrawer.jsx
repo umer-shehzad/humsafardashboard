@@ -88,7 +88,7 @@ const MiniDrawer = () => {
                   display: 'flex',
                   alignItems: 'center',
                   minHeight: 48,
-                  padding: theme.spacing(0, 4.5),
+                  padding: theme.spacing(0, 2.5),
                   justifyContent: 'initial',
                   ...(theme.breakpoints.down('sm') && {
                     justifyContent: 'center',
@@ -99,8 +99,6 @@ const MiniDrawer = () => {
               >
                 <ListItemIcon
                   sx={{
-                    minWidth: 0,
-                    mr: 2,
                     justifyContent: 'center',
                     color: location.pathname === item.path ? '#ffffff' : `${colors.textFifthColor}`,
                   }}

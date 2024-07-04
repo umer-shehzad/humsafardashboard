@@ -16,7 +16,7 @@ const DetailBox = ({ width, height, heading, text1, text1Val, text2, text2Val, t
         >
           <Typography color={'white'} variant='h5' fontWeight={700}>{heading}</Typography>
         </Box>
-        <Box pl={3} pt={1.5}>
+        <Box>
           <DetailBoxText text={text1} value={text1Val} />
           <DetailBoxText text={text2} value={text2Val} />
           <DetailBoxText text={text3} value={text3Val} />
