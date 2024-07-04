@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, } from '@mui/material';
+import { Box, ListItemIcon, } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -110,14 +110,8 @@ const CustomTableTwo = ({ tableRowData, rows }) => {
                 </TableCell>
                 <TableCell align="center" sx={{ borderBottom: 'none' }}>
                   <Box display={'flex'} justifyContent={'center'} gap={1}>
-                    <CustomIcon
-                      iconName={<CiEdit color={'white'} size={'1rem'} />}
-                      color={colors.editIconBgColor}
-                    />
-                    <CustomIcon
-                      iconName={<MdDeleteOutline color={'white'} size={'1rem'} />}
-                      color={colors.deleteIconBgColor}
-                    />
+                    <CustomIcon iconName="edit" color={colors.editIconBgColor} size="1.2rem" />
+                    <CustomIcon iconName="delete" color={colors.deleteIconBgColor} size="1.2rem" />
                   </Box>
                 </TableCell>
               </TableRow>
