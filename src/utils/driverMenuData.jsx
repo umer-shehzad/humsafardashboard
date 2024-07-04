@@ -18,7 +18,7 @@ export const MenuData = [
         path: '/driver/cars',
     },
     {
-        itemName: 'Chat',
+        itemName: 'Trips',
         icon: <GrMapLocation size={20}/>,
         path: '/driver/trips',
     },
