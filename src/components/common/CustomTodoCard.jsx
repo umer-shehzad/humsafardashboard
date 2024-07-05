@@ -1,6 +1,8 @@
 import React from 'react';
-import { Box, Typography, Checkbox } from '@mui/material';
 import { CiEdit } from "react-icons/ci";
+
+import { Box, Checkbox,Typography } from '@mui/material';
+
 import { colors } from '../../utils/colors';
 
 const CustomTodoCard = () => {

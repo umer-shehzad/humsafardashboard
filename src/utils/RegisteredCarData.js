@@ -24,7 +24,7 @@ export const CarDetailsCardData = [
     content: [
       {
         text1: 'Registration No.',
-        val1: '28838299ee4939',
+        val1: '28838299ee49391',
         text2: 'Assigned Driver',
         val2: 'Ahmad Ali',
       },
@@ -53,7 +53,7 @@ export const CarDetailsCardData = [
     content: [
       {
         text1: 'Registration No.',
-        val1: '28838299ee4939',
+        val1: '28838299ee49392',
         text2: 'Assigned Driver',
         val2: 'Ahmad Ali',
       },
@@ -82,7 +82,7 @@ export const CarDetailsCardData = [
     content: [
       {
         text1: 'Registration No.',
-        val1: '28838299ee4939',
+        val1: '28838299ee49339',
         text2: 'Assigned Driver',
         val2: 'Ahmad Ali',
       },
@@ -106,6 +106,28 @@ export const CarDetailsCardData = [
       },
     ]
   }
+];
+
+export const vehicleTypeOptions = [
+  {
+    label: 'Sedan',
+    value: 'sedan'
+  },
+  {
+    label: 'Toyota Corolla',
+    value: 'toyota corolla'
+  },
+];
+
+export const facilitiesOptions = [
+  {
+    label: 'Water bottle',
+    value: 'water'
+  },
+  {
+    label: 'Chips',
+    value: 'chips'
+  },
 ];
 
 

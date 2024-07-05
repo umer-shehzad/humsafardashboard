@@ -1,9 +1,10 @@
 import React from 'react'
+
 import { Box, Typography } from '@mui/material'
 
-import DetailBoxText from './DetailBoxText'
-
 import { colors } from '../../utils/colors'
+
+import DetailBoxText from './DetailBoxText'
 
 const DetailBox = ({ width, height, heading, text1, text1Val, text2, text2Val, text3, text3Val }) => {
   return (

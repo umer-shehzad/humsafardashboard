@@ -1,12 +1,23 @@
 import React from 'react';
 import { Field } from 'formik';
 
-import { Box, TextField,Typography } from '@mui/material';
+import { Box, TextField, Typography } from '@mui/material';
 
-const InputField = ({ labelName, fieldName, height, placeholder }) => {
+const InputField = ({
+    labelName,
+    fieldName,
+    height,
+    width,
+    placeholder,
+    textFontSize,
+    textFontWeight,
+    mb,
+    borderRadius
+}) => {
     return (
         <Box>
-            <Typography fontSize={14} fontWeight={400} mb={0.5}>{labelName}</Typography>
+            {/* <Typography fontSize={14} fontWeight={400} mb={0.5}>{labelName}</Typography> */}
+            <Typography fontSize={textFontSize} fontWeight={textFontWeight} mb={mb}>{labelName}</Typography>
             <Field
                 name={fieldName}
                 as={TextField}
@@ -18,14 +29,17 @@ const InputField = ({ labelName, fieldName, height, placeholder }) => {
                 InputProps={{
                     sx: {
                         '& .MuiInputBase-input::placeholder': {
-                            fontSize: '14px', 
+                            fontSize: '14px',
                         },
                     },
                 }}
                 sx={{
                     '& .MuiOutlinedInput-root': {
-                        height: height || '42px',
-                        borderRadius: '12px'
+                        height: height,
+                        width: width,
+                        borderRadius: borderRadius,
+                        // height: height || '42px',
+                        // borderRadius: '12px'
                     }
                 }}
             />

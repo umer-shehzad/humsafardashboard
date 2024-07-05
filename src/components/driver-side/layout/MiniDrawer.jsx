@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { matchPath,NavLink, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -8,10 +10,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { styled, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { Outlet } from 'react-router-dom';
+
 import { colors } from '../../../utils/colors';
-import CustomButton from '../../common/CustomButton';
 import { MenuData } from '../../../utils/driverMenuData';
+import CustomButton from '../../common/CustomButton';
+
 import NavBar from './NavBar';
 
 const drawerWidth = 240;
@@ -55,6 +58,10 @@ const MiniDrawer = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const location = useLocation();
 
+  const checkActive = (path) => {
+    return !!matchPath({ path: path, end: false }, location.pathname) || location.pathname.startsWith(path);
+  };
+
   return (
     <Box sx={{ display: 'flex' }}>
       <NavBar />
@@ -80,51 +87,53 @@ const MiniDrawer = () => {
         </Box>
 
         <List sx={{ marginTop: 0, paddingTop: 0 }}>
-          {MenuData.map((item, index) => (
-            <ListItem key={item.itemName} disablePadding sx={{ display: 'block' }}>
-              <NavLink
-                to={item.path}
-                activeClassName="active"
-                style={{
-                  textDecoration: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  minHeight: 48,
-                  padding: theme.spacing(0, 2.5),
-                  justifyContent: 'initial',
-                  ...(theme.breakpoints.down('sm') && {
-                    justifyContent: 'center',
-                  }),
-                  backgroundColor: location.pathname === item.path ? `${colors.primaryColor}` : 'inherit',
-                  borderRadius: location.pathname === item.path ? '0 10px 10px 0' : ''
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    justifyContent: 'center',
-                    color: location.pathname === item.path ? `${colors.btnBgColor}` : `${colors.primaryColor}`,
+          {MenuData.map((item, index) => {
+            const isActive = checkActive(item.path);
+            return (
+              <ListItem key={item.itemName} disablePadding sx={{ display: 'block' }}>
+                <NavLink
+                  to={item.path}
+                  style={{
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    minHeight: 48,
+                    padding: theme.spacing(0, 2.5),
+                    justifyContent: 'initial',
+                    ...(theme.breakpoints.down('sm') && {
+                      justifyContent: 'center',
+                    }),
+                    backgroundColor: isActive ? `${colors.primaryColor}` : 'inherit',
+                    borderRadius: isActive ? '0 10px 10px 0' : ''
                   }}
                 >
-                  {item.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={item.itemName}
-                  sx={{
-                    opacity: 1,
-                    display: isSmallScreen ? 'none' : 'block',
-                    color: location.pathname === item.path ? `${colors.btnBgColor}` : `${colors.primaryColor}`,
-                  }}
-                />
-              </NavLink>
-            </ListItem>
-          ))}
+                  <ListItemIcon
+                    sx={{
+                      justifyContent: 'center',
+                      color: isActive ? `${colors.btnBgColor}` : `${colors.primaryColor}`,
+                    }}
+                  >
+                    {item.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.itemName}
+                    sx={{
+                      opacity: 1,
+                      display: isSmallScreen ? 'none' : 'block',
+                      color: isActive ? `${colors.btnBgColor}` : `${colors.primaryColor}`,
+                    }}
+                  />
+                </NavLink>
+              </ListItem>
+            );
+          })}
         </List>
 
         <Box sx={{ textAlign: 'center', width: '100%', marginTop: 3 }}>
           <CustomButton btnName={'Log Out'} width={'70%'} borderRadius={'8px'} />
         </Box>
       </Drawer>
-      <Box component="main" mt={3} sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" mt={3} p={3} sx={{ flexGrow: 1 }}>
         <DrawerHeader />
         <Outlet />
       </Box>

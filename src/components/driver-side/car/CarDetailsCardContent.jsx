@@ -1,5 +1,7 @@
-import { Grid, Typography } from '@mui/material'
 import React from 'react'
+
+import { Grid, Typography } from '@mui/material'
+
 import { colors } from '../../../utils/colors'
 
 const CarDetailsCardContent = ({ text1, text1Val, text2, text2Val }) => {
@@ -23,7 +25,7 @@ const CarDetailsCardContent = ({ text1, text1Val, text2, text2Val }) => {
               <Typography color={colors.textFifthColor}>{text2}</Typography>
             </Grid>
             <Grid item xs={6} pl={10}>
-              <Typography color={colors.textFifthColor}>{text2Val}</Typography>
+              <Typography color={text2Val === 'Active' ? colors.textTertiaryColor : colors.textFifthColor}>{text2Val}</Typography>
             </Grid>
           </Grid>
         </Grid>

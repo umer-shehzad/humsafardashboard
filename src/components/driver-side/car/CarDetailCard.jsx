@@ -1,7 +1,10 @@
-import { Box, Grid, Typography } from '@mui/material'
 import React from 'react'
-import CustomButton from '../../common/CustomButton'
+
+import { Box, Grid, Typography } from '@mui/material'
+
 import { colors } from '../../../utils/colors'
+import CustomButton from '../../common/CustomButton'
+
 import CarDetailsCardContent from './CarDetailsCardContent'
 
 const CarDetailCard = ({ carName, Content }) => {
@@ -19,7 +22,7 @@ const CarDetailCard = ({ carName, Content }) => {
           <Box display={'flex'} flexDirection={'column'} rowGap={1.5} mb={2}>
             {Content.map((item, index) => (
               <CarDetailsCardContent
-                key={item.index}
+                key={item.val1}
                 text1={item.text1}
                 text1Val={item.val1}
                 text2={item.text2}

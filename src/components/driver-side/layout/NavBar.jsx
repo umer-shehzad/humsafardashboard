@@ -1,15 +1,17 @@
 import React from 'react'
+
 import SearchIcon from '@mui/icons-material/Search';
+import MuiAppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import IconButton from '@mui/material/IconButton';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import CustomImage from '../../common/CustomImage';
-import MuiAppBar from '@mui/material/AppBar';
 import InputBase from '@mui/material/InputBase';
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+
 import { colors } from '../../../utils/colors';
+import CustomImage from '../../common/CustomImage';
 
 const AppBar = styled(MuiAppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
@@ -30,7 +32,7 @@ const Search = styled('div')(({ theme }) => ({
   height: '7vh',
   boxShadow: '1px 5px 5px -2px rgba(0,0,0,0.4)',
   [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(30),
+    marginLeft: theme.spacing(35),
     width: '31vw',
   },
   display: 'flex',

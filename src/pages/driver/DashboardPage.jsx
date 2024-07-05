@@ -1,8 +1,10 @@
 import React from 'react'
-import RidesInfo from '../../components/driver-side/dashboard/RidesInfo'
+
+import { Box } from '@mui/material'
+
 import CustomTable from '../../components/common/CustomTable'
 import Graph from '../../components/driver-side/dashboard/Graph'
-import { Box } from '@mui/material'
+import RidesInfo from '../../components/driver-side/dashboard/RidesInfo'
 
 const DashboardPage = () => {
   return (

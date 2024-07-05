@@ -1,9 +1,9 @@
-import { Box, Typography } from '@mui/material'
 import React from 'react'
 
-import DetailBox from '../../common/DetailBox'
+import { Box, Typography } from '@mui/material'
 
 import { colors } from '../../../utils/colors'
+import DetailBox from '../../common/DetailBox'
 
 const RidesInfo = () => {
   return (

@@ -1,10 +1,12 @@
 import React from 'react';
+
 import { Box, Typography } from '@mui/material';
+
 import { colors } from '../../../utils/colors';
-import CustomButton from '../../common/CustomButton';
-import CustomTableTwo from '../../common/CustomTableTwo';
 import { Rows } from '../../../utils/manageDriverData';
 import { TableRowData } from '../../../utils/manageDriverData';
+import CustomButton from '../../common/CustomButton';
+import CustomTableTwo from '../../common/CustomTableTwo';
 
 const RegisteredDrivers = () => {
     return (

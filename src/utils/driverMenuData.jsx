@@ -1,10 +1,11 @@
-import { RiDashboard2Fill } from "react-icons/ri";
 import { AiFillCar } from "react-icons/ai";
+import { BiDollarCircle } from "react-icons/bi";
+import { GrMapLocation } from "react-icons/gr";
 import { IoMdPerson } from "react-icons/io";
 import { MdOutlineSchedule } from "react-icons/md";
+import { RiDashboard2Fill } from "react-icons/ri";
+
 import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
-import { GrMapLocation } from "react-icons/gr";
-import { BiDollarCircle } from "react-icons/bi";
 
 export const MenuData = [
     {

@@ -1,10 +1,12 @@
 import React from 'react'
-import Title from '../../components/driver-side/manage-drivers/Title'
-import RegisteredDrivers from '../../components/driver-side/manage-drivers/RegisteredDrivers'
-import DetailBox from '../../components/common/DetailBox'
+
 import { Box, Grid, Typography } from '@mui/material'
+
 import CustomButton from '../../components/common/CustomButton'
 import CustomTodoCard from '../../components/common/CustomTodoCard'
+import DetailBox from '../../components/common/DetailBox'
+import RegisteredDrivers from '../../components/driver-side/manage-drivers/RegisteredDrivers'
+import Title from '../../components/driver-side/manage-drivers/Title'
 
 const ManageDriverPage = () => {
   return (

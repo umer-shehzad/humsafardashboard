@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { LineChart } from '@mui/x-charts/LineChart';
+
 import { Box, Paper } from '@mui/material';
+import { LineChart } from '@mui/x-charts/LineChart';
+
 import { colors } from '../../../utils/colors';
 
 export default function BasicArea() {

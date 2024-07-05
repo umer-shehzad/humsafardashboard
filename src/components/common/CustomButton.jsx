@@ -1,11 +1,25 @@
 import React from 'react';
 
-import { Box, Button, Typography } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import { Box, Button, Typography } from '@mui/material';
 
 import { colors } from '../../utils/colors';
 
-const CustomButton = ({ btnName, width, mt, onClick, height, gap, marginRight, paddingRight, borderRadius, fontSize, fontWeight, icon }) => {
+const CustomButton = ({
+    btnName,
+    width,
+    mt,
+    changeColor,
+    onClick,
+    height,
+    gap,
+    marginRight,
+    paddingRight,
+    borderRadius,
+    fontSize,
+    fontWeight,
+    icon
+}) => {
     return (
         <Box textAlign={'center'} mt={mt}>
             <Button
@@ -14,8 +28,8 @@ const CustomButton = ({ btnName, width, mt, onClick, height, gap, marginRight, p
                 onClick={onClick}
                 sx={{
                     textTransform: 'none',
-                    backgroundColor: `${colors.btnBgColor}`,
-                    color: `${colors.btnColor}`,
+                    backgroundColor: changeColor ? colors.editIconBgColor : colors.btnBgColor,
+                    color: colors.btnColor,
                     borderRadius: borderRadius || '12px',
                     height: height || '42px',
                     width: width || '92%',
@@ -26,7 +40,7 @@ const CustomButton = ({ btnName, width, mt, onClick, height, gap, marginRight, p
                     fontWeight: fontWeight || '600',
                     boxShadow: 'none',
                     '&:hover': {
-                        backgroundColor: `${colors.btnBgColor}`,
+                        backgroundColor: changeColor ? colors.editIconBgColor : colors.btnBgColor,
                         boxShadow: 'none',
                     }
                 }}
