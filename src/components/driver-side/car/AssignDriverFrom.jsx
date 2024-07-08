@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import CustomButton from '../../common/CustomButton';
 import { Form, Formik } from 'formik';
 import CustomSelectField from '../../common/CustomSelectField';
-import { assignDriverOptions } from '../../../utils/RegisteredCarData';
+import { assignDriverOptions, AssignDriverRows, AssignDriverTableRowData } from '../../../utils/RegisteredCarData';
 import { colors } from '../../../utils/colors';
 import { Link, useLocation } from 'react-router-dom';
+import CustomTableTwo from '../../common/CustomTableTwo';
 
 const AssignDriverForm = () => {
+  const [selectedValue, setSelectedValue] = useState('');
   const { state } = useLocation();
   const carValue = state?.carValue || 'Default Car Name';
 
@@ -43,15 +45,22 @@ const AssignDriverForm = () => {
                 textFontWeight={'bold'}
                 mb={0.5}
                 borderRadius={'5px'}
+                setSelectedValue={setSelectedValue}
               />
 
-              <Grid container mt={3}>
-                <Grid item xs={1.5}>
-                  <Link to={'/driver/cars'}>
-                    <CustomButton btnName={'Assign'} width={'120%'} fontWeight={500} borderRadius={'5px'} />
-                  </Link>
-                </Grid>
-              </Grid>
+              {selectedValue && (
+                <Box mt={3}>
+                  <CustomTableTwo tableRowData={AssignDriverTableRowData} rows={AssignDriverRows} />
+
+                  <Grid container mt={6}>
+                    <Grid item xs={1.5}>
+                      <Link to={'/driver/cars'}>
+                        <CustomButton btnName={'Assign'} width={'120%'} fontWeight={500} borderRadius={'5px'} />
+                      </Link>
+                    </Grid>
+                  </Grid>
+                </Box>
+              )}
             </Box>
           </Form>
         )}

@@ -130,6 +130,20 @@ export const facilitiesOptions = [
   },
 ];
 
+export const AssignDriverTableRowData = {
+  val1: 'Sr No.',
+  val2: `Driver's Name`,
+  val3: 'Email/Phone No.',
+  val4: 'License No.',
+  val5: 'Status',
+  val6: 'Action',
+};
+
+export const AssignDriverRows = [
+  createData('1', 'Ahmad Ali', '(+33)7 00 55 57 60', '34 LEJ 46', '3'),
+];
+
+
 export const assignDriverOptions = [
   {
     label: 'Ahmad Ali',

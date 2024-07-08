@@ -15,6 +15,7 @@ const CustomSelectField = ({
   borderRadius,
   width,
   height,
+  setSelectedValue
 }) => {
   return (
     <Box>
@@ -33,7 +34,9 @@ const CustomSelectField = ({
                 value={field.value || ""}
                 displayEmpty
                 onChange={(event) => {
-                  form.setFieldValue(fieldName, event.target.value);
+                  const value = event.target.value;
+                  setSelectedValue(value);
+                  form.setFieldValue(fieldName, value);
                 }}
                 renderValue={(selected) => {
                   if (selected === "") {
