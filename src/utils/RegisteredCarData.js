@@ -130,4 +130,15 @@ export const facilitiesOptions = [
   },
 ];
 
+export const assignDriverOptions = [
+  {
+    label: 'Ahmad Ali',
+    value: 'ahmad ali'
+  },
+  {
+    label: 'Usman',
+    value: 'usman'
+  },
+];
+
 

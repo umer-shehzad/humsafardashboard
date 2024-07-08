@@ -1,11 +1,9 @@
-import React from 'react'
-
-import { Box, Grid, Typography } from '@mui/material'
-
-import { colors } from '../../../utils/colors'
-import CustomButton from '../../common/CustomButton'
-
-import CarDetailsCardContent from './CarDetailsCardContent'
+import React from 'react';
+import { Box, Grid, Typography } from '@mui/material';
+import { colors } from '../../../utils/colors';
+import CustomButton from '../../common/CustomButton';
+import CarDetailsCardContent from './CarDetailsCardContent';
+import { Link, NavLink } from 'react-router-dom';
 
 const CarDetailCard = ({ carName, Content }) => {
   return (
@@ -15,7 +13,12 @@ const CarDetailCard = ({ carName, Content }) => {
           {/* Card Heading */}
           <Box display={'flex'} justifyContent={'space-between'} py={1} px={1}>
             <Typography variant='h6' fontWeight={600} color={colors.textEightColor}>{carName}</Typography>
-            <CustomButton btnName={'Assign Driver'} width={'100%'} borderRadius={'6px'} fontWeight={500} />
+            <Link
+              to='/driver/cars/assign-driver'
+              state={{ carValue: carName }}
+            >
+              <CustomButton btnName={'Assign Driver'} width={'100%'} borderRadius={'6px'} fontWeight={500} />
+            </Link>
           </Box>
 
           {/* Card Content */}
@@ -32,9 +35,8 @@ const CarDetailCard = ({ carName, Content }) => {
           </Box>
         </Box>
       </Grid>
-
     </Grid>
-  )
+  );
 }
 
-export default CarDetailCard
+export default CarDetailCard;

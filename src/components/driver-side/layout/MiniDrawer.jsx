@@ -1,27 +1,37 @@
 import * as React from 'react';
-import { matchPath,NavLink, useLocation } from 'react-router-dom';
-import { Outlet } from 'react-router-dom';
-
+import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
+import MuiAppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
+import CssBaseline from '@mui/material/CssBaseline';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { styled, useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-
-import { colors } from '../../../utils/colors';
-import { MenuData } from '../../../utils/driverMenuData';
-import CustomButton from '../../common/CustomButton';
-
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
 import NavBar from './NavBar';
+import { Outlet } from 'react-router-dom';
+
+import { matchPath,NavLink, useLocation } from 'react-router-dom';
+import CustomButton from '../../common/CustomButton';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { MenuData } from '../../../utils/driverMenuData';
+import { colors } from '../../../utils/colors';
 
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
-  backgroundColor: colors.sideBarBgCOlor,
+  backgroundColor: 'black',
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
@@ -31,6 +41,18 @@ const openedMixin = (theme) => ({
   boxShadow: '4px 0px 4px 4px rgba(0,0,0,0.12)',
   [theme.breakpoints.down('sm')]: {
     width: `calc(${theme.spacing(7)} + 1px)`,
+  },
+});
+
+const closedMixin = (theme) => ({
+  transition: theme.transitions.create('width', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  overflowX: 'hidden',
+  width: `calc(${theme.spacing(7)} + 1px)`,
+  [theme.breakpoints.up('sm')]: {
+    width: `calc(${theme.spacing(8)} + 1px)`,
   },
 });
 
@@ -48,12 +70,18 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
-    ...openedMixin(theme),
-    '& .MuiDrawer-paper': openedMixin(theme),
+    // ...(open && {
+      ...openedMixin(theme),
+      '& .MuiDrawer-paper': openedMixin(theme),
+    // }),
+    // ...(!open && {
+    //   ...closedMixin(theme),
+    //   '& .MuiDrawer-paper': closedMixin(theme),
+    // }),
   }),
 );
 
-const MiniDrawer = () => {
+export default function MiniDrawer() {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const location = useLocation();
@@ -62,9 +90,20 @@ const MiniDrawer = () => {
     return !!matchPath({ path: path, end: false }, location.pathname) || location.pathname.startsWith(path);
   };
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Box sx={{ display: 'flex' }}>
       <NavBar />
+
       <Drawer variant="permanent">
         <Box
           sx={{
@@ -133,12 +172,11 @@ const MiniDrawer = () => {
           <CustomButton btnName={'Log Out'} width={'70%'} borderRadius={'8px'} />
         </Box>
       </Drawer>
-      <Box component="main" mt={3} p={3} sx={{ flexGrow: 1 }}>
+
+      <Box component="main" mt={3} p={5} sx={{ flexGrow: 1 }}>
         <DrawerHeader />
         <Outlet />
       </Box>
     </Box>
   );
 }
-
-export default MiniDrawer;

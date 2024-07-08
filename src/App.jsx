@@ -11,6 +11,7 @@ import Login from './pages/login/Login';
 import Password from './pages/signup/Password';
 import PersonalInfo from './pages/signup/PersonalInfo';
 import UploadCnic from './pages/signup/UploadCnic';
+import AssignDriverPage from './pages/driver/AssignDriverPage';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="dashboard" element={<DashboardPage />} />
           <Route path="cars" element={<CarsPage />} />
           <Route path="cars/add-car" element={<AddCarPage />} />
+          <Route path="cars/assign-driver" element={<AssignDriverPage />} />
           <Route path="manage-drivers" element={<ManageDriverPage />} />
         </Route>
 

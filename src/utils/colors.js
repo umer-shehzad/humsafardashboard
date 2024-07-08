@@ -16,7 +16,7 @@ export const colors = {
   cardBorderColor: '#929292',
   editIconBgColor: '#009688',
   deleteIconBgColor: '#E5343D',
-  sideBarBgCOlor: '#343434',
+  sideBarBgColor: '#343434',
   todoColor1: '#FDF3B4',
   imageIconColor: '#313131',
 };

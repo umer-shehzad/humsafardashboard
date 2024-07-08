@@ -1,47 +1,70 @@
 import React from 'react';
 import { Field } from 'formik';
-
-import { Box, FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material';
+import { Box, FormControl, MenuItem, Select, Typography } from '@mui/material';
 
 const CustomSelectField = ({
-    fieldName,
-    labelName,
-    options,
-    textFontSize,
-    textFontWeight,
-    mb,
-    borderRadius,
-    width,
-    height
-
+  fieldName,
+  labelName,
+  options,
+  placeholder,
+  placeholderColor,
+  placeholderFontSize,
+  textFontSize,
+  textFontWeight,
+  mb,
+  borderRadius,
+  width,
+  height,
 }) => {
-    return (
-        <Box>
-            <Field name={fieldName}>
-                {({ field, form }) => (
-                    <FormControl fullWidth>
-                        <Typography fontSize={textFontSize} fontWeight={textFontWeight} mb={mb}>{labelName}</Typography>
-                        <Select
-                            labelId={`${fieldName}-label`}
-                            id={fieldName}
-                            {...field}
-                            // label={labelName}
-                            onChange={(event) => {
-                                form.setFieldValue(fieldName, event.target.value);
-                            }}
-                            sx={{ borderRadius: borderRadius, width: width, height: height }}
-                        >
-                            {options.map((option) => (
-                                <MenuItem key={option.value} value={option.value}>
-                                    {option.label}
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
-                )}
-            </Field>
-        </Box>
-    );
+  return (
+    <Box>
+      <Field name={fieldName}>
+        {({ field, form }) => {
+          const isPlaceholder = field.value === '';
+          return (
+            <FormControl fullWidth>
+              <Typography fontSize={textFontSize} fontWeight={textFontWeight} mb={mb}>
+                {labelName}
+              </Typography>
+              <Select
+                labelId={`${fieldName}-label`}
+                id={fieldName}
+                {...field}
+                value={field.value || ""}
+                displayEmpty
+                onChange={(event) => {
+                  form.setFieldValue(fieldName, event.target.value);
+                }}
+                renderValue={(selected) => {
+                  if (selected === "") {
+                    return <span style={{ color: placeholderColor, fontSize: placeholderFontSize }}>{placeholder}</span>;
+                  }
+                  return options.find(option => option.value === selected)?.label;
+                }}
+                sx={{
+                  borderRadius: borderRadius,
+                  width: width,
+                  height: height,
+                }}
+              >
+                <MenuItem 
+                  value="" 
+                  disabled
+                >
+                  {placeholder}
+                </MenuItem>
+                {options.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          );
+        }}
+      </Field>
+    </Box>
+  );
 };
 
 export default CustomSelectField;

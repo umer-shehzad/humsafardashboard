@@ -9,7 +9,7 @@ const FormHeadingPaper = ({ title, imgPath }) => {
       alignItems={'end'}
       component={Paper}
       borderRadius={0}
-      width={'105%'}
+      width={'107.5%'}
       elevation={10}
       pl={9}
       py={1}
@@ -18,7 +18,7 @@ const FormHeadingPaper = ({ title, imgPath }) => {
       sx={{
         position: 'relative',
         zIndex: 1,
-        right: 23,
+        right: 39,
         boxShadow: '1px 5px 5px -2px rgba(0,0,0,0.4)',
       }}
     >

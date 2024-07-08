@@ -67,7 +67,7 @@ const AddCarForm = () => {
               <CustomSelectField fieldName={'vehicleType'} labelName={'Vehicle Type'} options={vehicleTypeOptions} height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
               <CustomSelectField fieldName={'ficilities'} labelName={'Facilities'} options={facilitiesOptions} height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
 
-              <UploadImage labelName={'Registration Card'} height={'20vh'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={3} borderRadius={'10px'} selectImgWidth={'25%'} />
+              <UploadImage labelName={'Registration Card'} height={'20vh'} width={'48%'} textFontSize={16} textFontWeight={'bold'} mb={3} borderRadius={'10px'} selectImgWidth={'25%'} />
 
               <Grid container mt={2} mb={10} gap={5}>
                 <Grid item xs={2.5}>
