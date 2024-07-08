@@ -79,11 +79,11 @@ const PersonalInfoForm = () => {
                     <Form>
                         <Box display={'flex'} flexDirection={'column'} rowGap={1.75}>
 
-                            <InputField labelName="User Name" fieldName="userName"/>
-                            <InputField labelName="Email" fieldName="email"/>
-                            <InputField labelName="Contact" fieldName="contact"/>
-                            <InputField labelName="Gender" fieldName="gender"/>
-                            <InputField labelName="Age" fieldName="age"/>
+                            <InputField labelName="User Name" fieldName="userName" textFontSize={'14px'} mb={0.5} borderRadius={'12px'} height={'42px'}/>
+                            <InputField labelName="Email" fieldName="email" textFontSize={'14px'} mb={0.5} borderRadius={'12px'} height={'42px'}/>
+                            <InputField labelName="Contact" fieldName="contact" textFontSize={'14px'} mb={0.5} borderRadius={'12px'} height={'42px'}/>
+                            <InputField labelName="Gender" fieldName="gender" textFontSize={'14px'} mb={0.5} borderRadius={'12px'} height={'42px'}/>
+                            <InputField labelName="Age" fieldName="age" textFontSize={'14px'} mb={0.5} borderRadius={'12px'} height={'42px'}/>
 
                             <CustomButton btnName={'Continue'} mt={3.75} onClick={handleContinueBtnClick}/>
                         </Box>

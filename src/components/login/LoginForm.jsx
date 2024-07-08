@@ -19,8 +19,8 @@ const LoginForm = () => {
         setShowPassword(!showPassword);
     };
 
-    const handleSignInClick = () => {
-        console.log('SignInCLick');
+    const handleForgotPasswordClick = () => {
+        console.log('ForgotPasswordClick');
         navigate("/forgot-password");
     }
 
@@ -59,7 +59,7 @@ const LoginForm = () => {
                             <Box>
                                 <Box display={'flex'} flexDirection={'column'} rowGap={2}>
                                     {/* Email Field */}
-                                    <InputField labelName={'Email'} fieldName={'email'} height={'48px'} />
+                                    <InputField labelName={'Email'} fieldName={'email'} height={'48px'} fontSize={'14px'} mb={0.5} borderRadius={'12px'} />
 
                                     {/* Password Field */}
                                     <Box>
@@ -123,6 +123,7 @@ const LoginForm = () => {
                                     />
                                     <Button
                                         variant="text"
+                                        onClick={handleForgotPasswordClick}
                                         sx={{
                                             textTransform: 'none',
                                             color: 'black',
@@ -142,7 +143,7 @@ const LoginForm = () => {
 
                             {/* Sign In Button */}
                             <Box mt={1}>
-                                <CustomButton btnName="Sign In" onClick={handleSignInClick} />
+                                <CustomButton btnName="Sign In" />
                             </Box>
                         </Box>
                     </Form>
