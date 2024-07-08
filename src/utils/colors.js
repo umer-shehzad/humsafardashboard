@@ -2,6 +2,7 @@ export const colors = {
   btnColor: "white",
   btnBgColor: "#E58600",
   primaryColor: '#ffffff',
+  dangerColor: '#A02724',
   textSecondaryColor: "#858585",
   textTertiaryColor: "#57A65A",
   textForthColor: "#919191",
@@ -19,4 +20,6 @@ export const colors = {
   sideBarBgColor: '#343434',
   todoColor1: '#FDF3B4',
   imageIconColor: '#313131',
+  revenueCardBorderColor: '#A7A7A7',
+  revenueTextColor: '#363636',
 };

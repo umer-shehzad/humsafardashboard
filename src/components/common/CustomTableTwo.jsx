@@ -107,7 +107,7 @@ const CustomTableTwo = ({ tableRowData, rows }) => {
                 <TableCell align='center' sx={{ borderBottom: 'none' }}>{row.id}</TableCell>
                 <TableCell align='center' sx={{ borderBottom: 'none' }}>{row.driverName}</TableCell>
                 <TableCell align="center" sx={{ borderBottom: 'none' }}>{row.emailPhone}</TableCell>
-                <TableCell align="center" sx={{ borderBottom: 'none' }}>{row.licenceNo}</TableCell>
+                <TableCell align="center" sx={{ borderBottom: 'none', color: row.licenceNo === 'Completed' ? colors.textTertiaryColor : colors.dangerColor }}>{row.licenceNo}</TableCell>
                 <TableCell align="center" sx={{ borderBottom: 'none', color: row.status === 'Active' ? colors.textTertiaryColor : 'inherit' }}>
                   {row.status}
                 </TableCell>

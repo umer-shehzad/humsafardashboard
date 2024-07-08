@@ -12,6 +12,7 @@ import Password from './pages/signup/Password';
 import PersonalInfo from './pages/signup/PersonalInfo';
 import UploadCnic from './pages/signup/UploadCnic';
 import AssignDriverPage from './pages/driver/AssignDriverPage';
+import RevenuePage from './pages/driver/RevenuePage';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="cars/add-car" element={<AddCarPage />} />
           <Route path="cars/assign-driver" element={<AssignDriverPage />} />
           <Route path="manage-drivers" element={<ManageDriverPage />} />
+          <Route path="revenue" element={<RevenuePage />} />
         </Route>
 
         {/* Global - Page Not Found - Route */}

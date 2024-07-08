@@ -10,7 +10,7 @@ const DashboardPage = () => {
   return (
     <>
       <RidesInfo />
-      <Box display={'flex'} gap={6} mt={4} mb={3}>
+      <Box display={'flex'} justifyContent={'space-between'} mt={4} mb={3}>
         <Graph />
         <Graph />
       </Box>
