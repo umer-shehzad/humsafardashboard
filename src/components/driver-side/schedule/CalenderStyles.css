@@ -1,0 +1,46 @@
+div.rbc-event-label {
+  display: none;
+}
+
+div.rbc-event {
+  width: 60% !important;
+}
+
+div.rbc-time-view {
+  border: none;
+}
+
+div.rbc-row {
+  min-height: 0px !important;
+}
+
+div.rbc-time-content {
+  border: none;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+div.rbc-current-time-indicator {
+  border: none !important;
+  background-color: transparent;
+}
+
+div.rbc-timeslot-group {
+  border: none !important;
+}
+
+div.rbc-time-slot {
+  border: none !important;
+}
+
+div.rbc-today {
+  background-color: transparent;
+}
+
+div.rbc-day-slot {
+  left: 10%;
+}
+
+div.rbc-events-container {
+  border: none;
+}

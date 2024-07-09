@@ -19,7 +19,10 @@ export const colors = {
   deleteIconBgColor: '#E5343D',
   sideBarBgColor: '#343434',
   todoColor1: '#FDF3B4',
+  todoColor2: '#D1EAED',
+  todoColor3: '#FFDADB',
   imageIconColor: '#313131',
   revenueCardBorderColor: '#A7A7A7',
   revenueTextColor: '#363636',
+  dateBgColor: '#7597AF',
 };

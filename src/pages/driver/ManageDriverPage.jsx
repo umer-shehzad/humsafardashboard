@@ -7,6 +7,8 @@ import CustomTodoCard from '../../components/common/CustomTodoCard'
 import DetailBox from '../../components/common/DetailBox'
 import RegisteredDrivers from '../../components/driver-side/manage-drivers/RegisteredDrivers'
 import Title from '../../components/driver-side/manage-drivers/Title'
+import { colors } from '../../utils/colors'
+import { todoList } from '../../utils/todoData'
 
 const ManageDriverPage = () => {
   return (
@@ -56,7 +58,14 @@ const ManageDriverPage = () => {
           </Box>
 
           {/* todo card */}
-          <CustomTodoCard />
+          <CustomTodoCard 
+          bgcolor={colors.todoColor1}
+          headingPL={4}
+          headingPR={2}
+          boxGap={1}
+          listPL={9.5}
+          todoList={todoList}
+          />
         </Box>
       </Box>
     </>
