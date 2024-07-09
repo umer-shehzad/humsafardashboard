@@ -7,21 +7,20 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { colors } from '../../../utils/colors';
+import { Link } from 'react-router-dom';
+import CustomButton from '../../common/CustomButton';
 
-import { colors } from '../../utils/colors';
-
-function createData(id, driverName, loginDateTime, lastUpdateTime) {
-  return { id, driverName, loginDateTime, lastUpdateTime };
+function createData(id, driverName, emailPhone, licenseNo) {
+  return { id, driverName, emailPhone, licenseNo };
 }
 
 const rows = [
-  createData('01', 'Brad Pitt', '15 Dec 4:30', 'Brad Pitt'),
-  createData('02', 'Brad Pitt', '15 Dec 4:30', 'Brad Pitt'),
-  createData('03', 'Brad Pitt', '15 Dec 4:30', 'Brad Pitt'),
-  createData('04', 'Brad Pitt', '15 Dec 4:30', 'Brad Pitt'),
+  createData('01', 'Ahmad Ali', '(+33)7 00 55 57 60', '34 LEJ 46',),
+  createData('02', 'Ahmad Ali', '(+92)8 10 50 43 12', '34 LEJ 46',),
 ];
 
-const CustomTable = () => {
+const AssignDriverTable = () => {
   return (
     <Box display={'flex'} flexDirection={'column'} rowGap={4}>
       {/* Title */}
@@ -33,10 +32,9 @@ const CustomTable = () => {
           <TableHead>
             <TableRow sx={{ backgroundColor: `${colors.btnBgColor}` }}>
               <TableCell
+
                 sx={{
                   color: 'white',
-                  paddingLeft: 5,
-                  width: '25%',
                   fontWeight: 'bold',
                   borderBottom: 'none',
                   borderTopLeftRadius: '6px',
@@ -46,11 +44,9 @@ const CustomTable = () => {
                 Sr No.
               </TableCell>
               <TableCell
-                align="center"
+
                 sx={{
                   color: 'white',
-                  width: '25%',
-                  paddingRight: 15,
                   fontWeight: 'bold',
                   borderBottom: 'none',
                 }}
@@ -58,30 +54,36 @@ const CustomTable = () => {
                 Driver's Name
               </TableCell>
               <TableCell
-                align="center"
+
                 sx={{
                   color: 'white',
                   fontWeight: 'bold',
-                  paddingLeft: 5,
-                  width: '25%',
                   borderBottom: 'none',
                 }}
               >
-                Login Date/Time
+                Eamil/Phone No.
               </TableCell>
               <TableCell
-                align="right"
+
                 sx={{
                   color: 'white',
                   fontWeight: 'bold',
-                  paddingRight: 5,
-                  width: '25%',
+                  borderBottom: 'none',
+                }}
+              >
+                License No.
+              </TableCell>
+              <TableCell
+                align='center'
+                sx={{
+                  color: 'white',
+                  fontWeight: 'bold',
                   borderBottom: 'none',
                   borderTopRightRadius: '6px',
                   borderBottomRightRadius: '6px',
                 }}
               >
-                Last Update Time
+                Actions
               </TableCell>
             </TableRow>
           </TableHead>
@@ -92,10 +94,15 @@ const CustomTable = () => {
               <TableRow
                 key={row.id}
               >
-                <TableCell sx={{ borderBottom: 'none', paddingLeft: 6 }}>{row.id}</TableCell>
-                <TableCell align='center' sx={{ borderBottom: 'none', paddingRight: 15 }}>{row.driverName}</TableCell>
-                <TableCell align="center" sx={{ borderBottom: 'none', paddingLeft: 6 }}>{row.loginDateTime}</TableCell>
-                <TableCell align="right" sx={{ borderBottom: 'none', paddingRight: 6 }}>{row.lastUpdateTime}</TableCell>
+                <TableCell sx={{ borderBottom: 'none' }}>{row.id}</TableCell>
+                <TableCell sx={{ borderBottom: 'none' }}>{row.driverName}</TableCell>
+                <TableCell sx={{ borderBottom: 'none' }}>{row.emailPhone}</TableCell>
+                <TableCell sx={{ borderBottom: 'none' }}>{row.licenseNo}</TableCell>
+                <TableCell sx={{ borderBottom: 'none', paddingRight: 0 }} align='left'>
+                  <Link to={'/driver/cars'}>
+                    <CustomButton btnName={'Assign'} width={'100%'} fontWeight={500} borderRadius={'5px'} />
+                  </Link>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -105,4 +112,4 @@ const CustomTable = () => {
   )
 }
 
-export default CustomTable
+export default AssignDriverTable

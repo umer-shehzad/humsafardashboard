@@ -7,6 +7,7 @@ import { assignDriverOptions, AssignDriverRows, AssignDriverTableRowData } from 
 import { colors } from '../../../utils/colors';
 import { Link, useLocation } from 'react-router-dom';
 import CustomTableTwo from '../../common/CustomTableTwo';
+import AssignDriverTable from './AssignDriverTable';
 
 const AssignDriverForm = () => {
   const [selectedValue, setSelectedValue] = useState('');
@@ -50,15 +51,7 @@ const AssignDriverForm = () => {
 
               {selectedValue && (
                 <Box mt={3}>
-                  <CustomTableTwo tableRowData={AssignDriverTableRowData} rows={AssignDriverRows} />
-
-                  <Grid container mt={6}>
-                    <Grid item xs={1.5}>
-                      <Link to={'/driver/cars'}>
-                        <CustomButton btnName={'Assign'} width={'120%'} fontWeight={500} borderRadius={'5px'} />
-                      </Link>
-                    </Grid>
-                  </Grid>
+                  <AssignDriverTable />
                 </Box>
               )}
             </Box>
