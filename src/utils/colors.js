@@ -10,6 +10,7 @@ export const colors = {
   textSixthColor: '#999999',
   textSeventhColor: '#424242',
   textEightColor: '#3D3C3C',
+  textninthColor: '#979797',
   gradientColor: "#f5e0c1",
   searchBarColor: '#EAE9E9',
   searchBarIconColor: '#464646',

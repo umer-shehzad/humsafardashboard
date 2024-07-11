@@ -9,19 +9,26 @@ import InputField from '../../common/InputField';
 import CustomSelectField from '../../common/CustomSelectField';
 import { facilitiesOptions, vehicleTypeOptions } from '../../../utils/RegisteredCarData';
 import UploadImage from '../../common/UploadImage';
+import { colors } from '../../../utils/colors';
 
 const AddCarForm = () => {
   return (
     <Box
       component={Paper}
+      elevation={0}
       borderRadius={0}
-      width={'95%'}
-      mx={'auto'}
+      width={'73%'}
+      borderBottom={0}
+      borderTop={0}
+      borderLeft={4}
+      borderRight={4}
+      borderColor={'rgba(0,0,0,0.08)'}
+      position={'absolute'}
+      // height={'240vh'}
+      // mx={'auto'}
       pt={5}
       pl={3}
-      sx={{
-        boxShadow: '0px 1px 6px -2px rgba(0,0,0,0.5)'
-      }}
+      ml={3}
     >
       {/* form */}
       <Formik
@@ -67,9 +74,9 @@ const AddCarForm = () => {
               <CustomSelectField fieldName={'vehicleType'} labelName={'Vehicle Type'} options={vehicleTypeOptions} height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
               <CustomSelectField fieldName={'ficilities'} labelName={'Facilities'} options={facilitiesOptions} height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
 
-              <UploadImage labelName={'Registration Card'} height={'20vh'} width={'48%'} textFontSize={16} textFontWeight={'bold'} mb={3} borderRadius={'10px'} selectImgWidth={'25%'} />
+              <UploadImage labelName={'Registration Card'} captionName={'(Front and Back)'} captionColor={colors.textninthColor} height={'20vh'} width={'48%'} textFontSize={16} textFontWeight={'bold'} mb={2} borderRadius={'10px'} selectImgWidth={'25%'} />
 
-              <Grid container mt={2} mb={10} gap={5}>
+              <Grid container mt={2} mb={5} gap={5}>
                 <Grid item xs={2.5}>
                   <CustomButton btnName={'Save'} width={'100%'} fontWeight={500} borderRadius={'5px'} />
                 </Grid>

@@ -6,15 +6,17 @@ import CustomButton from './CustomButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { colors } from '../../utils/colors';
 
-const UploadImage = ({ 
+const UploadImage = ({
   labelName,
+  captionName,
   textFontSize,
   textFontWeight,
   mb,
   borderRadius,
   width,
   height,
-  selectImgWidth
+  selectImgWidth,
+  captionColor
 }) => {
   const [file, setFile] = useState(null);
 
@@ -32,7 +34,10 @@ const UploadImage = ({
 
   return (
     <Box>
-      <Typography fontSize={textFontSize} fontWeight={textFontWeight} mb={mb}>{labelName}</Typography>
+      <Box display={'flex'} alignItems={'center'} mb={mb}>
+        <Typography fontSize={textFontSize} fontWeight={textFontWeight}>{labelName}</Typography>
+        <Typography fontSize={14} fontWeight={textFontWeight} color={captionColor}>{captionName}</Typography>
+      </Box>
       <Box
         {...getRootProps()}
         sx={{
