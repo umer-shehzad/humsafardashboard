@@ -45,7 +45,7 @@ const RevenueCardsBox = () => {
             border={1}
             borderColor={colors.revenueCardBorderColor}
             borderRadius={'10px'}
-            text1={'Total Clicks'}
+            text1={'Spent This month'}
             text2={'43+'}
             text3={'75%'}
             bgColor={colors.primaryColor}
