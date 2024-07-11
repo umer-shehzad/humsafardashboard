@@ -14,6 +14,7 @@ import UploadCnic from './pages/signup/UploadCnic';
 import AssignDriverPage from './pages/driver/AssignDriverPage';
 import RevenuePage from './pages/driver/RevenuePage';
 import SchedulePage from './pages/driver/SchedulePage';
+import AddSchedulePage from './pages/driver/AddSchedulePage';
 import ChatPage from './pages/driver/ChatPage';
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
           <Route path="manage-drivers" element={<ManageDriverPage />} />
           <Route path="revenue" element={<RevenuePage />} />
           <Route path="schedule" element={<SchedulePage />} />
+          <Route path="schedule/add-schedule" element={<AddSchedulePage />} />
           <Route path="chats" element={<ChatPage />} />
         </Route>
 

@@ -12,7 +12,8 @@ const InputField = ({
     textFontSize,
     textFontWeight,
     mb,
-    borderRadius
+    borderRadius,
+    placeholderColor
 }) => {
     return (
         <Box>
@@ -30,6 +31,7 @@ const InputField = ({
                     sx: {
                         '& .MuiInputBase-input::placeholder': {
                             fontSize: '14px',
+                            color: placeholderColor
                         },
                     },
                 }}

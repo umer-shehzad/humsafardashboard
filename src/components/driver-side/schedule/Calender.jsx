@@ -12,6 +12,7 @@ import { colors } from '../../../utils/colors';
 import CustomButton from '../../common/CustomButton';
 import CustomTodoCard from '../../common/CustomTodoCard';
 import { todoList } from '../../../utils/todoData';
+import { Link } from 'react-router-dom';
 
 const localizer = momentLocalizer(moment);
 
@@ -25,18 +26,23 @@ const Calender = () => {
   };
 
   useEffect(() => {
-    // console.log('filtered events title', filteredEventTitles)
     // Mock schedule data for the selected date
     setEvents([
       {
-        title: 'Meeting with team',
-        start: new Date('2024-07-09T10:00:00'),
-        end: new Date('2024-07-09T12:00:00'),
+        from: 'KSR',
+        to: 'LHR',
+        busNo: '1121',
+        passengers: '20',
+        start: new Date('2024-07-11T10:00:00'),
+        end: new Date('2024-07-11T12:00:00'),
       },
       {
-        title: 'Lunch with client',
-        start: new Date('2024-07-09T17:00:00'),
-        end: new Date('2024-07-09T19:00:00'),
+        from: 'KSR',
+        to: 'LHR',
+        busNo: '1121',
+        passengers: '20',
+        start: new Date('2024-07-11T17:00:00'),
+        end: new Date('2024-07-11T19:00:00'),
       },
     ]);
   }, [value]);
@@ -47,7 +53,9 @@ const Calender = () => {
 
   const EventComponent = ({ event }) => (
     <Box mt={2} ml={3}>
-      <Typography variant='body1'>{event.title}</Typography>
+      <Typography fontSize={18}>{event.from} - {event.to} </Typography>
+      <Typography fontSize={18}>Bus No. {event.busNo}</Typography>
+      <Typography fontSize={18}>Passengers : {event.passengers}</Typography>
     </Box>
   );
 
@@ -59,16 +67,18 @@ const Calender = () => {
           <Typography variant='h4' fontWeight={'bold'}>{value.format('DD-MM-YYYY')}</Typography>
         </Grid>
         <Grid item xs={2}>
-          <CustomButton
-            btnName={'Create New Record'}
-            width={'100%'}
-            gap={'6px'}
-            fontSize={'12px'}
-            marginRight={'10px'}
-            borderRadius={'6px'}
-            fontWeight={500}
-            icon={true}
-          />
+          <Link to={'/driver/schedule/add-schedule'}>
+            <CustomButton
+              btnName={'Create New Record'}
+              width={'100%'}
+              gap={'6px'}
+              fontSize={'12px'}
+              marginRight={'10px'}
+              borderRadius={'6px'}
+              fontWeight={500}
+              icon={true}
+            />
+          </Link>
         </Grid>
       </Grid>
 

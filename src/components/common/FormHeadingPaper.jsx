@@ -2,11 +2,11 @@ import { Box, Paper, Typography } from '@mui/material'
 import React from 'react'
 import { colors } from '../../utils/colors'
 
-const FormHeadingPaper = ({ title, imgPath }) => {
+const FormHeadingPaper = ({ title, imgPath, height, alignItems }) => {
   return (
     <Box
       display={'flex'}
-      alignItems={'end'}
+      alignItems={alignItems}
       component={Paper}
       borderRadius={0}
       width={{lg: '107.8%', md: '115.8%'}}
@@ -23,7 +23,7 @@ const FormHeadingPaper = ({ title, imgPath }) => {
     >
       <Box
         component="img"
-        height={55}
+        height={height}
         alt="Add Person"
         src={imgPath}
       />

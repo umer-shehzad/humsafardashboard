@@ -6,7 +6,7 @@ import FormHeadingPaper from '../../components/common/FormHeadingPaper'
 const AddCarPage = () => {
   return (
     <>
-    <FormHeadingPaper title={'Add Vehicle'} imgPath={'/driver/add-person.svg'} />
+    <FormHeadingPaper title={'Add Vehicle'} imgPath={'/driver/add-person.svg'} height={55} alignItems={'end'} />
     <AddCarForm />
     </>
   )

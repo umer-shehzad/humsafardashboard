@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { Box, Grid, Typography } from '@mui/material';
-import CustomButton from '../../common/CustomButton';
+import { Box, Typography } from '@mui/material';
 import { Form, Formik } from 'formik';
 import CustomSelectField from '../../common/CustomSelectField';
-import { assignDriverOptions, AssignDriverRows, AssignDriverTableRowData } from '../../../utils/RegisteredCarData';
+import { assignDriverOptions } from '../../../utils/RegisteredCarData';
 import { colors } from '../../../utils/colors';
-import { Link, useLocation } from 'react-router-dom';
-import CustomTableTwo from '../../common/CustomTableTwo';
+import { useLocation } from 'react-router-dom';
 import AssignDriverTable from './AssignDriverTable';
 
 const AssignDriverForm = () => {
