@@ -26,4 +26,14 @@ export const colors = {
   revenueCardBorderColor: '#A7A7A7',
   revenueTextColor: '#363636',
   dateBgColor: '#7597AF',
+  chatBorderColor: '#9A9A9A',
+  chatBoxBgColor: '#EDEDED',
+  chatIdtextColor: '#000000B3',
+  chatSearchIconColor: 'rgba(0, 0, 0, 0.5)',
+  scrollBarColor: '#B3B3B3',
+  chatBorderBottomColor: 'rgba(0, 0, 0, 0.17)',
+  chatTimeColor: 'rgba(0, 0, 0, 1)',
+  uploadIconColor: 'rgba(74, 74, 74, 0.5)',
 };
+
+
