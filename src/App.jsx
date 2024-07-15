@@ -16,6 +16,7 @@ import RevenuePage from './pages/driver/RevenuePage';
 import SchedulePage from './pages/driver/SchedulePage';
 import AddSchedulePage from './pages/driver/AddSchedulePage';
 import ChatPage from './pages/driver/ChatPage';
+import EditCarPage from './pages/driver/EditCarPage';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="dashboard" element={<DashboardPage />} />
           <Route path="cars" element={<CarsPage />} />
           <Route path="cars/add-car" element={<AddCarPage />} />
+          <Route path="cars/edit-car" element={<EditCarPage />} />
           <Route path="cars/assign-driver" element={<AssignDriverPage />} />
           <Route path="manage-drivers" element={<ManageDriverPage />} />
           <Route path="revenue" element={<RevenuePage />} />
