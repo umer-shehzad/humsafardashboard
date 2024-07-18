@@ -1,52 +1,65 @@
 import React from 'react';
 import { Field } from 'formik';
-
 import { Box, TextField, Typography } from '@mui/material';
 
 const InputField = ({
-    labelName,
-    fieldName,
-    height,
-    width,
-    placeholder,
-    textFontSize,
-    textFontWeight,
-    mb,
-    borderRadius,
-    placeholderColor
+  labelName,
+  fieldName,
+  height,
+  width,
+  placeholder,
+  textFontSize,
+  textFontWeight,
+  mb,
+  borderRadius,
+  placeholderColor,
+  type,
+  icon,
+  disabled,
 }) => {
-    return (
-        <Box>
-            {/* <Typography fontSize={14} fontWeight={400} mb={0.5}>{labelName}</Typography> */}
-            <Typography fontSize={textFontSize} fontWeight={textFontWeight} mb={mb}>{labelName}</Typography>
-            <Field
-                name={fieldName}
-                as={TextField}
-                variant="outlined"
-                placeholder={placeholder}
-                fullWidth
-                // error={touched.userName && !!errors.userName}
-                // helperText={touched.userName && errors.userName}
-                InputProps={{
-                    sx: {
-                        '& .MuiInputBase-input::placeholder': {
-                            fontSize: '14px',
-                            color: placeholderColor
-                        },
-                    },
-                }}
-                sx={{
-                    '& .MuiOutlinedInput-root': {
-                        height: height,
-                        width: width,
-                        borderRadius: borderRadius,
-                        // height: height || '42px',
-                        // borderRadius: '12px'
-                    }
-                }}
-            />
+  return (
+    <Box>
+      {icon ? (
+        <Box display={'flex'} gap={1}>
+          <Box>{icon}</Box>
+          <Typography fontSize={textFontSize} fontWeight={textFontWeight} mb={mb}>
+            {labelName}
+          </Typography>
         </Box>
-    )
-}
+      ) : (
+        <Typography fontSize={textFontSize} fontWeight={textFontWeight} mb={mb}>
+          {labelName}
+        </Typography>
+      )}
+      <Field name={fieldName}>
+        {({ field }) => (
+          <TextField
+            {...field}
+            variant="outlined"
+            placeholder={placeholder}
+            type={type}
+            fullWidth
+            disabled={disabled}
+            InputProps={{
+              sx: {
+                '& .MuiInputBase-input::placeholder': {
+                  fontSize: '14px',
+                  color: placeholderColor,
+                },
+              },
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                height: height,
+                width: width,
+                borderRadius: borderRadius,
+              },
+            }}
+          />
+        )}
+      </Field>
+    </Box>
+  );
+};
 
-export default InputField
+export default InputField;

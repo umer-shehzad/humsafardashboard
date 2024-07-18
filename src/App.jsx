@@ -17,6 +17,7 @@ import SchedulePage from './pages/driver/SchedulePage';
 import AddSchedulePage from './pages/driver/AddSchedulePage';
 import ChatPage from './pages/driver/ChatPage';
 import EditCarPage from './pages/driver/EditCarPage';
+import ProfileSettingPage from './components/driver-side/car/ProfileSettingPage';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           <Route path="schedule" element={<SchedulePage />} />
           <Route path="schedule/add-schedule" element={<AddSchedulePage />} />
           <Route path="chats" element={<ChatPage />} />
+          <Route path="profile-settings" element={<ProfileSettingPage />} />
         </Route>
 
         {/* Global - Page Not Found - Route */}
