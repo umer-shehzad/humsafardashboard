@@ -15,7 +15,7 @@ import { colors } from '../../utils/colors';
 import CustomIcon from './CustomIcon';
 import { Link } from 'react-router-dom';
 
-const CustomTableTwo = ({ tableRowData, rows }) => {
+const CustomTableTwo = ({ tableRowData, rows, path }) => {
   return (
     <Box display={'flex'} flexDirection={'column'} rowGap={4}>
       {/* Table */}
@@ -114,7 +114,7 @@ const CustomTableTwo = ({ tableRowData, rows }) => {
                 </TableCell>
                 <TableCell align="center" sx={{ borderBottom: 'none' }}>
                   <Box display={'flex'} justifyContent={'center'} gap={1}>
-                    <Link to={'/driver/cars/edit-car'}>
+                    <Link to={path}>
                     <CustomIcon iconName="edit" color={colors.editIconBgColor} size="1.2rem" />
                     </Link>
                     <CustomIcon iconName="delete" color={colors.deleteIconBgColor} size="1.2rem" />

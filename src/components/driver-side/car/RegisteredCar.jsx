@@ -33,7 +33,7 @@ const RegisteredCar = () => {
 
       {/* Car Registered Table */}
       <Box>
-        <CustomTableTwo tableRowData={TableRowData} rows={Rows} />
+        <CustomTableTwo tableRowData={TableRowData} rows={Rows} path={'/driver/cars/edit-car'}/>
       </Box>
 
       <Box>
