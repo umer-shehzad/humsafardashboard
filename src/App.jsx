@@ -17,7 +17,8 @@ import SchedulePage from './pages/driver/SchedulePage';
 import AddSchedulePage from './pages/driver/AddSchedulePage';
 import ChatPage from './pages/driver/ChatPage';
 import EditCarPage from './pages/driver/EditCarPage';
-import ProfileSettingPage from './components/driver-side/car/ProfileSettingPage';
+import ProfileSettingPage from './pages/driver/ProfileSettingPage';
+import AddDriverPage from './pages/driver/AddDriverPage';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="cars/edit-car" element={<EditCarPage />} />
           <Route path="cars/assign-driver" element={<AssignDriverPage />} />
           <Route path="manage-drivers" element={<ManageDriverPage />} />
+          <Route path="manage-drivers/add-driver" element={<AddDriverPage />} />
           <Route path="revenue" element={<RevenuePage />} />
           <Route path="schedule" element={<SchedulePage />} />
           <Route path="schedule/add-schedule" element={<AddSchedulePage />} />

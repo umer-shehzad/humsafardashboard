@@ -1,8 +1,8 @@
 import { Box } from '@mui/material'
 import React from 'react'
-import Heading from '../profile-settings/Heading'
-import ImageSection from '../profile-settings/ImageSection'
-import UserDataForm from '../profile-settings/UserDataForm'
+import Heading from '../../components/driver-side/profile-settings/Heading'
+import ImageSection from '../../components/driver-side/profile-settings/ImageSection'
+import UserDataForm from '../../components/driver-side/profile-settings/UserDataForm'
 
 const ProfileSettingPage = () => {
   return (

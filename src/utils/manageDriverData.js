@@ -16,3 +16,14 @@ export const TableRowData = {
     createData('1', 'Ester', '(+33)7 00 55 57 60', '34 LEJ 46', 'Inactive'),
     createData('2', 'Bessie', '+7 (809) 510-45-80', '34 LED 95', 'Active'),
   ];
+
+  export const genderOptions = [
+    {
+      label: 'Male',
+      value: 'male'
+    },
+    {
+      label: 'Female',
+      value: 'female'
+    },
+  ];
