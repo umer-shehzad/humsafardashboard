@@ -130,6 +130,18 @@ export const facilitiesOptions = [
   },
 ];
 
+
+export const statusOptions = [
+  {
+    label: 'Active',
+    value: 1
+  },
+  {
+    label: 'InActive',
+    value: 0
+  },
+];
+
 export const AssignDriverTableRowData = {
   val1: 'Sr No.',
   val2: `Driver's Name`,

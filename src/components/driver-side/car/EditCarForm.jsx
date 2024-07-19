@@ -7,7 +7,7 @@ import CustomButton from '../../common/CustomButton';
 import { Form, Formik } from 'formik';
 import InputField from '../../common/InputField';
 import CustomSelectField from '../../common/CustomSelectField';
-import { facilitiesOptions, } from '../../../utils/RegisteredCarData';
+import { facilitiesOptions, statusOptions, } from '../../../utils/RegisteredCarData';
 
 const EditCarForm = () => {
   return (
@@ -53,14 +53,14 @@ const EditCarForm = () => {
             >
 
               <InputField labelName="Vehicle Name" fieldName="vehicleName" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
-              <InputField labelName="Registration Number" fieldName="registrationNumber" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
-              <InputField labelName="Chasis Number" fieldName="chasisNumber" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
-              <InputField labelName="Engine Number" fieldName="engineNumber" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
+              <InputField labelName="Registration No." fieldName="registrationNumber" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
+              <InputField labelName="Chasis No." fieldName="chasisNumber" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
+              <InputField labelName="Engine No." fieldName="engineNumber" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
               <InputField labelName="No. of Seats" fieldName="seats" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
               <InputField labelName="Fuel Tank Capacity" fieldName="tankCapacity" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
               <InputField labelName="Assigned Driver" fieldName="assignedDriver" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
-              <InputField labelName="Status" fieldName="status" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
 
+              <CustomSelectField fieldName={'status'} labelName={'Status'} options={statusOptions} height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
               <CustomSelectField fieldName={'facilities'} labelName={'Facilities'} options={facilitiesOptions} height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
 
               <Grid container mt={2} mb={5} gap={5}>
