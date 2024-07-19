@@ -108,16 +108,18 @@ const CustomTableTwo = ({ tableRowData, rows, path }) => {
                 <TableCell align='center' sx={{ borderBottom: 'none' }}>{row.id}</TableCell>
                 <TableCell align='center' sx={{ borderBottom: 'none' }}>{row.driverName}</TableCell>
                 <TableCell align="center" sx={{ borderBottom: 'none' }}>{row.emailPhone}</TableCell>
-                <TableCell align="center" sx={{ borderBottom: 'none', color: row.licenceNo === 'Completed' ? colors.textTertiaryColor : colors.dangerColor }}>{row.licenceNo}</TableCell>
+                <TableCell align="center" sx={{ borderBottom: 'none', color: row.licenceNo === 'Completed' ? colors.textTertiaryColor : row.licenceNo === 'Pending' ? colors.dangerColor : 'inherit' }}>{row.licenceNo}</TableCell>
                 <TableCell align="center" sx={{ borderBottom: 'none', color: row.status === 'Active' ? colors.textTertiaryColor : 'inherit' }}>
                   {row.status}
                 </TableCell>
                 <TableCell align="center" sx={{ borderBottom: 'none' }}>
                   <Box display={'flex'} justifyContent={'center'} gap={1}>
                     <Link to={path}>
-                    <CustomIcon iconName="edit" color={colors.editIconBgColor} size="1.2rem" />
+                      <CustomIcon iconName="edit" color={colors.editIconBgColor} size="1.2rem" />
                     </Link>
-                    <CustomIcon iconName="delete" color={colors.deleteIconBgColor} size="1.2rem" />
+                    <Box>
+                      <CustomIcon iconName="delete" color={colors.deleteIconBgColor} size="1.2rem" />
+                    </Box>
                   </Box>
                 </TableCell>
               </TableRow>
