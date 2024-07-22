@@ -96,7 +96,7 @@ const Calender = () => {
             min={new Date(2024, 6, 10, 10, 0)} // Start time at 8 AM
             max={new Date(2024, 6, 10, 21, 0)} // End time at 8 PM
             toolbar={false} // Remove the toolbar
-            maxDate={new Date()} // Disable future dates
+            minDate={new Date()} // Disable past dates
             components={{
               event: EventComponent,
             }}
@@ -111,7 +111,7 @@ const Calender = () => {
               <DateCalendar
                 value={value}
                 onChange={handleDateChange}
-                maxDate={today} // Disable future dates
+                minDate={today} // Disable past dates
                 sx={{
                   width: '100%',
                   "& .MuiButtonBase-root.MuiPickersDay-root.Mui-selected": {
