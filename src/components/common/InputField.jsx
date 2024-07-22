@@ -16,6 +16,8 @@ const InputField = ({
   type,
   icon,
   disabled,
+  borderRadiusRightTop,
+  borderRadiusRightBottom
 }) => {
   return (
     <Box>
@@ -53,6 +55,8 @@ const InputField = ({
                 height: height,
                 width: width,
                 borderRadius: borderRadius,
+                borderTopRightRadius: borderRadiusRightTop,
+                borderBottomRightRadius: borderRadiusRightBottom,
               },
             }}
           />

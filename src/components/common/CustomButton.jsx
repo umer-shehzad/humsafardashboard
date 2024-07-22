@@ -7,6 +7,7 @@ import { colors } from '../../utils/colors';
 
 const CustomButton = ({
     btnName,
+    type,
     width,
     mt,
     changeColor,
@@ -18,12 +19,15 @@ const CustomButton = ({
     borderRadius,
     fontSize,
     fontWeight,
-    icon
+    icon,
+    iconFontSize,
+    borderRadiusLeftTop,
+    borderRadiusLeftBottom
 }) => {
     return (
         <Box textAlign={'center'} mt={mt}>
             <Button
-                type="submit"
+                type= {type || "submit"}
                 variant="contained"
                 onClick={onClick}
                 sx={{
@@ -31,6 +35,8 @@ const CustomButton = ({
                     backgroundColor: changeColor ? colors.editIconBgColor : colors.btnBgColor,
                     color: colors.btnColor,
                     borderRadius: borderRadius || '12px',
+                    borderTopLeftRadius: borderRadiusLeftTop,
+                    borderBottomLeftRadius: borderRadiusLeftBottom,
                     height: height || '42px',
                     width: width || '92%',
                     gap: gap,
@@ -45,7 +51,7 @@ const CustomButton = ({
                     }
                 }}
             >
-                {icon && (<AddOutlinedIcon sx={{ fontSize: '1.1rem' }} />)}
+                {icon && (<AddOutlinedIcon sx={{ fontSize: iconFontSize || '1.1rem' }} />)}
                 {btnName}
             </Button>
         </Box>

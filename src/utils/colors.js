@@ -35,6 +35,7 @@ export const colors = {
   chatTimeColor: 'rgba(0, 0, 0, 1)',
   uploadIconColor: 'rgba(74, 74, 74, 0.5)',
   doneBtnColor: '#3C3030',
+  todoModalBgColor: '#D9D9D9',
 };
 
 

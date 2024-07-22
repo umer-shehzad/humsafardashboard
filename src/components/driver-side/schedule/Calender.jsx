@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Modal, Typography } from '@mui/material';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -13,13 +13,18 @@ import CustomButton from '../../common/CustomButton';
 import CustomTodoCard from '../../common/CustomTodoCard';
 import { todoList } from '../../../utils/todoData';
 import { Link } from 'react-router-dom';
+import AddTodoModal from './AddTodoModal';
 
 const localizer = momentLocalizer(moment);
 
 const Calender = () => {
   const [value, setValue] = useState(dayjs());
   const [events, setEvents] = useState([]);
+  const [open, setOpen] = useState(false);
   const today = dayjs();
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const handleDateChange = (newValue) => {
     setValue(newValue);
@@ -148,10 +153,26 @@ const Calender = () => {
                 borderRadius={'6px'}
                 fontWeight={500}
                 icon={true}
+                onClick={handleOpen} // Open modal on click
               />
             </Box>
 
             {/* todo card */}
+
+            {/* {todoList.map((todo, index) => (
+              <CustomTodoCard
+                key={todo.id}
+                bgcolor={colors[`todoColor${index + 1}`]}
+                headingPL={4}
+                headingPR={2}
+                boxGap={1}
+                listPL={9.5}
+                todoList={todoList}
+                doneBtnColor={colors.doneBtnColor}
+                iconColor={colors.textFifthColor}
+              />
+            ))} */}
+            
             <CustomTodoCard
               bgcolor={colors.todoColor1}
               headingPL={4}
@@ -182,6 +203,23 @@ const Calender = () => {
               doneBtnColor={colors.doneBtnColor}
               iconColor={colors.textFifthColor}
             />
+
+            {/* Add New Todo Component - Modal */}
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                height="100vh"
+              >
+                <AddTodoModal onClose={handleClose} />
+              </Box>
+            </Modal>
           </Box>
         </Grid>
       </Grid>
