@@ -159,6 +159,8 @@ const Calender = () => {
               boxGap={1}
               listPL={9.5}
               todoList={todoList}
+              doneBtnColor={colors.doneBtnColor}
+              iconColor={colors.textFifthColor}
             />
             <CustomTodoCard
               bgcolor={colors.todoColor2}
@@ -167,6 +169,8 @@ const Calender = () => {
               boxGap={1}
               listPL={9.5}
               todoList={todoList}
+              doneBtnColor={colors.doneBtnColor}
+              iconColor={colors.textFifthColor}
             />
             <CustomTodoCard
               bgcolor={colors.todoColor3}
@@ -175,6 +179,8 @@ const Calender = () => {
               boxGap={1}
               listPL={9.5}
               todoList={todoList}
+              doneBtnColor={colors.doneBtnColor}
+              iconColor={colors.textFifthColor}
             />
           </Box>
         </Grid>

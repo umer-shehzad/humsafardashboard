@@ -1,7 +1,7 @@
 import React from 'react';
 import { CiEdit } from "react-icons/ci";
 
-import { Box, Checkbox, Typography } from '@mui/material';
+import { Box, Button, Checkbox, Typography } from '@mui/material';
 
 const CustomTodoCard = ({
   bgcolor,
@@ -9,7 +9,9 @@ const CustomTodoCard = ({
   headingPR,
   boxGap,
   listPL,
-  todoList
+  todoList,
+  doneBtnColor,
+  iconColor,
 }) => {
   return (
     <Box
@@ -31,27 +33,60 @@ const CustomTodoCard = ({
             />
             <Typography variant="subtitle2" fontWeight={'bold'}>Car Maintenance</Typography>
           </Box>
-          <Box>
+          <Button
+            variant="text"
+            disableRipple
+            disableFocusRipple
+            sx={{
+              textTransform: 'none',
+              color: iconColor,
+              padding: 0,
+              '&:hover': {
+                backgroundColor: 'transparent',
+              },
+            }}
+          >
             <CiEdit size={20} />
-          </Box>
+          </Button>
         </Box>
 
         {/* todo list */}
         <Box pl={listPL}>
-          {todoList.map((item) => (
-            <Box key={item.id} display={'flex'} alignItems={'center'} gap={1}>
-              <Checkbox
-                color="primary"
+          <>
+            {todoList.map((item) => (
+              <Box key={item.id} display={'flex'} alignItems={'center'} gap={1}>
+                <Checkbox
+                  color="primary"
+                  sx={{
+                    padding: '0px',
+                    '& .MuiSvgIcon-root': {
+                      fontSize: '1rem',
+                    },
+                  }}
+                />
+                <Typography variant="subtitle2">{item.value}</Typography>
+              </Box>
+            ))}
+            <Box textAlign={'right'} pr={headingPR}>
+              <Button
+                variant={'text'}
+                disableRipple
+                disableFocusRipple
                 sx={{
-                  padding: '0px',
-                  '& .MuiSvgIcon-root': {
-                    fontSize: '1rem',
+                  textTransform: 'none',
+                  color: doneBtnColor,
+                  fontWeight: '500',
+                  fontSize: 11,
+                  padding: 0,
+                  '&:hover': {
+                    backgroundColor: 'transparent',
                   },
                 }}
-              />
-              <Typography variant="subtitle2">{item.value}</Typography>
+              >
+                Done
+              </Button>
             </Box>
-          ))}
+          </>
         </Box>
       </Box>
     </Box>
