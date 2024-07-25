@@ -22,13 +22,15 @@ const CustomButton = ({
     icon,
     iconFontSize,
     borderRadiusLeftTop,
-    borderRadiusLeftBottom
+    borderRadiusLeftBottom,
+    disabled
 }) => {
     return (
         <Box textAlign={'center'} mt={mt}>
             <Button
                 type= {type || "submit"}
                 variant="contained"
+                disabled={disabled}
                 onClick={onClick}
                 sx={{
                     textTransform: 'none',

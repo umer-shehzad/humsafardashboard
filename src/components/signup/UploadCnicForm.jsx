@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CloseIcon from '@mui/icons-material/Close';
@@ -10,10 +10,13 @@ import { Box, Button, IconButton, LinearProgress, Typography } from '@mui/materi
 import { colors } from '../../utils/colors';
 import CustomButton from '../common/CustomButton';
 import HumsafarLogo from '../common/HumsafarLogo';
+import CustomImage from '../common/CustomImage';
 
 const UploadCnicForm = () => {
   const [files, setFiles] = useState([]);
   const navigate = useNavigate();
+  const location = useLocation();
+
   const { getRootProps, getInputProps, open } = useDropzone({
     noClick: true,
     noKeyboard: true,
@@ -29,6 +32,7 @@ const UploadCnicForm = () => {
   });
 
   useEffect(() => {
+    console.log("sign-up personal-info", location.state)
     files.forEach((fileObj, index) => {
       if (!fileObj.uploaded && fileObj.progress < 100) {
         const simulateUpload = () => {
@@ -58,12 +62,7 @@ const UploadCnicForm = () => {
   };
 
   const handleContinueBtnClick = () => {
-    if (files.length === 2) {
-      console.log("Sign Up Upload CNIC Click");
-      navigate('/signup/password');
-    } else {
-      console.log("Please upload exactly two files.");
-    }
+    navigate('/signup/password');
   }
 
   return (
@@ -97,11 +96,10 @@ const UploadCnicForm = () => {
           <input {...getInputProps()} />
 
           <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} rowGap={3} my={2}>
-            <Box
-              component="img"
-              sx={{ width: '40%' }}
-              alt="Drag and Drop"
-              src="/signup/draganddrop.png"
+            <CustomImage
+              src={'/signup/draganddrop.png'}
+              alt={'Drag and Drop'}
+              width='40%'
             />
             <Typography fontSize={18} fontWeight={600}>OR</Typography>
             <Button
@@ -211,7 +209,7 @@ const UploadCnicForm = () => {
 
           {/* Continue Button */}
           <Box mb={3} mt={6}>
-            <CustomButton btnName={'Continue'} width={'95%'} onClick={handleContinueBtnClick} />
+            <CustomButton btnName={'Continue'} width={'95%'} onClick={handleContinueBtnClick} disabled={files.length < 2} />
           </Box>
         </Box>
       )}

@@ -6,66 +6,56 @@ import Grid from '@mui/material/Grid';
 
 import PasswordForm from '../../components/signup/PasswordForm';
 import { colors } from '../../utils/colors';
+import CustomImage from '../../components/common/CustomImage';
 
 export default function Password() {
-    const handleSubmit = (event) => {
-        // event.preventDefault();
-        // const data = new FormData(event.currentTarget);
-        // console.log({
-        //     email: data.get('email'),
-        //     password: data.get('password'),
-        // });
-    };
-
-    return (
-        <Box
-            display={'flex'}
-            alignItems={'center'}
-            justifyContent={'center'}
-            height={'100vh'}
-            sx={{
-				position: 'relative',
-				background: `linear-gradient(to bottom right, transparent 70%, ${colors.gradientColor})`,
-				overflow: 'hidden',
-			}}
+  return (
+    <Box
+      display={'flex'}
+      alignItems={'center'}
+      justifyContent={'center'}
+      height={'100vh'}
+      sx={{
+        position: 'relative',
+        background: `linear-gradient(to bottom right, transparent 70%, ${colors.gradientColor})`,
+        overflow: 'hidden',
+      }}
+    >
+      <Grid container component="main" columnGap={10}
+        sx={{
+          height: { lg: '85vh', xs: '100vh' },
+          width: '85%'
+        }}
+      >
+        <CssBaseline />
+        {/* Image */}
+        <Grid
+          item
+          xs={false}
+          lg={6}
+          my={'auto'}
         >
-            <Grid container component="main" columnGap={10}
-                sx={{
-                    height: { lg: '85vh', xs: '100vh' },
-                    width: '85%'
-                }}
-            >
-                <CssBaseline />
-                {/* Image */}
-                <Grid
-                    item
-                    xs={false}
-                    lg={6}
-                    my={'auto'}
-                >
-                    <Box
-                        component="img"
-                        sx={{ width: '80%', height: '55vh', display: { xs: 'none', lg: 'block' } }}
-                        alt="Logo"
-                        src="/signup/pic3.png"
-                    />
-                </Grid>
+          <CustomImage
+            src={'/signup/pic3.png'}
+            alt={'Logo'}
+            height={'60vh'}
+            sx={{ display: { xs: 'none', lg: 'block' } }}
+          />
+        </Grid>
 
-                {/* Form */}
-                <Grid item xs={12} sm={8} md={5} lg={5} my={'auto'}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                        }}
-                    >
+        {/* Form */}
+        <Grid item xs={12} sm={8} md={5} lg={5} my={'auto'}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <PasswordForm />
+          </Box>
+        </Grid>
 
-                        <PasswordForm />
-
-                    </Box>
-                </Grid>
-
-            </Grid>
-        </Box>
-    );
+      </Grid>
+    </Box>
+  );
 }

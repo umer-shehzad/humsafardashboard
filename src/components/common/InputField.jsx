@@ -17,7 +17,9 @@ const InputField = ({
   icon,
   disabled,
   borderRadiusRightTop,
-  borderRadiusRightBottom
+  borderRadiusRightBottom,
+  touched,
+  errors,
 }) => {
   return (
     <Box>
@@ -42,6 +44,8 @@ const InputField = ({
             type={type}
             fullWidth
             disabled={disabled}
+            error={touched[fieldName] && !!errors[fieldName]}
+            helperText={touched[fieldName] && errors[fieldName]}
             InputProps={{
               sx: {
                 '& .MuiInputBase-input::placeholder': {
