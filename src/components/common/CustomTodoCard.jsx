@@ -10,8 +10,10 @@ const CustomTodoCard = ({
   boxGap,
   listPL,
   todoList,
+  title,
   doneBtnColor,
   iconColor,
+  onClick,
 }) => {
   return (
     <Box
@@ -31,10 +33,11 @@ const CustomTodoCard = ({
               component={'img'}
               src={'/driver/maintenance.svg'}
             />
-            <Typography variant="subtitle2" fontWeight={'bold'}>Car Maintenance</Typography>
+            <Typography variant="subtitle2" fontWeight={'bold'}>{title}</Typography>
           </Box>
           <Button
             variant="text"
+            onClick={onClick}
             disableRipple
             disableFocusRipple
             sx={{

@@ -14,16 +14,28 @@ import CustomTodoCard from '../../common/CustomTodoCard';
 import { todoList } from '../../../utils/todoData';
 import { Link } from 'react-router-dom';
 import AddTodoModal from './AddTodoModal';
+import EditTodoModal from './EditTodoModal';
 
 const localizer = momentLocalizer(moment);
 
 const Calender = () => {
   const [value, setValue] = useState(dayjs());
+  const [modalType, setModalType] = useState(null);
+  const [selectedTodo, setSelectedTodo] = useState(null);
   const [events, setEvents] = useState([]);
   const [open, setOpen] = useState(false);
   const today = dayjs();
 
-  const handleOpen = () => setOpen(true);
+  const handleOpenAddTodo = () => {
+    setModalType('add');
+    setOpen(true);
+  };
+
+  const handleOpenEditTodo = (todo) => {
+    setSelectedTodo(todo);
+    setModalType('edit');
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
 
   const handleDateChange = (newValue) => {
@@ -153,13 +165,12 @@ const Calender = () => {
                 borderRadius={'6px'}
                 fontWeight={500}
                 icon={true}
-                onClick={handleOpen} // Open modal on click
+                onClick={handleOpenAddTodo} // Open modal on click
               />
             </Box>
 
             {/* todo card */}
-
-            {/* {todoList.map((todo, index) => (
+            {todoList.map((todo, index) => (
               <CustomTodoCard
                 key={todo.id}
                 bgcolor={colors[`todoColor${index + 1}`]}
@@ -167,42 +178,13 @@ const Calender = () => {
                 headingPR={2}
                 boxGap={1}
                 listPL={9.5}
-                todoList={todoList}
+                todoList={todo.data}
+                title={todo.title}
+                onClick={() => handleOpenEditTodo(todo)}
                 doneBtnColor={colors.doneBtnColor}
                 iconColor={colors.textFifthColor}
               />
-            ))} */}
-            
-            <CustomTodoCard
-              bgcolor={colors.todoColor1}
-              headingPL={4}
-              headingPR={2}
-              boxGap={1}
-              listPL={9.5}
-              todoList={todoList}
-              doneBtnColor={colors.doneBtnColor}
-              iconColor={colors.textFifthColor}
-            />
-            <CustomTodoCard
-              bgcolor={colors.todoColor2}
-              headingPL={4}
-              headingPR={2}
-              boxGap={1}
-              listPL={9.5}
-              todoList={todoList}
-              doneBtnColor={colors.doneBtnColor}
-              iconColor={colors.textFifthColor}
-            />
-            <CustomTodoCard
-              bgcolor={colors.todoColor3}
-              headingPL={4}
-              headingPR={2}
-              boxGap={1}
-              listPL={9.5}
-              todoList={todoList}
-              doneBtnColor={colors.doneBtnColor}
-              iconColor={colors.textFifthColor}
-            />
+            ))}
 
             {/* Add New Todo Component - Modal */}
             <Modal
@@ -217,7 +199,17 @@ const Calender = () => {
                 justifyContent="center"
                 height="100vh"
               >
-                <AddTodoModal onClose={handleClose} />
+                {
+                  modalType === 'add'
+                    ? <AddTodoModal onClose={handleClose} />
+                    : (
+                      <EditTodoModal
+                        onClose={handleClose}
+                        todoTitle={selectedTodo?.title}
+                        todoData={selectedTodo?.data}
+                      />
+                    )
+                }
               </Box>
             </Modal>
           </Box>
