@@ -11,6 +11,10 @@ import { SignupSchema } from '../../utils/constants';
 const PersonalInfoForm = () => {
   const navigate = useNavigate();
 
+  const handleSignInClick = () => {
+    navigate('/login')
+  }
+
   return (
     <Box display={'flex'} flexDirection={'column'}>
       {/* Title */}
@@ -25,6 +29,7 @@ const PersonalInfoForm = () => {
           variant="text"
           disableRipple
           disableFocusRipple
+          onClick={handleSignInClick}
           sx={{
             textTransform: 'none',
             color: 'black',

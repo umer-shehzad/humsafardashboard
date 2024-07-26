@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useNavigate, useLocation } from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { Box, Button, CircularProgress, IconButton, LinearProgress, Typography } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CloseIcon from '@mui/icons-material/Close';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Box, Button, IconButton, LinearProgress, Typography } from '@mui/material';
-
 import { colors } from '../../utils/colors';
 import CustomButton from '../common/CustomButton';
 import HumsafarLogo from '../common/HumsafarLogo';
 import CustomImage from '../common/CustomImage';
+import { imageUploadThunk } from '../../redux/thunks/imageThunk';
 
 const UploadCnicForm = () => {
   const [files, setFiles] = useState([]);
+  const [images, setImages] = useState([]);
+  const dispatch = useDispatch();
+  const { isLoading } = useSelector((state) => state.image);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -21,18 +24,30 @@ const UploadCnicForm = () => {
     noClick: true,
     noKeyboard: true,
     maxFiles: 2,
-    onDrop: (acceptedFiles) => {
+    onDrop: async (acceptedFiles) => {
       const filesWithProgress = acceptedFiles.map(file => ({
         file,
         progress: 0,
         uploaded: false,
       }));
       setFiles(prevFiles => [...prevFiles, ...filesWithProgress].slice(0, 2));
+
+      const uploadFile = async (file) => {
+        try {
+          const response = await dispatch(imageUploadThunk({file})).unwrap();
+          setImages(prevImages => [...prevImages, response]);
+        } catch (error) {
+          console.error('Error uploading image:', error);
+        }
+      };
+
+      for (let i = 0; i < acceptedFiles.length; i++) {
+        await uploadFile(acceptedFiles[i], i);
+      }
     }
   });
 
   useEffect(() => {
-    console.log("sign-up personal-info", location.state)
     files.forEach((fileObj, index) => {
       if (!fileObj.uploaded && fileObj.progress < 100) {
         const simulateUpload = () => {
@@ -62,17 +77,20 @@ const UploadCnicForm = () => {
   };
 
   const handleContinueBtnClick = () => {
-    navigate('/signup/password');
-  }
+    const [cnicFront, cnicBack] = images
+    navigate('/signup/password', {
+      state: {
+        ...location.state,
+        cnicFront,
+        cnicBack
+      }
+    });
+  };
 
   return (
     <Box display="flex" flexDirection="column" rowGap={6} mt={files.length > 0 ? 13 : 0}>
-      {/* Humsafar Logo */}
       <HumsafarLogo />
-
-      {/* Upload File */}
       <Box>
-        {/* Title */}
         <Box display={'flex'} columnGap={1} mb={1}>
           <Typography fontSize={18} fontWeight={400}>
             Upload Your CNIC
@@ -81,8 +99,6 @@ const UploadCnicForm = () => {
             (front and back)
           </Typography>
         </Box>
-
-        {/* upload file code */}
         <Box
           {...getRootProps()}
           sx={{
@@ -94,7 +110,6 @@ const UploadCnicForm = () => {
           }}
         >
           <input {...getInputProps()} />
-
           <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} rowGap={3} my={2}>
             <CustomImage
               src={'/signup/draganddrop.png'}
@@ -127,11 +142,8 @@ const UploadCnicForm = () => {
           </Box>
         </Box>
       </Box>
-
-      {/* Selected Files */}
       {files.length > 0 && (
         <Box>
-          {/* title */}
           <Box display={'flex'}>
             <Typography fontSize={18} fontWeight={600}>
               Selected Files
@@ -140,14 +152,10 @@ const UploadCnicForm = () => {
               ({files.length})
             </Typography>
           </Box>
-
-          {/* show upload files */}
           <Box>
             {files.map((fileObj, index) => (
               <Box key={fileObj.file.path}>
-                {/* Main Content */}
                 <Box display="flex" alignItems="center" mt={3}>
-                  {/* Image logo */}
                   <Box display={'flex'} justifyContent={'center'} alignItems={'center'} border={2} borderColor={'#858585'} borderRadius={20} width={32} height={32} mr={1}>
                     <Box
                       component="img"
@@ -155,8 +163,6 @@ const UploadCnicForm = () => {
                       src="/signup/upload-img-logo.png"
                     />
                   </Box>
-
-                  {/* image details */}
                   <Box flexGrow={1}>
                     <Typography fontSize={14} fontWeight={600}>
                       {fileObj.file.name}
@@ -172,45 +178,38 @@ const UploadCnicForm = () => {
                       </Typography>
                     )}
                   </Box>
-
-                  {/* Delete & Close Icon */}
                   <Box display="flex" alignItems="center">
                     {fileObj.uploaded ? (
-                      <IconButton onClick={() => removeFile(index)} size="small">
+                      <IconButton onClick={() => removeFile(index)} size="small" disabled={isLoading}>
                         <DeleteIcon fontSize="small" />
                       </IconButton>
                     ) : (
-                      <>
-                        <IconButton onClick={() => removeFile(index)} size="small">
-                          <CloseIcon fontSize="small" />
-                        </IconButton>
-                      </>
+                      <IconButton onClick={() => removeFile(index)} size="small">
+                        <CloseIcon fontSize="small" />
+                      </IconButton>
                     )}
                   </Box>
                 </Box>
-
-                {/* Progress Bar */}
                 <Box display="flex" alignItems="center">
                   {fileObj.uploaded ? (
                     ''
                   ) : (
-                    <>
-                      <LinearProgress
-                        variant="determinate"
-                        value={fileObj.progress}
-                        sx={{ width: '100%' }}
-                      />
-                    </>
+                    <LinearProgress
+                      variant="determinate"
+                      value={fileObj.progress}
+                      sx={{ width: '100%' }}
+                    />
                   )}
                 </Box>
               </Box>
             ))}
           </Box>
-
-          {/* Continue Button */}
-          <Box mb={3} mt={6}>
-            <CustomButton btnName={'Continue'} width={'95%'} onClick={handleContinueBtnClick} disabled={files.length < 2} />
-          </Box>
+          <Box textAlign={'center'} mb={3} mt={6}>
+            { ( (files.length === 2) & isLoading )
+            ? <CircularProgress />
+            :<CustomButton btnName={'Continue'} width={'95%'} onClick={handleContinueBtnClick} disabled={files.length < 2} />
+            }
+            </Box>
         </Box>
       )}
     </Box>

@@ -1,22 +1,31 @@
 import React, { useState } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { Box, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
-import { Modal, } from '@mui/material';
-
+import { Box, IconButton, InputAdornment, TextField, Typography, Modal } from '@mui/material';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { colors } from '../../utils/colors';
 import ConfirmationModalContent from '../common/ConfirmationModalContent';
 import CustomButton from '../common/CustomButton';
 import HumsafarLogo from '../common/HumsafarLogo';
 import { PasswordSchema } from '../../utils/constants';
+import { userSignupThunk } from '../../redux/thunks/authThunk';
 
 const PasswordForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [open, setOpen] = useState(false);
+
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    navigate('/login');
+  }
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -28,30 +37,45 @@ const PasswordForm = () => {
 
   return (
     <Box display="flex" flexDirection="column" rowGap={5}>
-      {/* Humsafar Logo */}
+      <ToastContainer position="top-right" autoClose={7000} />
       <HumsafarLogo />
-
-      {/* Form */}
       <Formik
         initialValues={{
           password: '',
           confirmPassword: '',
         }}
         validationSchema={PasswordSchema}
-        onSubmit={(values) => {
-          console.log(values);
-          handleOpen();
-
-          // clear values
-          values.password = '';
-          values.confirmPassword = '';
+        onSubmit={async (values) => {
+          try {
+            const { password } = values;
+            const role = 'Owner';
+            const signup = {
+              data: {
+                ...location.state,
+                password,
+                role,
+              }
+            }
+            await dispatch(userSignupThunk(signup.data)).unwrap();
+            // open Thank you modal
+            handleOpen();
+            
+            // clear value
+            values.password = '';
+            values.confirmPassword = '';
+          } catch (error) {
+            console.error('Error while SignUp:', error);
+            if (error.statusCode === 409) {
+              toast.error('A user with the same email or contact number already exists. Please try again!', {
+                onClose: () => navigate('/signup/personal-info'),
+              });
+            }
+          }
         }}
       >
         {({ errors, touched }) => (
           <Form>
             <Box display="flex" flexDirection="column" rowGap={2}>
-
-              {/* Password Field */}
               <Box>
                 <Typography variant="body2" mb={0.5}>Password</Typography>
                 <Field
@@ -93,8 +117,6 @@ const PasswordForm = () => {
                   }}
                 />
               </Box>
-
-              {/* Confirm Password Field */}
               <Box>
                 <Typography variant="body2" mb={0.5}>Confirm Password</Typography>
                 <Field
@@ -136,14 +158,9 @@ const PasswordForm = () => {
                   }}
                 />
               </Box>
-
-              {/* Continue Button */}
               <CustomButton btnName="Continue" mt={4} />
-
-              {/* Modal */}
               <Modal
                 open={open}
-                onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 sx={{
