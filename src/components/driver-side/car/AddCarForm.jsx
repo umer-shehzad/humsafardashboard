@@ -59,22 +59,22 @@ const AddCarForm = () => {
               rowGap={1.75}
             >
 
-              <InputField labelName="Registration Number" fieldName="registrationNumber" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
-              <InputField labelName="Chasis Number" fieldName="chasisNumber" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
-              <InputField labelName="Engine Number" fieldName="engineNumber" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
-              <InputField labelName="No. of Seats" fieldName="seats" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
-              <InputField labelName="Fuel Tank Capacity" fieldName="tankCapacity" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
-              <InputField labelName="Vehicle Owner Name" fieldName="name" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
-              <InputField labelName="Vehicle Owner CNIC" fieldName="cnic" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
-              <InputField labelName="Vehicle Owner Contact No." fieldName="number" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
-              <InputField labelName="Vehicle Owner Address" fieldName="address" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
-              <InputField labelName="Horse Power" fieldName="horsePower" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
-              <InputField labelName="Transport Type" fieldName="transportType" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
+              <InputField labelName="Registration Number" fieldName="registrationNumber" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} touched={touched} errors={errors} />
+              <InputField labelName="Chasis Number" fieldName="chasisNumber" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} touched={touched} errors={errors} />
+              <InputField labelName="Engine Number" fieldName="engineNumber" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} touched={touched} errors={errors} />
+              <InputField labelName="No. of Seats" fieldName="seats" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} touched={touched} errors={errors} />
+              <InputField labelName="Fuel Tank Capacity" fieldName="tankCapacity" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} touched={touched} errors={errors} />
+              <InputField labelName="Vehicle Owner Name" fieldName="name" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} touched={touched} errors={errors} />
+              <InputField labelName="Vehicle Owner CNIC" fieldName="cnic" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} touched={touched} errors={errors} />
+              <InputField labelName="Vehicle Owner Contact No." fieldName="number" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} touched={touched} errors={errors} />
+              <InputField labelName="Vehicle Owner Address" fieldName="address" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} touched={touched} errors={errors} />
+              <InputField labelName="Horse Power" fieldName="horsePower" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} touched={touched} errors={errors} />
+              <InputField labelName="Transport Type" fieldName="transportType" height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} touched={touched} errors={errors} />
 
-              <CustomSelectField fieldName={'vehicleType'} labelName={'Vehicle Type'} options={vehicleTypeOptions} height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
-              <CustomSelectField fieldName={'ficilities'} labelName={'Facilities'} options={facilitiesOptions} height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} />
+              <CustomSelectField fieldName={'vehicleType'} labelName={'Vehicle Type'} options={vehicleTypeOptions} height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} touched={touched} errors={errors} />
+              <CustomSelectField fieldName={'ficilities'} labelName={'Facilities'} options={facilitiesOptions} height={'42px'} width={'50%'} textFontSize={16} textFontWeight={'bold'} mb={0.5} borderRadius={'5px'} touched={touched} errors={errors} />
 
-              <UploadImage labelName={'Registration Card'} captionName={'(Front and Back)'} captionColor={colors.textninthColor} height={'20vh'} width={'48%'} textFontSize={16} textFontWeight={'bold'} mb={2} borderRadius={'10px'} selectImgWidth={'25%'} />
+              <UploadImage labelName={'Registration Card'} captionName={'(Front and Back)'} captionColor={colors.textninthColor} height={'20vh'} width={'48%'} textFontSize={16} textFontWeight={'bold'} mb={2} borderRadius={'10px'} selectImgWidth={'25%'} touched={touched} errors={errors} />
 
               <Grid container mt={2} mb={5} gap={5}>
                 <Grid item xs={2.5}>
