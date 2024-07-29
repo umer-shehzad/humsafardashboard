@@ -37,7 +37,7 @@ const LoginForm = () => {
     <Box display="flex" flexDirection="column" rowGap={3}>
       <ToastContainer position="top-right" autoClose={5000} />
       {/* Humsafar Logo */}
-        <HumsafarLogo />
+      <HumsafarLogo />
 
       <Box display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
         {/* Title */}
@@ -60,12 +60,21 @@ const LoginForm = () => {
         validationSchema={LoginSchema}
         onSubmit={async (values) => {
           try {
-            const { email, password } = values
+            const { email, password, rememberMe } = values
 
             const response = await dispatch(loginThunk({ email, password })).unwrap();
-            // set access token & profile in local storage
+            // store access token & profile pic
             localStorage.setItem('owner-token', response.access_token);
             localStorage.setItem('owner-profile-pic', response.profilePic);
+
+            // store email & password based on remember me
+            if (rememberMe) {
+              const loginCredentials = {
+                email: email,
+                password: password
+              }
+              localStorage.setItem('login-credendials', JSON.stringify(loginCredentials));
+            }
 
             navigate('/driver/dashboard');
 
