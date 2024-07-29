@@ -14,7 +14,7 @@ const imageSlice = createSlice({
   //     state.image = action.payload;
   //   }
   // },
-  extraReducers(builder) {
+  extraReducers: (builder) => {
     builder
       .addCase(imageUploadThunk.pending, (state) => {
         state.isLoading = true;

@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { Box, Button, Checkbox, FormControlLabel, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
+import { Box, Button, Checkbox, CircularProgress, FormControlLabel, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
 
 import { colors } from '../../utils/colors';
 import CustomButton from '../common/CustomButton';
 import HumsafarLogo from '../common/HumsafarLogo';
 import InputField from '../common/InputField';
+import { LoginSchema } from '../../utils/constants';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginThunk } from '../../redux/thunks/loginThunk';
 
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { loading } = useSelector((state) => state.login);
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -24,12 +31,15 @@ const LoginForm = () => {
     navigate("/forgot-password");
   }
 
+  const handleSignUpOnClick = () => {
+    navigate('/signup/personal-info')
+  }
+
   return (
     <Box display="flex" flexDirection="column" rowGap={3}>
+      <ToastContainer position="top-right" autoClose={5000} />
       {/* Humsafar Logo */}
-      <Box>
-        <HumsafarLogo />
-      </Box>
+      <HumsafarLogo />
 
       <Box display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
         {/* Title */}
@@ -49,8 +59,29 @@ const LoginForm = () => {
           password: '',
           rememberMe: false,
         }}
-        onSubmit={(values) => {
-          console.log(values);
+        validationSchema={LoginSchema}
+        onSubmit={async (values) => {
+          try {
+            const { email, password } = values
+
+            const response = await dispatch(loginThunk({ email, password })).unwrap();
+            // set access token & profile in local storage
+            localStorage.setItem('owner-token', response.access_token);
+            localStorage.setItem('owner-profile-pic', response.profilePic);
+
+            navigate('/driver/dashboard');
+
+            // clear values
+            values.email = '';
+            values.password = '';
+          } catch (error) {
+            console.error('Error while Login:', error);
+            if (error.message === 'Invalid Credentials') {
+              toast.error('Wrong Password. Please try again!');
+            } else if (error.message === 'User not found') {
+              toast.error('Invalid Credentials. Please try again!');
+            }
+          }
         }}
       >
         {({ errors, touched }) => (
@@ -134,6 +165,8 @@ const LoginForm = () => {
                   />
                   <Button
                     variant="text"
+                    disableRipple
+                    disableFocusRipple
                     onClick={handleForgotPasswordClick}
                     sx={{
                       textTransform: 'none',
@@ -153,8 +186,11 @@ const LoginForm = () => {
               </Box>
 
               {/* Sign In Button */}
-              <Box mt={1}>
-                <CustomButton btnName="Sign In" />
+              <Box textAlign={'center'} mt={1}>
+                {loading
+                  ? <CircularProgress />
+                  : <CustomButton btnName="Sign In" />
+                }
               </Box>
             </Box>
           </Form>
@@ -167,6 +203,9 @@ const LoginForm = () => {
           Don't have an Account?
           <Button
             variant="text"
+            disableRipple
+            disableFocusRipple
+            onClick={handleSignUpOnClick}
             sx={{
               textTransform: 'none',
               color: `${colors.btnBgColor}`,
