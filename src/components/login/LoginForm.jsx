@@ -63,9 +63,8 @@ const LoginForm = () => {
             const { email, password, rememberMe } = values
 
             const response = await dispatch(loginThunk({ email, password })).unwrap();
-            // store access token & profile pic
-            localStorage.setItem('owner-token', response.access_token);
-            localStorage.setItem('owner-profile-pic', response.profilePic);
+            // store login data on successfull login
+            localStorage.setItem('login-data', JSON.stringify(response));
 
             // store email & password based on remember me
             if (rememberMe) {
