@@ -5,6 +5,7 @@ import { thunk } from "redux-thunk";
 import { authReducer } from "../slices/authSlice";
 import { imageReducer } from "../slices/imageSlice";
 import { loginReducer } from "../slices/loginSlice";
+import { forgotPasswordReducer } from "../slices/forgotSlice";
 
 const persistConfig = {
   key: 'root',
@@ -14,12 +15,14 @@ const persistConfig = {
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 const persistedImageReducer = persistReducer(persistConfig, imageReducer);
 const persistedLoginReducer = persistReducer(persistConfig, loginReducer);
+const persistedForgotPasswordReducer = persistReducer(persistConfig, forgotPasswordReducer);
 
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     image: persistedImageReducer,
     login: persistedLoginReducer,
+    forgotPassword: persistedForgotPasswordReducer,
   },
   middleware: (getDefaultMiddleware) => 
     getDefaultMiddleware({

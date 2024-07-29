@@ -15,7 +15,6 @@ import { LoginSchema } from '../../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginThunk } from '../../redux/thunks/loginThunk';
 
-
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
@@ -27,7 +26,6 @@ const LoginForm = () => {
   };
 
   const handleForgotPasswordClick = () => {
-    console.log('ForgotPasswordClick');
     navigate("/forgot-password");
   }
 
@@ -39,7 +37,7 @@ const LoginForm = () => {
     <Box display="flex" flexDirection="column" rowGap={3}>
       <ToastContainer position="top-right" autoClose={5000} />
       {/* Humsafar Logo */}
-      <HumsafarLogo />
+        <HumsafarLogo />
 
       <Box display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
         {/* Title */}

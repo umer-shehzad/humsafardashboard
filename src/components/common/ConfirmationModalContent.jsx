@@ -22,7 +22,7 @@ const style = {
     justifyContent: 'center',
 };
 
-const ConfirmationModalContent = ({ handleClose, title, subTitle, titleColor, subTitleColor }) => {
+const ConfirmationModalContent = ({ handleClose, title, titleColor, subTitleColor, email }) => {
     return (
         <>
             <Box sx={style}>
@@ -66,7 +66,7 @@ const ConfirmationModalContent = ({ handleClose, title, subTitle, titleColor, su
 
                             {/* Sub Title */}
                             <Typography id="modal-description" fontSize={22} fontWeight={500} sx={{ color: `${subTitleColor}`, mt: 0 }}>
-                                {subTitle}
+                                {email}
                             </Typography>
                         </Box>
                     </Box>
