@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { Box, IconButton, InputAdornment, TextField, Typography, Modal } from '@mui/material';
+import { Box, IconButton, InputAdornment, TextField, Typography, Modal, CircularProgress } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { colors } from '../../utils/colors';
@@ -20,6 +20,7 @@ const PasswordForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [open, setOpen] = useState(false);
+  const { loading } = useSelector((state) => state.auth);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -49,17 +50,19 @@ const PasswordForm = () => {
           try {
             const { password } = values;
             const role = 'Owner';
+            const userCrm = true;
             const signup = {
               data: {
                 ...location.state,
                 password,
                 role,
+                userCrm,
               }
             }
             await dispatch(userSignupThunk(signup.data)).unwrap();
             // open Thank you modal
             handleOpen();
-            
+
             // clear value
             values.password = '';
             values.confirmPassword = '';
@@ -158,7 +161,12 @@ const PasswordForm = () => {
                   }}
                 />
               </Box>
-              <CustomButton btnName="Continue" mt={4} />
+              <Box textAlign={'center'}>
+                {loading
+                  ? <CircularProgress />
+                  : <CustomButton btnName="Continue" mt={4} />
+                }
+              </Box>
               <Modal
                 open={open}
                 aria-labelledby="modal-modal-title"
