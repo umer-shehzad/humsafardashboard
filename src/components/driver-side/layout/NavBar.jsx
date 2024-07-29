@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import SearchIcon from '@mui/icons-material/Search';
 import MuiAppBar from '@mui/material/AppBar';
@@ -63,6 +63,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const NavBar = () => {
+  const [loginData, setLoginData] = useState({ name: '', profilePic: '' });
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('login-data'));
+    if (data) {
+      const { name, profilePic } = data;
+      setLoginData({ name, profilePic });
+    }
+  }, []);
+
   return (
     <>
       <CssBaseline />
@@ -93,12 +103,12 @@ const NavBar = () => {
                 color="inherit"
               >
                 {/* Avatar */}
-                <CustomImage src={"/driver/avatar.png"} alt={'avatar'} />
+                <CustomImage src={loginData.profilePic} alt={'avatar'} height={'9vh'} />
               </IconButton>
 
               <Box mr={10}>
                 <Typography color={colors.textFifthColor} fontSize={27} textAlign={'center'} mt={1} height={35}>
-                  Rafay
+                  {loginData.name}
                 </Typography>
                 <Typography color={colors.textSixthColor} fontSize={15} textAlign={'center'}>
                   Car Owner
