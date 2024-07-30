@@ -5,12 +5,13 @@ import InputField from '../../common/InputField';
 import { profileInputIcons } from '../../../utils/driverMenuData';
 
 const UserDataForm = () => {
+  const loginCredentials = JSON.parse(localStorage.getItem('login-credendials'));
   return (
     <Box marginLeft={4} mt={1}>
       <Formik
         initialValues={{
-          email: 'harryporter123@example.com',
-          password: 'Admin123',
+          email: loginCredentials.email,
+          password: loginCredentials.password,
           registeredDrivers: '3',
           phoneNo: '03318658129',
           registeredCars: '3',
@@ -19,7 +20,7 @@ const UserDataForm = () => {
           console.log(values);
         }}
       >
-        {({ values }) => (
+        {({ errors, touched }) => (
           <Form>
             <Box display={'flex'} flexDirection={'column'} rowGap={1.75}>
               <Grid container justifyContent={'space-between'}>
@@ -37,6 +38,8 @@ const UserDataForm = () => {
                       mb={0.5}
                       borderRadius={'5px'}
                       disabled={true}
+                      touched={touched}
+                      errors={errors}
                     />
                     <InputField
                       icon={profileInputIcons.passwordIcon}
@@ -50,6 +53,8 @@ const UserDataForm = () => {
                       mb={0.5}
                       borderRadius={'5px'}
                       disabled={true}
+                      touched={touched}
+                      errors={errors}
                     />
                     <InputField
                       icon={profileInputIcons.driverIcon}
@@ -63,6 +68,8 @@ const UserDataForm = () => {
                       mb={0.5}
                       borderRadius={'5px'}
                       disabled={true}
+                      touched={touched}
+                      errors={errors}
                     />
                   </Box>
                 </Grid>
@@ -80,6 +87,8 @@ const UserDataForm = () => {
                       mb={0.5}
                       borderRadius={'5px'}
                       disabled={true}
+                      touched={touched}
+                      errors={errors}
                     />
                     <InputField
                       icon={profileInputIcons.carIcon}
@@ -93,6 +102,8 @@ const UserDataForm = () => {
                       mb={0.5}
                       borderRadius={'5px'}
                       disabled={true}
+                      touched={touched}
+                      errors={errors}
                     />
                   </Box>
                 </Grid>

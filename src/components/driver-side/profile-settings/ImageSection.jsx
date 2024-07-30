@@ -4,11 +4,11 @@ import CustomImage from '../../common/CustomImage'
 import { colors } from '../../../utils/colors'
 import CustomButton from '../../common/CustomButton'
 
-const ImageSection = ({ userName, subTitle }) => {
+const ImageSection = ({ userName, subTitle, profilePic }) => {
   return (
     <Box display={'flex'} justifyContent={'space-between'} marginRight={20} marginLeft={4} alignItems={'center'}>
       <Box display={'flex'} alignItems={'center'} gap={1}>
-        <CustomImage src={'/driver/avatar.png'} alt={'avatar'} height={'12vh'} />
+        <CustomImage src={profilePic} alt={'avatar'} height={'12vh'} />
 
         <Box>
           <Typography color={colors.textEightColor} fontSize={24} textAlign={'center'} height={33} fontWeight={'600'}>

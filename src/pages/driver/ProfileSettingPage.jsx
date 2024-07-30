@@ -5,10 +5,11 @@ import ImageSection from '../../components/driver-side/profile-settings/ImageSec
 import UserDataForm from '../../components/driver-side/profile-settings/UserDataForm'
 
 const ProfileSettingPage = () => {
+  const loginData = JSON.parse(localStorage.getItem('login-data'));
   return (
     <Box display={'flex'} flexDirection={'column'} gap={2}>
       <Heading headingName={'Profile'} />
-      <ImageSection userName={'Rafay'} subTitle={'Car Owner'} />
+      <ImageSection userName={loginData.name} profilePic={loginData.profilePic} subTitle={'Car Owner'} />
       <UserDataForm />
     </Box>
   )
