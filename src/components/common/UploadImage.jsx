@@ -18,7 +18,8 @@ const UploadImage = ({
   height,
   selectImgWidth,
   captionColor,
-  onImageUpload
+  onImageUpload,
+  disabled
 }) => {
   const [files, setFiles] = useState([]);
 
@@ -63,17 +64,19 @@ const UploadImage = ({
         <IconButton>
           <CameraAltIcon sx={{ color: colors.imageIconColor }} />
         </IconButton>
-        <CustomButton btnName={'Upload'} width={'70%'} height={'30px'} fontWeight={500} borderRadius={'5px'} disabled={files.length >= 2} />
+        <CustomButton btnName={'Upload'} type={'button'} width={'70%'} height={'30px'} fontWeight={500} borderRadius={'5px'} disabled={files.length >= 2} />
       </Box>
 
-      {files.map((file, index) => (
-        <Box mt={2} p={1} width={selectImgWidth} border="1px solid #ccc" borderRadius="4px" display="flex" justifyContent="space-between" alignItems="center" key={index}>
-          <Typography variant="body2" color="textSecondary">{file.name}</Typography>
-          <IconButton size="small" onClick={() => handleRemoveFile(index)}>
-            <CloseIcon />
-          </IconButton>
-        </Box>
-      ))}
+      <Box display={'flex'} justifyContent={'space-between'} width={'50%'}>
+        {files.map((file, index) => (
+          <Box mt={2} p={1} width={selectImgWidth} border="1px solid #ccc" borderRadius="4px" display="flex" justifyContent="space-between" alignItems="center" key={index}>
+            <Typography variant="body2" color="textSecondary">{file.name}</Typography>
+            <IconButton size="small" onClick={() => handleRemoveFile(index)} disabled={disabled}>
+              <CloseIcon />
+            </IconButton>
+          </Box>
+        ))}
+      </Box>
     </Box>
   );
 };

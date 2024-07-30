@@ -1,37 +1,40 @@
 import React, { useState } from 'react';
-import { Box, Grid, Paper } from '@mui/material';
+import { Box, CircularProgress, Grid, Paper } from '@mui/material';
 import { Form, Formik } from 'formik';
 import InputField from '../../common/InputField';
 import UploadImage from '../../common/UploadImage';
 import CustomButton from '../../common/CustomButton';
 import { colors } from '../../../utils/colors';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { genderOptions } from '../../../utils/manageDriverData';
 import CustomSelectField from '../../common/CustomSelectField';
 import { AddDriverSchema } from '../../../utils/constants';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { imageUploadThunk } from '../../../redux/thunks/imageThunk';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { addOwnerDriversThunk } from '../../../redux/thunks/addOwnerDriversThunk';
 
 const AddDriverForm = () => {
   const [selectedValue, setSelectedValue] = useState('');
-  const [cnicFront, setCnicFront] = useState(null);
-  const [cnicBack, setCnicBack] = useState(null);
-  const [licenseFront, setLicenseFront] = useState(null);
-  const [licenseBack, setLicenseBack] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [cnicFront, setCnicFront] = useState('csdcdscd.com');
+  const [cnicBack, setCnicBack] = useState('csdcdscd.com');
+  const [licenseFront, setLicenseFront] = useState('csdcdscd.com');
+  const [licenseBack, setLicenseBack] = useState('csdcdscd.com');
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { loading } = useSelector((state) => state.ownerDrivers);
 
   const handleCnicImageUpload = async (files) => {
-    setLoading(true);
+    setIsLoading(true);
     try {
       const frontFile = files[0];
       const backFile = files[1];
-      
+
       const frontResponse = await dispatch(imageUploadThunk({ file: frontFile })).unwrap();
       setCnicFront(frontResponse);
-      
+
       if (backFile) {
         const backResponse = await dispatch(imageUploadThunk({ file: backFile })).unwrap();
         setCnicBack(backResponse);
@@ -39,19 +42,19 @@ const AddDriverForm = () => {
     } catch (error) {
       toast.error('Failed to upload images');
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
   const handleLicenseImageUpload = async (files) => {
-    setLoading(true);
+    setIsLoading(true);
     try {
       const frontFile = files[0];
       const backFile = files[1];
-      
+
       const frontResponse = await dispatch(imageUploadThunk({ file: frontFile })).unwrap();
       setLicenseFront(frontResponse);
-      
+
       if (backFile) {
         const backResponse = await dispatch(imageUploadThunk({ file: backFile })).unwrap();
         setLicenseBack(backResponse);
@@ -59,7 +62,7 @@ const AddDriverForm = () => {
     } catch (error) {
       toast.error('Failed to upload images');
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -89,10 +92,21 @@ const AddDriverForm = () => {
           age: '',
         }}
         validationSchema={AddDriverSchema}
-        onSubmit={(values) => {
+        onSubmit={async (values) => {
           const role = 'Driver';
           const userCrm = true;
-          console.log('Add Driver Data', { ...values, role, userCrm, cnicFront, cnicBack, licenseFront, licenseBack });
+          const password = 'Random@1234'
+          const payload = { ...values, password, role, userCrm, cnicFront, cnicBack, licenseFront, licenseBack }
+          try {
+            await dispatch(addOwnerDriversThunk( payload )).unwrap();
+
+            navigate('/driver/manage-drivers')
+          } catch (error) {
+            console.error('Error while Add Driver:', error);
+            if (error) {
+              toast.error(error.message);
+            }
+          }
         }}
       >
         {({ errors, touched }) => (
@@ -177,7 +191,7 @@ const AddDriverForm = () => {
                 borderRadius={'10px'}
                 selectImgWidth={'47%'}
                 onImageUpload={handleCnicImageUpload}
-                disabled={loading}
+                disabled={isLoading}
               />
 
               <UploadImage
@@ -192,18 +206,21 @@ const AddDriverForm = () => {
                 borderRadius={'10px'}
                 selectImgWidth={'47%'}
                 onImageUpload={handleLicenseImageUpload}
-                disabled={loading}
+                disabled={isLoading}
               />
 
               <Grid container mt={2} mb={5} gap={5}>
-                <Grid item xs={2.5}>
-                  <CustomButton
-                    btnName={'Save'}
-                    width={'100%'}
-                    fontWeight={500}
-                    borderRadius={'5px'}
-                    disabled={loading}
-                  />
+                <Grid item xs={2.5} textAlign={'center'}>
+                  {loading
+                    ? <CircularProgress />
+                    : <CustomButton
+                      btnName={'Save'}
+                      width={'100%'}
+                      fontWeight={500}
+                      borderRadius={'5px'}
+                      disabled={isLoading}
+                    />
+                  }
                 </Grid>
                 <Grid item xs={2.5}>
                   <Link to={'/driver/manage-drivers'}>
@@ -213,7 +230,7 @@ const AddDriverForm = () => {
                       width={'100%'}
                       fontWeight={500}
                       borderRadius={'5px'}
-                      disabled={loading}
+                      disabled={isLoading}
                     />
                   </Link>
                 </Grid>

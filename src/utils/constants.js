@@ -61,7 +61,7 @@ export const AddDriverSchema = Yup.object().shape({
     .email('Invalid email')
     .required('Email is required'),
     contactNumber: Yup.string()
-    .matches(/^[0-9]{11}$/, "Contact must be a valid 11-digit phone number")
+    .matches(/^(?:\+92|0)?[1-9][0-9]{9}$/, "The number should be a valid Pakistani mobile or landline number.")
     .required('Contact is required'),
   gender: Yup.mixed()
     .oneOf(['Male', 'Female'], 'Gender must be either Male or Female')

@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchOwnerDriversThunk } from "../thunks/fetchOwnerDriversThunk";
+import { addOwnerDriversThunk } from "../thunks/addOwnerDriversThunk";
 
-const fetchOwnerDriversSlice = createSlice({
+const ownerDriversSlice = createSlice({
   name: 'fetchOwnerDrivers',
   initialState: {
     ownerDriversData: null,
@@ -24,7 +25,17 @@ const fetchOwnerDriversSlice = createSlice({
         state.loading = false;
         state.state = 'failed';
       })
+      .addCase(addOwnerDriversThunk.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(addOwnerDriversThunk.fulfilled, (state, action) => {
+        state.ownerDriversData.push(action.payload);
+        state.loading = false;
+      })
+      .addCase(addOwnerDriversThunk.rejected, (state) => {
+        state.loading = false;
+      })
   }
 });
 
-export const fetchOwnerDriversReducer = fetchOwnerDriversSlice.reducer;
+export const OwnerDriversReducer = ownerDriversSlice.reducer;

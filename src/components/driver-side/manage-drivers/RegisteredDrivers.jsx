@@ -12,17 +12,15 @@ import { fetchOwnerDriversThunk } from '../../../redux/thunks/fetchOwnerDriversT
 
 const RegisteredDrivers = () => {
   const dispatch = useDispatch();
-  const { ownerDriversData, loading } = useSelector((state) => state.fetchOwnerDrivers);
+  const { ownerDriversData } = useSelector((state) => state.ownerDrivers);
 
   useEffect(() => {
     try {
       dispatch(fetchOwnerDriversThunk());
-      console.log('ownerDriversData', ownerDriversData);
     } catch (error) {
       console.error('Error while Fetching Owner Drivers:', error);
       if (error.message === 'Internal server error') {
-        // toast.error('Wrong Email. Please try again!');
-        consolr.log('Internal Error');
+        toast.error('Error while fetching Drivers!');
       }
     }
   }, [dispatch]);

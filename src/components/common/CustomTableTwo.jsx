@@ -104,13 +104,13 @@ const CustomTableTwo = ({ tableRowData, rows, path }) => {
 
           <TableBody>
             {rows.map((row, index=0) => (
-              <TableRow key={row.user.id}>
+              <TableRow key={row.user?.id}>
                 <TableCell align='center' sx={{ borderBottom: 'none' }}>{index+1}</TableCell>
-                <TableCell align='center' sx={{ borderBottom: 'none' }}>{row.user.name}</TableCell>
-                <TableCell align="center" sx={{ borderBottom: 'none' }}>{row.user.email}</TableCell>
-                <TableCell align="center" sx={{ borderBottom: 'none', color: row.licenceNo === 'Completed' ? colors.textTertiaryColor : row.licenceNo === 'Pending' ? colors.dangerColor : 'inherit' }}>{row.user.contactNumber}</TableCell>
-                <TableCell align="center" sx={{ borderBottom: 'none', color: row.user.is_Active ? colors.textTertiaryColor : 'inherit' }}>
-                  {row.user.is_Active
+                <TableCell align='center' sx={{ borderBottom: 'none' }}>{row.user?.name}</TableCell>
+                <TableCell align="center" sx={{ borderBottom: 'none' }}>{row.user?.email}</TableCell>
+                <TableCell align="center" sx={{ borderBottom: 'none', color: row.licenceNo === 'Completed' ? colors.textTertiaryColor : row.licenceNo === 'Pending' ? colors.dangerColor : 'inherit' }}>{row.user?.contactNumber}</TableCell>
+                <TableCell align="center" sx={{ borderBottom: 'none', color: row.user?.is_Active ? colors.textTertiaryColor : 'inherit' }}>
+                  {row.user?.is_Active
                     ? 'Active'
                     : 'Inactive'
                   }

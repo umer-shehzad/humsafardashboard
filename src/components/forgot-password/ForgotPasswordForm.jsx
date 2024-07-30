@@ -53,7 +53,7 @@ const ForgotPasswordForm = () => {
             handleOpen();
 
             // clear values
-            // values.email = '';
+            values.email = '';
           } catch (error) {
             console.error('Error while Forgot Password:', error);
             if (error.message === 'Internal server error') {
