@@ -1,4 +1,4 @@
-export const TableRowData = {
+export const VehicleTableHeadings = {
   val1: 'Sr No.',
   val2: `Vehicle's Name`,
   val3: 'Registration No.',
@@ -12,11 +12,6 @@ function createData(id, driverName, emailPhone, licenceNo, status) {
   return { id, driverName, emailPhone, licenceNo, status };
 }
 
-export const Rows = [
-  createData('1', 'Toyota Corolla', '(+33)7 00 55 57 60', '34 LEJ 46', '3'),
-  createData('2', 'Mehran', '+7 (809) 510-45-80', '34 LED 95', '25'),
-  createData('3', 'WagonR', '+7 (809) 510-45-80', '34 LED 95', '25'),
-];
 
 export const CarDetailsCardData = [
   {

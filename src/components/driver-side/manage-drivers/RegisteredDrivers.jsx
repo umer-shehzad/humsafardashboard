@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box, Typography } from '@mui/material';
 
 import { colors } from '../../../utils/colors';
-import { DriverTableHeadings, Rows } from '../../../utils/manageDriverData';
+import { DriverTableHeadings } from '../../../utils/manageDriverData';
 import CustomButton from '../../common/CustomButton';
 import CustomTableTwo from '../../common/CustomTableTwo';
 import { Link } from 'react-router-dom';
@@ -43,7 +43,7 @@ const RegisteredDrivers = () => {
         </Link>
       </Box>
       <Box mt={2}>
-        <CustomTableTwo tableRowData={DriverTableHeadings} rows={ownerDriversData} />
+        <CustomTableTwo tableRowData={DriverTableHeadings} rows={ownerDriversData} tableFor={'drivers'} />
       </Box>
     </Box>
   );

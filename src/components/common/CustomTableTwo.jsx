@@ -15,7 +15,7 @@ import { colors } from '../../utils/colors';
 import CustomIcon from './CustomIcon';
 import { Link } from 'react-router-dom';
 
-const CustomTableTwo = ({ tableRowData, rows, path }) => {
+const CustomTableTwo = ({ tableRowData, rows, path, tableFor }) => {
   return (
     <Box display={'flex'} flexDirection={'column'} rowGap={4}>
       {/* Table */}
@@ -103,30 +103,52 @@ const CustomTableTwo = ({ tableRowData, rows, path }) => {
           </TableHead>
 
           <TableBody>
-            {rows.map((row, index=0) => (
-              <TableRow key={row.user?.id}>
-                <TableCell align='center' sx={{ borderBottom: 'none' }}>{index+1}</TableCell>
-                <TableCell align='center' sx={{ borderBottom: 'none' }}>{row.user?.name}</TableCell>
-                <TableCell align="center" sx={{ borderBottom: 'none' }}>{row.user?.email}</TableCell>
-                <TableCell align="center" sx={{ borderBottom: 'none', color: row.licenceNo === 'Completed' ? colors.textTertiaryColor : row.licenceNo === 'Pending' ? colors.dangerColor : 'inherit' }}>{row.user?.contactNumber}</TableCell>
-                <TableCell align="center" sx={{ borderBottom: 'none', color: row.user?.is_Active ? colors.textTertiaryColor : 'inherit' }}>
-                  {row.user?.is_Active
-                    ? 'Active'
-                    : 'Inactive'
-                  }
-                </TableCell>
-                <TableCell align="center" sx={{ borderBottom: 'none' }}>
-                  <Box display={'flex'} justifyContent={'center'} gap={1}>
-                    <Link to={path}>
-                      <CustomIcon iconName="edit" color={colors.editIconBgColor} size="1.2rem" />
-                    </Link>
-                    <Box>
-                      <CustomIcon iconName="delete" color={colors.deleteIconBgColor} size="1.2rem" />
+            {tableFor === 'drivers' &&
+              rows.map((row, index = 0) => (
+                <TableRow key={row.user?.id}>
+                  <TableCell align='center' sx={{ borderBottom: 'none' }}>{index + 1}</TableCell>
+                  <TableCell align='center' sx={{ borderBottom: 'none' }}>{row.user?.name}</TableCell>
+                  <TableCell align="center" sx={{ borderBottom: 'none' }}>{row.user?.email}</TableCell>
+                  <TableCell align="center" sx={{ borderBottom: 'none', color: row.licenceNo === 'Completed' ? colors.textTertiaryColor : row.licenceNo === 'Pending' ? colors.dangerColor : 'inherit' }}>{row.user?.contactNumber}</TableCell>
+                  <TableCell align="center" sx={{ borderBottom: 'none', color: row.user?.is_Active ? colors.textTertiaryColor : 'inherit' }}>
+                    {row.user?.is_Active
+                      ? 'Active'
+                      : 'Inactive'
+                    }
+                  </TableCell>
+                  <TableCell align="center" sx={{ borderBottom: 'none' }}>
+                    <Box display={'flex'} justifyContent={'center'} gap={1}>
+                      <Link to={path}>
+                        <CustomIcon iconName="edit" color={colors.editIconBgColor} size="1.2rem" />
+                      </Link>
+                      <Box>
+                        <CustomIcon iconName="delete" color={colors.deleteIconBgColor} size="1.2rem" />
+                      </Box>
                     </Box>
-                  </Box>
-                </TableCell>
-              </TableRow>
-            ))}
+                  </TableCell>
+                </TableRow>
+              ))}
+
+            {tableFor === 'cars' &&
+              rows.map((row, index = 0) => (
+                <TableRow key={row?.id}>
+                  <TableCell align='center' sx={{ borderBottom: 'none' }}>{index + 1}</TableCell>
+                  <TableCell align='center' sx={{ borderBottom: 'none' }}>{row?.make.charAt(0).toUpperCase() + row?.make.slice(1)}</TableCell>
+                  <TableCell align="center" sx={{ borderBottom: 'none' }}>{row?.registrationNumber}</TableCell>
+                  <TableCell align="center" sx={{ borderBottom: 'none' }}>{row?.chasisNumber}</TableCell>
+                  <TableCell align="center" sx={{ borderBottom: 'none' }}>{row?.totalSeats}</TableCell>
+                  <TableCell align="center" sx={{ borderBottom: 'none' }}>
+                    <Box display={'flex'} justifyContent={'center'} gap={1}>
+                      <Link to={path}>
+                        <CustomIcon iconName="edit" color={colors.editIconBgColor} size="1.2rem" />
+                      </Link>
+                      <Box>
+                        <CustomIcon iconName="delete" color={colors.deleteIconBgColor} size="1.2rem" />
+                      </Box>
+                    </Box>
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>

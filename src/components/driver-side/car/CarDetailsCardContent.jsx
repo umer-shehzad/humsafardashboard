@@ -4,7 +4,7 @@ import { Grid, Typography } from '@mui/material'
 
 import { colors } from '../../../utils/colors'
 
-const CarDetailsCardContent = ({ text1, text1Val, text2, text2Val }) => {
+const CarDetailsCardContent = ({ text1, text1Val, text2, text2Val, active, facilities }) => {
   return (
     <>
       <Grid container justifyContent={'space-between'}>
@@ -14,7 +14,12 @@ const CarDetailsCardContent = ({ text1, text1Val, text2, text2Val }) => {
               <Typography color={colors.textFifthColor}>{text1}</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Typography color={colors.textFifthColor}>{text1Val}</Typography>
+            {facilities
+                ? <Typography color={colors.textFifthColor}>
+                  {text1Val.map(facility => facility.charAt(0).toUpperCase() + facility.slice(1)).join(', ')}
+                </Typography>
+                : <Typography color={colors.textFifthColor}>{text1Val}</Typography>
+              }
             </Grid>
           </Grid>
         </Grid>
@@ -24,8 +29,18 @@ const CarDetailsCardContent = ({ text1, text1Val, text2, text2Val }) => {
             <Grid item xs={6} pl={8}>
               <Typography color={colors.textFifthColor}>{text2}</Typography>
             </Grid>
-            <Grid item xs={6} pl={10}>
-              <Typography color={text2Val === 'Active' ? colors.textTertiaryColor : colors.textFifthColor}>{text2Val}</Typography>
+            <Grid item xs={6} pl={5}>
+              {active
+                ? <Typography color={text2Val === true ? colors.textTertiaryColor : colors.textFifthColor}>
+                  {text2Val === true
+                    ? 'Active'
+                    : 'Iactive'
+                  }
+                </Typography>
+                : <Typography>
+                  {text2Val}
+                </Typography>
+              }
             </Grid>
           </Grid>
         </Grid>

@@ -180,7 +180,7 @@ const AddDriverForm = () => {
               />
 
               <UploadImage
-                labelName={'Registration Card'}
+                labelName={'CNIC'}
                 captionName={'(Front and Back)'}
                 captionColor={colors.textninthColor}
                 height={'20vh'}

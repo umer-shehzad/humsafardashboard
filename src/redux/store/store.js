@@ -7,6 +7,7 @@ import { imageReducer } from "../slices/imageSlice";
 import { loginReducer } from "../slices/loginSlice";
 import { forgotPasswordReducer } from "../slices/forgotSlice";
 import { OwnerDriversReducer } from "../slices/ownerDriversSlice";
+import { OwnerVehiclesReducer } from "../slices/ownerVehiclesSlice";
 
 const persistConfig = {
   key: 'root',
@@ -18,6 +19,7 @@ const persistedImageReducer = persistReducer(persistConfig, imageReducer);
 const persistedLoginReducer = persistReducer(persistConfig, loginReducer);
 const persistedForgotPasswordReducer = persistReducer(persistConfig, forgotPasswordReducer);
 const persistedOwnerDriversReducer = persistReducer(persistConfig, OwnerDriversReducer);
+const persistedOwnerVehiclesReducer = persistReducer(persistConfig, OwnerVehiclesReducer);
 
 export const store = configureStore({
   reducer: {
@@ -26,6 +28,7 @@ export const store = configureStore({
     login: persistedLoginReducer,
     forgotPassword: persistedForgotPasswordReducer,
     ownerDrivers: persistedOwnerDriversReducer,
+    ownerVehicles: persistedOwnerVehiclesReducer,
 
   },
   middleware: (getDefaultMiddleware) => 
