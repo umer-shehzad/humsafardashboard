@@ -1,10 +1,11 @@
 import React, { useCallback, useState } from 'react';
-import { Box, Typography, Button, IconButton } from '@mui/material';
+import { Box, Typography, IconButton } from '@mui/material';
 import { useDropzone } from 'react-dropzone';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import CustomButton from './CustomButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { colors } from '../../utils/colors';
+import { toast } from 'react-toastify';
 
 const UploadImage = ({
   labelName,
@@ -16,18 +17,24 @@ const UploadImage = ({
   width,
   height,
   selectImgWidth,
-  captionColor
+  captionColor,
+  onImageUpload
 }) => {
-  const [file, setFile] = useState(null);
+  const [files, setFiles] = useState([]);
 
   const onDrop = useCallback((acceptedFiles) => {
-    if (acceptedFiles.length > 0) {
-      setFile(acceptedFiles[0]);
+    const newFiles = [...files, ...acceptedFiles];
+    const validFiles = newFiles.filter(file => file.type === 'image/jpeg' || file.type === 'image/png');
+    if (validFiles.length !== newFiles.length) {
+      toast.error('Only jpeg or png files are allowed');
     }
-  }, []);
+    setFiles(validFiles);
+    onImageUpload(validFiles);
+  }, [files, onImageUpload]);
 
-  const handleRemoveFile = () => {
-    setFile(null);
+  const handleRemoveFile = (index) => {
+    const newFiles = files.filter((_, i) => i !== index);
+    setFiles(newFiles);
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -56,18 +63,18 @@ const UploadImage = ({
         <IconButton>
           <CameraAltIcon sx={{ color: colors.imageIconColor }} />
         </IconButton>
-        <CustomButton btnName={'Upload'} width={'70%'} height={'30px'} fontWeight={500} borderRadius={'5px'} />
+        <CustomButton btnName={'Upload'} width={'70%'} height={'30px'} fontWeight={500} borderRadius={'5px'} disabled={files.length >= 2} />
       </Box>
 
-      {file && (
-        <Box mt={2} p={1} width={selectImgWidth} border="1px solid #ccc" borderRadius="4px" display="flex" justifyContent="space-between" alignItems="center">
+      {files.map((file, index) => (
+        <Box mt={2} p={1} width={selectImgWidth} border="1px solid #ccc" borderRadius="4px" display="flex" justifyContent="space-between" alignItems="center" key={index}>
           <Typography variant="body2" color="textSecondary">{file.name}</Typography>
-          <IconButton size="small" onClick={handleRemoveFile}>
+          <IconButton size="small" onClick={() => handleRemoveFile(index)}>
             <CloseIcon />
           </IconButton>
         </Box>
-      )}
-    </Box >
+      ))}
+    </Box>
   );
 };
 

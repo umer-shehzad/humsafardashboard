@@ -3,8 +3,7 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 
 import { colors } from '../../../utils/colors';
-import { Rows } from '../../../utils/manageDriverData';
-import { TableRowData } from '../../../utils/manageDriverData';
+import { DriverTableHeadings, Rows } from '../../../utils/manageDriverData';
 import CustomButton from '../../common/CustomButton';
 import CustomTableTwo from '../../common/CustomTableTwo';
 import { Link } from 'react-router-dom';
@@ -28,7 +27,7 @@ const RegisteredDrivers = () => {
         </Link>
       </Box>
       <Box mt={2}>
-        <CustomTableTwo tableRowData={TableRowData} rows={Rows} />
+        <CustomTableTwo tableRowData={DriverTableHeadings} rows={Rows} />
       </Box>
     </Box>
   );

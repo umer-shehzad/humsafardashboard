@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Grid, Modal, Typography } from '@mui/material'
 
 import CustomButton from '../../components/common/CustomButton'
 import CustomTodoCard from '../../components/common/CustomTodoCard'
@@ -9,8 +9,26 @@ import RegisteredDrivers from '../../components/driver-side/manage-drivers/Regis
 import Title from '../../components/driver-side/manage-drivers/Title'
 import { colors } from '../../utils/colors'
 import { todoList } from '../../utils/todoData'
+import AddTodoModal from '../../components/driver-side/schedule/AddTodoModal'
+import EditTodoModal from '../../components/driver-side/schedule/EditTodoModal'
 
 const ManageDriverPage = () => {
+  const [modalType, setModalType] = useState(null);
+  const [selectedTodo, setSelectedTodo] = useState(null);
+  
+  const handleOpenAddTodo = () => {
+    setModalType('add');
+    setOpen(true);
+  };
+
+  const handleClose = () => setOpen(false);
+
+  const handleOpenEditTodo = (todo) => {
+    setSelectedTodo(todo);
+    setModalType('edit');
+    setOpen(true);
+  };
+
   return (
     <>
       <Title name={'Manage Drivers'} />
@@ -41,7 +59,7 @@ const ManageDriverPage = () => {
           />
         </Box>
 
-        <Box width={'45%'}>
+        {/* <Box width={'45%'}>
           <Box display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
             <Typography variant='body1'>To Do:</Typography>
             <CustomButton
@@ -54,19 +72,54 @@ const ManageDriverPage = () => {
               borderRadius={'6px'}
               fontWeight={500}
               icon={true}
+              onClick={handleOpenAddTodo} // Open modal on click
             />
           </Box>
 
-          {/* todo card */}
-          <CustomTodoCard 
-          bgcolor={colors.todoColor1}
-          headingPL={4}
-          headingPR={2}
-          boxGap={1}
-          listPL={9.5}
-          todoList={todoList}
-          />
-        </Box>
+          
+          {todoList.map((todo, index) => (
+              <CustomTodoCard
+                key={todo.id}
+                bgcolor={colors[`todoColor${index + 1}`]}
+                headingPL={4}
+                headingPR={2}
+                boxGap={1}
+                listPL={9.5}
+                todoList={todo.data}
+                title={todo.title}
+                onClick={() => handleOpenEditTodo(todo)}
+                doneBtnColor={colors.doneBtnColor}
+                iconColor={colors.textFifthColor}
+              />
+            ))}
+
+            
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                height="100vh"
+              >
+                {
+                  modalType === 'add'
+                    ? <AddTodoModal onClose={handleClose} />
+                    : (
+                      <EditTodoModal
+                        onClose={handleClose}
+                        todoTitle={selectedTodo?.title}
+                        todoData={selectedTodo?.data}
+                      />
+                    )
+                }
+              </Box>
+            </Modal>
+        </Box> */}
       </Box>
     </>
   )

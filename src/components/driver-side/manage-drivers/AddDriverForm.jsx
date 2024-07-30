@@ -8,9 +8,61 @@ import { colors } from '../../../utils/colors';
 import { Link } from 'react-router-dom';
 import { genderOptions } from '../../../utils/manageDriverData';
 import CustomSelectField from '../../common/CustomSelectField';
+import { AddDriverSchema } from '../../../utils/constants';
+import { useDispatch } from 'react-redux';
+import { imageUploadThunk } from '../../../redux/thunks/imageThunk';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const UserDriverForm = () => {
+const AddDriverForm = () => {
   const [selectedValue, setSelectedValue] = useState('');
+  const [cnicFront, setCnicFront] = useState(null);
+  const [cnicBack, setCnicBack] = useState(null);
+  const [licenseFront, setLicenseFront] = useState(null);
+  const [licenseBack, setLicenseBack] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleCnicImageUpload = async (files) => {
+    setLoading(true);
+    try {
+      const frontFile = files[0];
+      const backFile = files[1];
+      
+      const frontResponse = await dispatch(imageUploadThunk({ file: frontFile })).unwrap();
+      setCnicFront(frontResponse);
+      
+      if (backFile) {
+        const backResponse = await dispatch(imageUploadThunk({ file: backFile })).unwrap();
+        setCnicBack(backResponse);
+      }
+    } catch (error) {
+      toast.error('Failed to upload images');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLicenseImageUpload = async (files) => {
+    setLoading(true);
+    try {
+      const frontFile = files[0];
+      const backFile = files[1];
+      
+      const frontResponse = await dispatch(imageUploadThunk({ file: frontFile })).unwrap();
+      setLicenseFront(frontResponse);
+      
+      if (backFile) {
+        const backResponse = await dispatch(imageUploadThunk({ file: backFile })).unwrap();
+        setLicenseBack(backResponse);
+      }
+    } catch (error) {
+      toast.error('Failed to upload images');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Box
       component={Paper}
@@ -27,31 +79,37 @@ const UserDriverForm = () => {
       pl={3}
       ml={3}
     >
+      <ToastContainer position="top-right" autoClose={5000} />
       <Formik
         initialValues={{
-          driverName: '',
+          name: '',
           email: '',
-          gender: selectedValue,
+          contactNumber: '',
+          gender: '',
           age: '',
-          licenseNo: '',
         }}
+        validationSchema={AddDriverSchema}
         onSubmit={(values) => {
-          console.log('Add Driver Data', values);
+          const role = 'Driver';
+          const userCrm = true;
+          console.log('Add Driver Data', { ...values, role, userCrm, cnicFront, cnicBack, licenseFront, licenseBack });
         }}
       >
-        {({ values }) => (
+        {({ errors, touched }) => (
           <Form>
             <Box display={'flex'} flexDirection={'column'} rowGap={1.75}>
               <InputField
                 type={'text'}
                 labelName="Driver's Name"
-                fieldName="driverName"
+                fieldName="name"
                 height={'42px'}
                 width={'50%'}
                 textFontSize={16}
                 textFontWeight={'bold'}
                 mb={0.5}
                 borderRadius={'5px'}
+                touched={touched}
+                errors={errors}
               />
               <InputField
                 type={'email'}
@@ -63,6 +121,21 @@ const UserDriverForm = () => {
                 textFontWeight={'bold'}
                 mb={0.5}
                 borderRadius={'5px'}
+                touched={touched}
+                errors={errors}
+              />
+              <InputField
+                type={'tel'}
+                labelName="Contact Number"
+                fieldName="contactNumber"
+                height={'42px'}
+                width={'50%'}
+                textFontSize={16}
+                textFontWeight={'bold'}
+                mb={0.5}
+                borderRadius={'5px'}
+                touched={touched}
+                errors={errors}
               />
               <CustomSelectField
                 labelName={'Gender'}
@@ -75,6 +148,8 @@ const UserDriverForm = () => {
                 mb={0.5}
                 borderRadius={'5px'}
                 setSelectedValue={setSelectedValue}
+                touched={touched}
+                errors={errors}
               />
               <InputField
                 type={'number'}
@@ -86,29 +161,60 @@ const UserDriverForm = () => {
                 textFontWeight={'bold'}
                 mb={0.5}
                 borderRadius={'5px'}
-              />
-              <InputField
-                type={'text'}
-                labelName="License No."
-                fieldName="licenseNo"
-                height={'42px'}
-                width={'50%'}
-                textFontSize={16}
-                textFontWeight={'bold'}
-                mb={0.5}
-                borderRadius={'5px'}
+                touched={touched}
+                errors={errors}
               />
 
-              <UploadImage labelName={'Registration Card'} captionName={'(Front and Back)'} captionColor={colors.textninthColor} height={'20vh'} width={'48%'} textFontSize={16} textFontWeight={'bold'} mb={2} borderRadius={'10px'} selectImgWidth={'25%'} />
-              <UploadImage labelName={'License'} captionName={'(Front and Back)'} captionColor={colors.textninthColor} height={'20vh'} width={'48%'} textFontSize={16} textFontWeight={'bold'} mb={2} borderRadius={'10px'} selectImgWidth={'25%'} />
+              <UploadImage
+                labelName={'Registration Card'}
+                captionName={'(Front and Back)'}
+                captionColor={colors.textninthColor}
+                height={'20vh'}
+                width={'48%'}
+                textFontSize={16}
+                textFontWeight={'bold'}
+                mb={2}
+                borderRadius={'10px'}
+                selectImgWidth={'47%'}
+                onImageUpload={handleCnicImageUpload}
+                disabled={loading}
+              />
+
+              <UploadImage
+                labelName={'License'}
+                captionName={'(Front and Back)'}
+                captionColor={colors.textninthColor}
+                height={'20vh'}
+                width={'48%'}
+                textFontSize={16}
+                textFontWeight={'bold'}
+                mb={2}
+                borderRadius={'10px'}
+                selectImgWidth={'47%'}
+                onImageUpload={handleLicenseImageUpload}
+                disabled={loading}
+              />
 
               <Grid container mt={2} mb={5} gap={5}>
                 <Grid item xs={2.5}>
-                  <CustomButton btnName={'Save'} width={'100%'} fontWeight={500} borderRadius={'5px'} />
+                  <CustomButton
+                    btnName={'Save'}
+                    width={'100%'}
+                    fontWeight={500}
+                    borderRadius={'5px'}
+                    disabled={loading}
+                  />
                 </Grid>
                 <Grid item xs={2.5}>
                   <Link to={'/driver/manage-drivers'}>
-                    <CustomButton btnName={'Cancel'} changeColor={true} width={'100%'} fontWeight={500} borderRadius={'5px'} />
+                    <CustomButton
+                      btnName={'Cancel'}
+                      changeColor={true}
+                      width={'100%'}
+                      fontWeight={500}
+                      borderRadius={'5px'}
+                      disabled={loading}
+                    />
                   </Link>
                 </Grid>
               </Grid>
@@ -120,4 +226,4 @@ const UserDriverForm = () => {
   );
 };
 
-export default UserDriverForm;
+export default AddDriverForm;

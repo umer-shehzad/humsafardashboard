@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'formik';
-import { Box, FormControl, MenuItem, Select, Typography } from '@mui/material';
+import { Box, FormControl, MenuItem, Select, Typography, FormHelperText } from '@mui/material';
 
 const CustomSelectField = ({
   fieldName,
@@ -15,7 +15,9 @@ const CustomSelectField = ({
   borderRadius,
   width,
   height,
-  setSelectedValue
+  setSelectedValue,
+  touched,
+  errors
 }) => {
   return (
     <Box>
@@ -23,7 +25,10 @@ const CustomSelectField = ({
         {({ field, form }) => {
           const isPlaceholder = field.value === '';
           return (
-            <FormControl fullWidth>
+            <FormControl
+              fullWidth
+              error={touched[fieldName] && Boolean(errors[fieldName])}
+            >
               <Typography fontSize={textFontSize} fontWeight={textFontWeight} mb={mb}>
                 {labelName}
               </Typography>
@@ -34,9 +39,8 @@ const CustomSelectField = ({
                 value={field.value || ""}
                 displayEmpty
                 onChange={(event) => {
-                  const value = event.target.value;
-                  setSelectedValue(value);
-                  form.setFieldValue(fieldName, value);
+                  form.setFieldValue(fieldName, event.target.value);
+                  setSelectedValue(event.target.value);
                 }}
                 renderValue={(selected) => {
                   if (selected === "") {
@@ -50,8 +54,8 @@ const CustomSelectField = ({
                   height: height,
                 }}
               >
-                <MenuItem 
-                  value="" 
+                <MenuItem
+                  value=""
                   disabled
                 >
                   {placeholder}
@@ -62,6 +66,9 @@ const CustomSelectField = ({
                   </MenuItem>
                 ))}
               </Select>
+              {touched[fieldName] && Boolean(errors[fieldName]) && (
+                <FormHelperText>{errors[fieldName]}</FormHelperText>
+              )}
             </FormControl>
           );
         }}
