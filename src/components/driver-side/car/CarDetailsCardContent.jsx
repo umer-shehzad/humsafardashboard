@@ -34,7 +34,7 @@ const CarDetailsCardContent = ({ text1, text1Val, text2, text2Val, active, }) =>
                 ? <Typography color={text2Val === true ? colors.textTertiaryColor : colors.textFifthColor}>
                   {text2Val === true
                     ? 'Active'
-                    : 'Inactive'
+                    : 'InActive'
                   }
                 </Typography>
                 : <Typography>

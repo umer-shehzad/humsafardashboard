@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchOwnerVehiclesThunk } from "../thunks/fetchOwnerVehiclesThunk";
 import { addOwnerVehiclesThunk } from "../thunks/addOwnerVehiclesThunk";
+import { editOwnerVehiclesThunk } from "../thunks/editOwnerVehiclesThunk";
 
 const ownerVehiclesSlice = createSlice({
   name: 'ownerVehicles',
@@ -33,6 +34,23 @@ const ownerVehiclesSlice = createSlice({
         state.loading = false;
       })
       .addCase(addOwnerVehiclesThunk.rejected, (state) => {
+        state.loading = false;
+      })
+      .addCase(editOwnerVehiclesThunk.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(editOwnerVehiclesThunk.fulfilled, (state, action) => {
+        const updatedVehicle = action.payload;
+        const index = state.ownerVehiclesData.findIndex(vehicle => vehicle.id === updatedVehicle.id);
+        if (index !== -1){
+          state.ownerVehiclesData[index] = updatedVehicle;
+        } else {
+          console.log('Vehicle not found');
+        }
+        // state.ownerVehiclesData.push(action.payload);
+        state.loading = false;
+      })
+      .addCase(editOwnerVehiclesThunk.rejected, (state) => {
         state.loading = false;
       })
   }

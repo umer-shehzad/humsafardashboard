@@ -2,12 +2,13 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { APIs } from "../store/axiosConfig";
 
 const token = JSON.parse(localStorage.getItem('login-data'))?.access_token;
+const singleVehicleID = localStorage.getItem('singleVehicleID');
 
-export const addOwnerVehiclesThunk = createAsyncThunk(
-  "addOwnervehicles",
+export const editOwnerVehiclesThunk = createAsyncThunk(
+  "editOwnerVehicles",
   async (payload, thunkAPI) => {
     try {
-      const response = await APIs.post('vehicle/create', payload, {
+      const response = await APIs.patch(`vehicle/${singleVehicleID}`, payload, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',

@@ -137,11 +137,11 @@ export const facilitiesOptions = [
 export const statusOptions = [
   {
     label: 'Active',
-    value: 1
+    value: true
   },
   {
     label: 'InActive',
-    value: 0
+    value: false
   },
 ];
 

@@ -38,7 +38,7 @@ const CustomSelectField = ({
                 id={fieldName}
                 multiple={multipleValues}
                 {...field}
-                value={field.value || []}
+                value={field.value}
                 displayEmpty
                 onChange={(event) => {
                   form.setFieldValue(fieldName, event.target.value);
@@ -48,7 +48,7 @@ const CustomSelectField = ({
                   if (selected.length === 0) {
                     return <span style={{ color: placeholderColor, fontSize: placeholderFontSize }}>{placeholder}</span>;
                   }
-                  if (multipleValues){
+                  if (multipleValues) {
                     return selected.map(val => options.find(option => option.value === val)?.label).join(', ');
                   } else {
                     return options.find(option => option.value === selected)?.label;

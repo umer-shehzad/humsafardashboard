@@ -2,9 +2,9 @@ import React from 'react'
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 
-import { Box, ListItemIcon } from '@mui/material'
+import { ListItemIcon } from '@mui/material'
 
-const CustomIcon = ({ iconName, color, size }) => {
+const CustomIcon = ({ iconName, color, size, onClick }) => {
   const renderIcon = () => {
     switch (iconName) {
       case 'edit':
@@ -19,22 +19,15 @@ const CustomIcon = ({ iconName, color, size }) => {
   return (
     <ListItemIcon
       component={'button'}
-      // width={25}
-      // height={25}
       sx={{
-        // display: 'flex',
-        // alignItems: 'center',
-        // justifyContent: 'center',
-        // border: 'none',
         minWidth: '14px',
         padding: '2px',
         cursor: 'pointer',
         borderRadius: '5px',
         backgroundColor: color
       }}
+      onClick={onClick}
     >
-      {/* <CiEdit color={'white'} size={'1rem'} /> */}
-      {/* {iconName} */}
       {renderIcon()}
     </ListItemIcon>
   )

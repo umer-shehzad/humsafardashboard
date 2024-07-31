@@ -13,9 +13,15 @@ import TableRow from '@mui/material/TableRow';
 import { colors } from '../../utils/colors';
 
 import CustomIcon from './CustomIcon';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CustomTableTwo = ({ tableRowData, rows, path, tableFor }) => {
+  const navigate = useNavigate();
+
+  const handleEditClick = (rows) => {
+    navigate(path, { state: { singleVehicleData: rows } });
+  };
+
   return (
     <Box display={'flex'} flexDirection={'column'} rowGap={4}>
       {/* Table */}
@@ -139,9 +145,9 @@ const CustomTableTwo = ({ tableRowData, rows, path, tableFor }) => {
                   <TableCell align="center" sx={{ borderBottom: 'none' }}>{row?.totalSeats}</TableCell>
                   <TableCell align="center" sx={{ borderBottom: 'none' }}>
                     <Box display={'flex'} justifyContent={'center'} gap={1}>
-                      <Link to={path}>
-                        <CustomIcon iconName="edit" color={colors.editIconBgColor} size="1.2rem" />
-                      </Link>
+                      <Box>
+                        <CustomIcon iconName="edit" color={colors.editIconBgColor} size="1.2rem" onClick={() => handleEditClick(row)} />
+                      </Box>
                       <Box>
                         <CustomIcon iconName="delete" color={colors.deleteIconBgColor} size="1.2rem" />
                       </Box>
