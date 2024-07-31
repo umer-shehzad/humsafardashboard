@@ -98,7 +98,7 @@ const AddDriverForm = () => {
           const password = 'Random@1234'
           const payload = { ...values, password, role, userCrm, cnicFront, cnicBack, licenseFront, licenseBack }
           try {
-            await dispatch(addOwnerDriversThunk( payload )).unwrap();
+            await dispatch(addOwnerDriversThunk(payload)).unwrap();
 
             navigate('/driver/manage-drivers')
           } catch (error) {
@@ -191,7 +191,7 @@ const AddDriverForm = () => {
                 borderRadius={'10px'}
                 selectImgWidth={'47%'}
                 onImageUpload={handleCnicImageUpload}
-                disabled={isLoading}
+                disabled={isLoading || loading}
               />
 
               <UploadImage
@@ -206,34 +206,38 @@ const AddDriverForm = () => {
                 borderRadius={'10px'}
                 selectImgWidth={'47%'}
                 onImageUpload={handleLicenseImageUpload}
-                disabled={isLoading}
+                disabled={isLoading || loading}
               />
 
-              <Grid container mt={2} mb={5} gap={5}>
-                <Grid item xs={2.5} textAlign={'center'}>
-                  {loading
-                    ? <CircularProgress />
-                    : <CustomButton
-                      btnName={'Save'}
-                      width={'100%'}
-                      fontWeight={500}
-                      borderRadius={'5px'}
-                      disabled={isLoading}
-                    />
-                  }
-                </Grid>
-                <Grid item xs={2.5}>
-                  <Link to={'/driver/manage-drivers'}>
-                    <CustomButton
-                      btnName={'Cancel'}
-                      changeColor={true}
-                      width={'100%'}
-                      fontWeight={500}
-                      borderRadius={'5px'}
-                      disabled={isLoading}
-                    />
-                  </Link>
-                </Grid>
+              <Grid container mt={2} mb={5} gap={5} justifyContent={isLoading ? 'center' : 'flex-start'} width={'50%'}>
+                {isLoading
+                  ? <CircularProgress />
+                  : <>
+                    <Grid item xs={4.5} textAlign={'center'}>
+                      {loading
+                        ? <CircularProgress />
+                        : <CustomButton
+                          btnName={'Save'}
+                          width={'100%'}
+                          fontWeight={500}
+                          borderRadius={'5px'}
+                        />
+                      }
+                    </Grid>
+                    <Grid item xs={4.5}>
+                      <Link to={'/driver/manage-drivers'}>
+                        <CustomButton
+                          btnName={'Cancel'}
+                          changeColor={true}
+                          width={'100%'}
+                          fontWeight={500}
+                          borderRadius={'5px'}
+                          disabled={loading}
+                        />
+                      </Link>
+                    </Grid>
+                  </>
+                }
               </Grid>
             </Box>
           </Form>

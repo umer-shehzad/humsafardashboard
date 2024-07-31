@@ -1,7 +1,7 @@
 import Reac, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Box, Typography } from '@mui/material';
+import { Box, CircularProgress, Typography } from '@mui/material';
 
 import { colors } from '../../../utils/colors';
 import { DriverTableHeadings } from '../../../utils/manageDriverData';
@@ -12,7 +12,7 @@ import { fetchOwnerDriversThunk } from '../../../redux/thunks/fetchOwnerDriversT
 
 const RegisteredDrivers = () => {
   const dispatch = useDispatch();
-  const { ownerDriversData } = useSelector((state) => state.ownerDrivers);
+  const { ownerDriversData, loading } = useSelector((state) => state.ownerDrivers);
 
   useEffect(() => {
     try {
@@ -41,9 +41,17 @@ const RegisteredDrivers = () => {
             icon={true}
           />
         </Link>
+
       </Box>
       <Box mt={2}>
-        <CustomTableTwo tableRowData={DriverTableHeadings} rows={ownerDriversData} tableFor={'drivers'} />
+        {loading
+          ? (
+            <Box display="flex" justifyContent="center">
+              <CircularProgress />
+            </Box>
+          )
+          : <CustomTableTwo tableRowData={DriverTableHeadings} rows={ownerDriversData} tableFor={'drivers'} />
+        }
       </Box>
     </Box>
   );
