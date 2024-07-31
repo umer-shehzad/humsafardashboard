@@ -106,22 +106,30 @@ export const CarDetailsCardData = [
 export const vehicleTypeOptions = [
   {
     label: 'Sedan',
-    value: 'sedan'
+    value: 'Sedan'
   },
   {
-    label: 'Toyota Corolla',
-    value: 'toyota corolla'
+    label: 'SUV',
+    value: 'SUV'
+  },
+  {
+    label: 'Van',
+    value: 'Van'
   },
 ];
 
 export const facilitiesOptions = [
   {
-    label: 'Water bottle',
-    value: 'water'
+    label: 'Paani',
+    value: 'Paani'
   },
   {
     label: 'Chips',
-    value: 'chips'
+    value: 'Chips'
+  },
+  {
+    label: 'HeadPhones',
+    value: 'Headphones'
   },
 ];
 

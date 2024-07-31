@@ -49,7 +49,6 @@ const CarDetailCard = ({ carData }) => {
                 text2={'Status'}
                 text2Val={carData?.isActive}
                 active={true}
-                facilities={true}
               />
           </Box>
         </Box>

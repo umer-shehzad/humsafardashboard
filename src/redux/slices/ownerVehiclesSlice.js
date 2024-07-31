@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchOwnerVehiclesThunk } from "../thunks/fetchOwnerVehiclesThunk";
+import { addOwnerVehiclesThunk } from "../thunks/addOwnerVehiclesThunk";
 
 const ownerVehiclesSlice = createSlice({
   name: 'ownerVehicles',
@@ -24,16 +25,16 @@ const ownerVehiclesSlice = createSlice({
         state.loading = false;
         state.state = 'failed';
       })
-    //   .addCase(addOwnerDriversThunk.pending, (state) => {
-    //     state.loading = true;
-    //   })
-    //   .addCase(addOwnerDriversThunk.fulfilled, (state, action) => {
-    //     state.ownerDriversData.push(action.payload);
-    //     state.loading = false;
-    //   })
-    //   .addCase(addOwnerDriversThunk.rejected, (state) => {
-    //     state.loading = false;
-    //   })
+      .addCase(addOwnerVehiclesThunk.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(addOwnerVehiclesThunk.fulfilled, (state, action) => {
+        state.ownerVehiclesData.push(action.payload);
+        state.loading = false;
+      })
+      .addCase(addOwnerVehiclesThunk.rejected, (state) => {
+        state.loading = false;
+      })
   }
 });
 

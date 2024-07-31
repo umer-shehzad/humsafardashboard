@@ -4,7 +4,7 @@ import { Grid, Typography } from '@mui/material'
 
 import { colors } from '../../../utils/colors'
 
-const CarDetailsCardContent = ({ text1, text1Val, text2, text2Val, active, facilities }) => {
+const CarDetailsCardContent = ({ text1, text1Val, text2, text2Val, active, }) => {
   return (
     <>
       <Grid container justifyContent={'space-between'}>
@@ -14,7 +14,7 @@ const CarDetailsCardContent = ({ text1, text1Val, text2, text2Val, active, facil
               <Typography color={colors.textFifthColor}>{text1}</Typography>
             </Grid>
             <Grid item xs={6}>
-            {facilities
+              {Array.isArray(text1Val)
                 ? <Typography color={colors.textFifthColor}>
                   {text1Val.map(facility => facility.charAt(0).toUpperCase() + facility.slice(1)).join(', ')}
                 </Typography>
@@ -34,7 +34,7 @@ const CarDetailsCardContent = ({ text1, text1Val, text2, text2Val, active, facil
                 ? <Typography color={text2Val === true ? colors.textTertiaryColor : colors.textFifthColor}>
                   {text2Val === true
                     ? 'Active'
-                    : 'Iactive'
+                    : 'Inactive'
                   }
                 </Typography>
                 : <Typography>

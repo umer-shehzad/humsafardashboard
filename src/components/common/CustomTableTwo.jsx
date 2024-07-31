@@ -133,7 +133,7 @@ const CustomTableTwo = ({ tableRowData, rows, path, tableFor }) => {
               rows.map((row, index = 0) => (
                 <TableRow key={row?.id}>
                   <TableCell align='center' sx={{ borderBottom: 'none' }}>{index + 1}</TableCell>
-                  <TableCell align='center' sx={{ borderBottom: 'none' }}>{row?.make.charAt(0).toUpperCase() + row?.make.slice(1)}</TableCell>
+                  <TableCell align='center' sx={{ borderBottom: 'none' }}>{row?.make && row.make.charAt(0).toUpperCase() + row.make.slice(1)}</TableCell>
                   <TableCell align="center" sx={{ borderBottom: 'none' }}>{row?.registrationNumber}</TableCell>
                   <TableCell align="center" sx={{ borderBottom: 'none' }}>{row?.chasisNumber}</TableCell>
                   <TableCell align="center" sx={{ borderBottom: 'none' }}>{row?.totalSeats}</TableCell>

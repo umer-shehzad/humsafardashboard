@@ -17,13 +17,14 @@ const CustomSelectField = ({
   height,
   setSelectedValue,
   touched,
-  errors
+  errors,
+  multipleValues,
 }) => {
   return (
     <Box>
       <Field name={fieldName}>
         {({ field, form }) => {
-          const isPlaceholder = field.value === '';
+          const isPlaceholder = field.value.length === 0;
           return (
             <FormControl
               fullWidth
@@ -35,18 +36,23 @@ const CustomSelectField = ({
               <Select
                 labelId={`${fieldName}-label`}
                 id={fieldName}
+                multiple={multipleValues}
                 {...field}
-                value={field.value || ""}
+                value={field.value || []}
                 displayEmpty
                 onChange={(event) => {
                   form.setFieldValue(fieldName, event.target.value);
                   setSelectedValue(event.target.value);
                 }}
                 renderValue={(selected) => {
-                  if (selected === "") {
+                  if (selected.length === 0) {
                     return <span style={{ color: placeholderColor, fontSize: placeholderFontSize }}>{placeholder}</span>;
                   }
-                  return options.find(option => option.value === selected)?.label;
+                  if (multipleValues){
+                    return selected.map(val => options.find(option => option.value === val)?.label).join(', ');
+                  } else {
+                    return options.find(option => option.value === selected)?.label;
+                  }
                 }}
                 sx={{
                   borderRadius: borderRadius,
